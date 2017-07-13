@@ -210,8 +210,8 @@
 ; shortcut
 (defn quick-zoom [_source _factor _inter ]
   (let [_target (Mat.
-    (* _factor (.rows _source))
-    (* _factor (.cols _source))
+    (.intValue (* _factor (.rows _source)))
+    (.intValue (* _factor (.cols _source)))
     (.type _source)
     )]
     (Imgproc/resize _source _target (.size _target) _factor _factor _inter)
