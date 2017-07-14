@@ -20,8 +20,9 @@
 
 ; flip
 (def mat (Imgcodecs/imread "resources/images/cat.jpg"))
+(. Core flip mat mat 1)
 (Core/flip mat mat 1)
-(Imgcodecs/imwrite "target/1.jpg" mat)
+(Imgcodecs/imwrite "output/1.jpg" mat)
 ; 0 : flip x
 ; 1 ; flip y
 ; -1 ; flip x and y

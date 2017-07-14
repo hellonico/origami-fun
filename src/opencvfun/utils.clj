@@ -8,8 +8,6 @@
     [javax.swing ImageIcon JFrame JLabel]
     [java.awt FlowLayout]))
 
-
-
     ;;;
     ; MAT OPERATIONS
     ;;;
@@ -70,9 +68,7 @@
       (ImageIO/read (.getInputStream connection))))
 
 (defn load-mat-from-url[url]
-  (buffered-image-to-mat (load-url url))
-  )
-
+  (buffered-image-to-mat (load-url url)))
 
 ;;;
 ; SWING
