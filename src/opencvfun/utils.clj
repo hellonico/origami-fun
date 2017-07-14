@@ -90,7 +90,6 @@
       (.setVisible true)
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))))
 
-
 ;;;
 ; IMAGE PROCESSING
 ;;;
