@@ -9,5 +9,5 @@
   [proto-repl "0.3.1"]
   [opencv/opencv "3.3.0-rc"]
   [opencv/opencv-native "3.3.0-rc"]
-  [opencv/opencv-native "3.3.0-rc-linux"]
+  ;[opencv/opencv-native "3.3.0-rc-linux"]
   ])

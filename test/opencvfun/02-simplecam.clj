@@ -7,9 +7,8 @@
 ;(require '[opencvfun.utils :refer :all])
 
 (def capture (VideoCapture.))
-(.set capture Videoio/CAP_PROP_FRAME_WIDTH 1600)
-(.set capture Videoio/CAP_PROP_FRAME_HEIGHT 1200)
-
+(.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
+(.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
 ;(.open capture 0)
 
 (defn capture-one []

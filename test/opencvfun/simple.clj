@@ -51,7 +51,7 @@
 (def rotation-point (Point. 400 400))
 (def rotation (Imgproc/getRotationMatrix2D rotation-point 33.0 1.0))
 (Imgproc/warpAffine mat mat rotation (.size mat) Imgproc/INTER_NEAREST)
-(Imgcodecs/imwrite "target/1.jpg" mat)
+(Imgcodecs/imwrite "output/1.jpg" mat)
 
 ;;;
 ; THRESHOLD
@@ -100,8 +100,7 @@
 ; (def dst (make-array Mat 3))
 (def dst (java.util.ArrayList. 3))
 (Core/split mat dst)
-(Imgcodecs/imwrite "target/1.jpg" (.get dst 0))
-(Imgcodecs/imwrite "target/1.jpg" mat)
+(Imgcodecs/imwrite "output/0.jpg" (.get dst 0))
 
 ;;;
 ; filters
@@ -109,7 +108,6 @@
 (def mat (Imgcodecs/imread "resources/images/cat.jpg"))
 (Core/bitwise_not mat mat)
 (Imgcodecs/imwrite "target/1.jpg" mat)
-
 
 ;;;
 ; Blurs
