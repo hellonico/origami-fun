@@ -5,8 +5,11 @@
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
-(defn imread[string]
-  (Imgcodecs/imread string))
+; NOT AUTO GENERATED YET
+
+(defn imread
+  ([string] (Imgcodecs/imread string))
+  ([string type] (Imgcodecs/imread string type)))
 
 (defn imwrite[mat string]
   (Imgcodecs/imwrite string mat)
@@ -17,146 +20,18 @@
   ([x y] (Size. x y))
   ([] (Size.)))
 (defn new-mat
-  ([](Mat.))
-
-  )
+  ([](Mat.)))
 (defn new-point[x y]
   (Point. x y))
-
 (defn new-scalar[a b c]
   (Scalar. a b c))
 
 (defn clone[mat]
   (.clone mat))
 
-(defn split [src dst]
-  (Core/split src dst))
-
-(defn bitwise-not[src dst]
-  (Core/bitwise_not src dst))
-(defn bitwise-not![src]
-  (bitwise-not src src)
-  src)
-;
-; (defn blur[src dst size]
-;   (Imgproc/blur src dst size))
-; (defn blur![src size]
-;   (blur src src size)
-;   src)
-;
-; (defn gaussian-blur[src dst size a b]
-;     (Imgproc/GaussianBlur src dst size a b))
-; (defn gaussian-blur![src size a b]
-;   (gaussian-blur src src size a b)
-;   src)
-;
-; (defn median-blur[src dst a]
-;   (Imgproc/medianBlur src dst a)
-;   )
-; (defn median-blur![src a]
-;   (median-blur src src a)
-;   src)
-;
-; ; 0 : flip x
-; ; 1 ; flip y
-; ; -1 ; flip x and y
-; (defn flip[src dst n]
-;   (Core/flip src dst n))
-; (defn flip![src n]
-;   (flip src src n)
-;   src)
-;
-; (defn cvt-color[src dst cvt]
-;   (Imgproc/cvtColor src dst cvt))
-; (defn cvt-color![src cvt]
-;   (cvt-color src src cvt)
-;   src)
-;
-;
-; (defn erode[src dst]
-;   (Imgproc/erode src dst (Mat.)))
-; (defn erode![src]
-;   (erode src src)
-;   src)
-;
-; (defn dilate
-;   ([src dst] (Imgproc/dilate src dst (Mat.)))
-;   ([src dst kernel] (Imgproc/dilate src dst kernel)))
-; (defn dilate!
-;   ([src] (dilate src src) src)
-;   ([src kernel] (dilate src src kernel) src))
-;
-; (defn canny[src dst a b]
-;   (Imgproc/Canny src dst a b)
-;   dst)
-; (defn canny![src a b]
-;   (canny src src a b)
-;   src)
-;
-; (defn resize
-;   ([src dst size](Imgproc/resize src dst size))
-;   ([src dst size x y method] (Imgproc/resize src dst size x y method)))
-; (defn resize!
-;   ([src size] (resize src src size) src)
-;   ([src size x y method] (resize src src size x y method) src ))
-;
-; (defn in-range[src range-start range-end dst]
-;   (Core/inRange src range-start range-end dst))
-; (defn in-range![src range-start range-end]
-;   (in-range src range-start range-end src)
-;   src)
-;
-; (defn add-weighted [src1 a1 src2 a2 a3 dst]
-;   (Core/addWeighted src1 a1 src2 a2 a3 dst))
-; (defn add-weighted![src1 a1 src2 a2 a3]
-;   (Core/addWeighted src1 a1 src2 a2 src1 a3)
-;   src1)
-;
-; (defn gaussian-blur[src dst size a1 a2]
-;   (Imgproc/GaussianBlur src dst size a1 a2)
-;   )
-; (defn gaussian-blur![src size a1 a2]
-;   (gaussian-blur src src size a1 a2)
-;   src)
-;
-; (defn normalize[src dst a1 a2 a3]
-;   ;(Core/normalize grayed grayed 0 255 Core/NORM_MINMAX)
-; (defn morphology-ex[src target method kernel]
-;     (Imgproc/(Core/normalize src dst a1 a2 a3)morphologyEx img target Imgproc/MORPH_TOPHAT kernel))
-;   )
-;
-; (defn normalize![src a1 a2 a3]
-;   (normalize src src a1 a2 a3)
-;   src)
-;
-; (defn hough-circles[src dst a1 a2 a3 a4 a5 a6 a7]
-;   (Imgproc/HoughCircles
-;     src
-;     dst
-;     a1
-;     a2
-;     a3 a4 a5 a6 a7))
-;
-; (defn circle![src p r color thick]
-;   (Imgproc/circle src p r color thick))
-; (defn rectangle![src p1 p2 color thick]
-;   (Imgproc/rectangle src p1 p2 color thick))
-;
-; (defn get-structuring-element[cvtype size]
-;   (Imgproc/getStructuringElement cvtype size))
-;
-; (defn morphology-ex[src target method kernel]
-;   (Imgproc/morphologyEx src target Imgproc/MORPH_TOPHAT kernel))
-; (defn morphology-ex![src method kernel]
-;   (morphology-ex src src method kernel) src)
-;
-; (defn adaptive-threshold[src target a1 t-method1 t-method2 a2 a3]
-;   (Imgproc/adaptiveThreshold  src target a1 t-method1 t-method2 a2 a3))
-; (defn adaptive-threshold![src a1 t-method1 t-method2 a2 a3]
-;   (adaptive-threshold src src a1 t-method1 t-method2 a2 a3) src)
-;
-; (defn threshold![src min max algo]
-;   (Imgproc/threshold src src min max algo))
+(defn convert-to! [mat a1 a2 a3]
+  (.convertTo mat mat a1 a2 a3)
+  mat)
 
 ; AUTO GENERATED
 
