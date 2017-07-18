@@ -9,7 +9,6 @@
 ; find movement of shapes
 
 ; https://stackoverflow.com/questions/32145348/why-doesnt-opencv-findcontour-method-always-find-closed-outer-contour?rq=1
-; find countour again
 (def img2 (imread "resources/images/cat.jpg"))
 (def gray (new-mat))
 (cvt-color img2 gray COLOR_RGB2GRAY)

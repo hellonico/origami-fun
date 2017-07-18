@@ -40,26 +40,27 @@ matrix))
     (.put mat 0 0 bytes)
     mat))
 
+; gorilla repl
 (defn mat-view[img]
   	(image-view (mat-to-buffered-image img)))
 
 ;;;
 ; IMAGE HANDLING
 ;;;
-(defn frame-to-file[file frame]
-    (Imgcodecs/imwrite file frame))
-(defn quick-save[img]
-  (frame-to-file "target/img1.png" img))
+; (defn frame-to-file[file frame]
+;     (Imgcodecs/imwrite file frame))
+; (defn quick-save[img]
+;   (frame-to-file "target/img1.png" img))
 
 ; loading
-(defn load-img[path]
-  (Imgcodecs/imread path))
-(defn load-jpg[path]
-   (load-img (str "resources/images/" path ".jpg")))
-(defn load-neko[]
-  (load-jpg  "cat2"))
+; (defn load-img[path]
+;   (Imgcodecs/imread path))
+; (defn load-jpg[path]
+;    (load-img (str "resources/images/" path ".jpg")))
+; (defn load-neko[]
+;   (load-jpg  "cat2"))
 
-(defn load-url[url]
+(defn image-from-url[url]
   (let[ connection (->  url
 	(java.net.URL.)
     (.openConnection))]
@@ -68,13 +69,13 @@ matrix))
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31")
       (ImageIO/read (.getInputStream connection))))
 
-(defn load-mat-from-url[url]
-  (buffered-image-to-mat (load-url url)))
+(defn mat-from-url[url]
+  (buffered-image-to-mat (image-from-url url)))
 
 ;;;
 ; SWING
 ;;;
-(defn swing-show-image[src]
+(defn show[src]
   (let [
     buf (mat-to-buffered-image src)
     frame (JFrame. "image")
@@ -99,23 +100,25 @@ matrix))
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))
       pane))
 
-(def show swing-show-image)
+; (def show swing-show-image)
+
 (defn re-show[pane mat]
   (let[image (.getIcon (first (.getComponents pane)))]
   (.setImage image (mat-to-buffered-image mat))
   (doto pane
     (.revalidate)
     (.repaint))))
-;;;
-; IMAGE PROCESSING
-;;;
-(defn turn-to-gray[img]
-    (let[ grayed (Mat. (.rows img) (.cols img) (.type img))]
-    (Imgproc/cvtColor img grayed Imgproc/COLOR_BGRA2GRAY)
-    (Core/normalize grayed grayed 0 255 Core/NORM_MINMAX)
-    grayed))
 
-(defn quick-zoom [_source _factor _inter ]
-  (let [_target (Mat. (.intValue (* _factor (.rows _source)))  (.intValue (* _factor (.cols _source))) (.type _source))]
-    (Imgproc/resize _source _target (.size _target) _factor _factor _inter)
-    _target))
+; ;;;
+; ; IMAGE PROCESSING
+; ;;;
+; (defn turn-to-gray[img]
+;     (let[ grayed (Mat. (.rows img) (.cols img) (.type img))]
+;     (Imgproc/cvtColor img grayed Imgproc/COLOR_BGRA2GRAY)
+;     (Core/normalize grayed grayed 0 255 Core/NORM_MINMAX)
+;     grayed))
+;
+; (defn quick-zoom [_source _factor _inter ]
+;   (let [_target (Mat. (.intValue (* _factor (.rows _source)))  (.intValue (* _factor (.cols _source))) (.type _source))]
+;     (Imgproc/resize _source _target (.size _target) _factor _factor _inter)
+;     _target))

@@ -1,5 +1,8 @@
 (defproject opencv-fun "0.1.0-SNAPSHOT"
-  :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
+  :injections [
+  (clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
+  ; (println "Using OpenCV Version: " VERSION "..")
+  ]
   :plugins [[lein-gorilla "0.4.0"]]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
   :profiles {:dev {:dependencies [
