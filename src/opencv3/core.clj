@@ -13,8 +13,7 @@
 
 (defn imwrite[mat string]
   (Imgcodecs/imwrite string mat)
-  mat
-  )
+  mat)
 
 (defn new-size
   ([x y] (Size. x y))
@@ -32,6 +31,7 @@
 (defn convert-to! [mat a1 a2 a3]
   (.convertTo mat mat a1 a2 a3)
   mat)
+(defn copy-to![])
 
 ; AUTO GENERATED
 
