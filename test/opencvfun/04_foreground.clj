@@ -12,18 +12,17 @@
       histSize (MatOfInt. (int-array [100]))
       hue (java.util.ArrayList.)
       ]
-   (.add hue hueValues)
-		
+    (.add hue hueValues)
 		;compute the histogram
 		(Imgproc/calcHist hue (MatOfInt. (int-array [0])) (Mat.) hist_hue histSize (MatOfFloat. (float-array [0 179])))
-		
+
 ;  (println (.get hist_hue 0 0))
-(println 
+(println
   (map #(* % (first (.get hist_hue % 0))) (range 0 180)))
 
-  (reset! average 
+  (reset! average
    (apply + (map #(* % (first (.get hist_hue % 0))) (range 0 180))))
-  
+
   (println @average)
   (/ @average (.-height (.size hsvImg)) (.-width (.size hsvImg)))))
 
@@ -44,7 +43,7 @@
     (Imgproc/dilate thresholdImg thresholdImg (Mat.) (Point. -1 -1) 1)
 		(Imgproc/erode thresholdImg thresholdImg (Mat.) (Point. -1 -1) 3)
 		(Imgproc/threshold thresholdImg thresholdImg threshValue 179.0 (Imgproc/THRESH_BINARY))
-		
+
     (let [^Mat foreground (Mat. (.size frame) (CvType/CV_8UC3) (Scalar. 255 255 255))]
 		(.copyTo frame foreground thresholdImg)
   foreground))))
@@ -70,4 +69,3 @@
 
 (def frame (capture-one))
 (def backgroud (do-background-removal frame))
-		

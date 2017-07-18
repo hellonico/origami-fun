@@ -51,7 +51,6 @@
 
 ; background filters
 
-
 (def mog2
   (Video/createBackgroundSubtractorMOG2))
 (def knn

@@ -2,7 +2,9 @@
   :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
   :plugins [[lein-gorilla "0.4.0"]]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
-  :profiles {:dev {:dependencies [[gorilla-repl "0.4.0"] ]}}
+  :profiles {:dev {:dependencies [
+    [camel-snake-kebab "0.4.0"]
+    [gorilla-repl "0.4.0"] ]}}
   :dependencies [
   [org.clojure/clojure "1.8.0"]
   [org.clojure/tools.nrepl "0.2.11"]

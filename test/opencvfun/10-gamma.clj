@@ -19,4 +19,4 @@
 		_img))
 
 (def result (apply-gamma  "resources/nico.jpg" 0.2))
-(Imgcodecs/imwrite "target/img1.png" result)
+(Imgcodecs/imwrite "output/img1.png" result)
