@@ -1,0 +1,13 @@
+(ns opencv3.lena
+  (:require [opencv3.core :refer :all]))
+
+; open close image, do not do anything
+(->
+  (imread "resources/images/lena.png")
+  (imwrite "output/lenacopy.png"))
+
+; load, blur and save
+(->
+  (imread "resources/images/lena.png")
+  (gaussian-blur! (new-size 9 9) 20 20)
+  (imwrite "output/blurred.png"))

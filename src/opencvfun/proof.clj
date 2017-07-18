@@ -141,6 +141,16 @@
     (println ";;;")
     (print-fields Core)
     (print-cv-methods Core)
+    (println ";;;")
+    (print-fields CvType)
     ))))
 
+(comment
 (generate-api)
+
+(with-open [w (-> "output.clj" clojure.java.io/writer)]
+  (binding [*out* w]
+  (print-fields CvType))
+
+  )
+)
