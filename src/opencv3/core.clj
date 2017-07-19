@@ -28,6 +28,9 @@
 (defn new-scalar
   ([a b c] (Scalar. a b c))
   ([a] (Scalar. a)))
+(defn new-rect[a b c d]
+  (Rect. a b c d)
+  )
 (defn new-list
   ([size]
   (java.util.ArrayList. size))
