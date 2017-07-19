@@ -1,6 +1,6 @@
 (ns opencv3.tutorial
  (:require
-   [opencvfun.utils :as u]
+   [opencv3.utils :as u]
    [opencv3.core :refer :all]))
 
 (def image (new-mat 640 480 CV_8UC3))

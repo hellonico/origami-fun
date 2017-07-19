@@ -14,7 +14,7 @@
     org.opencv.imgcodecs.Imgcodecs
     org.opencv.imgproc.Imgproc)
   (:require 
-    [opencvfun.utils :as u]))
+    [opencv3.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}

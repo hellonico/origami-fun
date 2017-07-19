@@ -1,5 +1,5 @@
 (ns opencvfun.dip
-  (:use opencvfun.utils)
+  (:use opencv3.utils)
   (:import
     [org.opencv.core Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]

@@ -1,5 +1,5 @@
 (ns opencvfun.featuredetect
-  (:use [opencvfun.utils])
+  (:use [opencv3.utils])
   (:require [opencv3.core :refer :all])
   (:import
     [java.util LinkedList]

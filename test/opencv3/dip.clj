@@ -1,6 +1,6 @@
 (ns opencv3.dip
    (:require
-     [opencvfun.utils :as u]
+     [opencv3.utils :as u]
      [opencv3.core :refer :all]))
 
 ; ENHANCE CONTRAST

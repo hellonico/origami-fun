@@ -1,7 +1,7 @@
 (ns opencvfun.homography
   (:require
     [opencv3.core :refer :all]
-    [opencvfun.utils :as u])
+    [opencv3.utils :as u])
   (:import
     [java.util LinkedList]
     [org.opencv.calib3d Calib3d]

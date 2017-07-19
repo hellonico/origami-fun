@@ -1,5 +1,5 @@
 (ns opencvfun.simple
-  (:require opencvfun.utils)
+  (:require opencv3.utils)
   (:require [opencv3.core :refer :all])
   (:import
     [org.opencv.core MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]))

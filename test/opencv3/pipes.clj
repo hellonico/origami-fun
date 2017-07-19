@@ -1,6 +1,6 @@
 (ns opencv3.pipes
   (:require [opencv3.core :refer :all])
-  (:require [opencvfun.utils :as u])
+  (:require [opencv3.utils :as u])
   (:import
     [org.opencv.core Core]
     [org.opencv.imgproc Imgproc]))

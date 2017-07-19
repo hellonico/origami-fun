@@ -4,7 +4,7 @@
         '[org.opencv.imgcodecs Imgcodecs]
         '[org.opencv.videoio Videoio VideoCapture]
         '[org.opencv.imgproc Imgproc])
-;(require '[opencvfun.utils :refer :all])
+;(require '[opencv3.utils :refer :all])
 
 (def capture (VideoCapture.))
 (.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)

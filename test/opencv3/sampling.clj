@@ -1,6 +1,6 @@
 (ns opencv3.sampling
   (:require [opencv3.core :refer :all])
-  (:require [opencvfun.utils :as u]))
+  (:require [opencv3.utils :as u]))
 
 (def im (imread  "resources/face.jpg"))
 (def gp1 (new-mat))
