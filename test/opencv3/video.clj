@@ -1,4 +1,4 @@
-(ns opencv3.testing
+(ns opencv3.video
   (:require [opencv3.core :refer :all])
   (:require [opencvfun.utils :as u])
   (:import
@@ -31,13 +31,15 @@
 (.open capture 0)
 (.release capture)
 
-(def img
-  (u/show (Mat. height width CvType/CV_8UC3 (new-scalar 255 255 255))))
+(def window
+  (u/show (new-mat height width CV_8UC3 (new-scalar 255 255 255))))
+(u/re-show window
+  (new-mat height width CV_8UC3 (new-scalar 255 100 255)))
 
 (def buffer (new-mat))
 (dotimes [i 100]
   (.read capture buffer)
-  (cvt-color! buffer Imgproc/COLOR_RGB2GRAY)
+  (cvt-color! buffer COLOR_RGB2GRAY)
   (u/re-show
     img
     buffer))
@@ -56,7 +58,7 @@
 (def knn
   (Video/createBackgroundSubtractorKNN))
 (def kernel
-  (Imgproc/getStructuringElement Imgproc/MORPH_ELLIPSE (new-size 3 3)))
+  (get-structuring-element MORPH_ELLIPSE (new-size 3 3)))
 ; those seem to be gone
 ; (Video/createBackgroundSubtractorMOG)
 ; (Video/createBackgroundSubtractorGMG)
@@ -74,7 +76,7 @@
 (defn bg-substractor-3[mat]
   (let[mask (new-mat)]
 	(.apply mog2 mat mask)
-  (Imgproc/morphologyEx mask mask Imgproc/MORPH_BLACKHAT kernel)
+  (morphology-ex mask mask MORPH_BLACKHAT kernel)
   mask))
 
 (def buffer (new-mat))

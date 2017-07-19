@@ -158,8 +158,7 @@
          (Imgproc/distanceTransform mat mat2 Imgproc/CV_DIST_L2 3)
          (Core/convertScaleAbs mat2 mat1)
          (Core/normalize mat1 mat1 0.0 255.0 Core/NORM_MINMAX)
-         mat1
-         ))
+         mat1))
 
 (def source (Imgcodecs/imread "resources/images/cat2.png" CvType/CV_8UC1))
 (def t (distTransform source))

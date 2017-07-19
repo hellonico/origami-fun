@@ -1,6 +1,7 @@
 (ns opencvfun.proof
   (:use camel-snake-kebab.core)
   (:import
+    [org.opencv.photo Photo]
     [org.opencv.core MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
     [org.opencv.imgproc Imgproc]))
@@ -141,8 +142,10 @@
     (println ";;;")
     (print-fields Core)
     (print-cv-methods Core)
-    (println ";;;")
+    (println ";;; CvType ")
     (print-fields CvType)
+    (println ";;; Photo")
+    (print-cv-methods Photo)
     ))))
 
 (comment
@@ -150,7 +153,7 @@
 
 (with-open [w (-> "output.clj" clojure.java.io/writer)]
   (binding [*out* w]
-  (print-fields CvType))
 
+  ;  (print-fields CvType))
   )
 )

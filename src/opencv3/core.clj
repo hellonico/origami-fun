@@ -19,11 +19,18 @@
   ([x y] (Size. x y))
   ([] (Size.)))
 (defn new-mat
+  ([height width type color] (Mat. height width type color))
+  ([height width type] (Mat. height width type))
+  ([height width] (Mat. height width))
   ([](Mat.)))
 (defn new-point[x y]
   (Point. x y))
 (defn new-scalar[a b c]
   (Scalar. a b c))
+(defn new-list
+  ([size]
+  (java.util.ArrayList. size))
+  ([] (java.util.ArrayList.)))
 
 (defn clone[mat]
   (.clone mat))
@@ -2816,3 +2823,265 @@
 (def CV_64FC2 CvType/CV_64FC2)
 (def CV_64FC3 CvType/CV_64FC3)
 (def CV_64FC4 CvType/CV_64FC4)
+
+(defn create-align-mtb
+([]
+  (Photo/createAlignMTB ))
+([int_0 int_1 boolean_2 ]
+  (Photo/createAlignMTB int_0 int_1 boolean_2 ))
+)
+
+(defn create-calibrate-debevec
+([]
+  (Photo/createCalibrateDebevec ))
+([int_0 float_1 boolean_2 ]
+  (Photo/createCalibrateDebevec int_0 float_1 boolean_2 ))
+)
+
+(defn create-calibrate-robertson
+([]
+  (Photo/createCalibrateRobertson ))
+([int_0 float_1 ]
+  (Photo/createCalibrateRobertson int_0 float_1 ))
+)
+
+(defn create-merge-debevec
+([]
+  (Photo/createMergeDebevec ))
+)
+
+(defn create-merge-mertens
+([]
+  (Photo/createMergeMertens ))
+([float_0 float_1 float_2 ]
+  (Photo/createMergeMertens float_0 float_1 float_2 ))
+)
+
+(defn create-merge-robertson
+([]
+  (Photo/createMergeRobertson ))
+)
+
+(defn create-tonemap
+([]
+  (Photo/createTonemap ))
+([float_0 ]
+  (Photo/createTonemap float_0 ))
+)
+
+(defn create-tonemap-drago
+([]
+  (Photo/createTonemapDrago ))
+([float_0 float_1 float_2 ]
+  (Photo/createTonemapDrago float_0 float_1 float_2 ))
+)
+
+(defn create-tonemap-durand
+([]
+  (Photo/createTonemapDurand ))
+([float_0 float_1 float_2 float_3 float_4 ]
+  (Photo/createTonemapDurand float_0 float_1 float_2 float_3 float_4 ))
+)
+
+(defn create-tonemap-mantiuk
+([]
+  (Photo/createTonemapMantiuk ))
+([float_0 float_1 float_2 ]
+  (Photo/createTonemapMantiuk float_0 float_1 float_2 ))
+)
+
+(defn create-tonemap-reinhard
+([]
+  (Photo/createTonemapReinhard ))
+([float_0 float_1 float_2 float_3 ]
+  (Photo/createTonemapReinhard float_0 float_1 float_2 float_3 ))
+)
+
+(defn color-change
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Photo/colorChange org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 float_5 ]
+  (Photo/colorChange org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 float_5 ))
+)
+
+(defn color-change!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Photo/colorChange org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 float_5 ]
+  (Photo/colorChange org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 float_5 ) org_opencv_core_mat_0 )
+)
+
+(defn decolor
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Photo/decolor org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+)
+
+(defn decolor!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Photo/decolor org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+)
+
+(defn denoise-tvl-1
+([java_util_list_0 org_opencv_core_mat_1 ]
+  (Photo/denoise_TVL1 java_util_list_0 org_opencv_core_mat_1 ))
+([java_util_list_0 org_opencv_core_mat_1 double_2 int_3 ]
+  (Photo/denoise_TVL1 java_util_list_0 org_opencv_core_mat_1 double_2 int_3 ))
+)
+
+(defn detail-enhance
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Photo/detailEnhance org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 ]
+  (Photo/detailEnhance org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 ))
+)
+
+(defn detail-enhance!
+([org_opencv_core_mat_0 ]
+  (Photo/detailEnhance org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 float_2 float_3 ]
+  (Photo/detailEnhance org_opencv_core_mat_0 org_opencv_core_mat_0 float_2 float_3 ) org_opencv_core_mat_0 )
+)
+
+(defn edge-preserving-filter
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Photo/edgePreservingFilter org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 float_3 float_4 ]
+  (Photo/edgePreservingFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 float_3 float_4 ))
+)
+
+(defn edge-preserving-filter!
+([org_opencv_core_mat_0 ]
+  (Photo/edgePreservingFilter org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 float_3 float_4 ]
+  (Photo/edgePreservingFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 float_3 float_4 ) org_opencv_core_mat_0 )
+)
+
+(defn fast-nl-means-denoising
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_matoffloat_2 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_matoffloat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_matoffloat_2 int_3 int_4 int_5 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_matoffloat_2 int_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 int_3 int_4 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 int_3 int_4 ))
+)
+
+(defn fast-nl-means-denoising!
+([org_opencv_core_mat_0 org_opencv_core_matoffloat_2 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_matoffloat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_matoffloat_2 int_3 int_4 int_5 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_matoffloat_2 int_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 float_2 int_3 int_4 ]
+  (Photo/fastNlMeansDenoising org_opencv_core_mat_0 org_opencv_core_mat_0 float_2 int_3 int_4 ) org_opencv_core_mat_0 )
+)
+
+(defn fast-nl-means-denoising-colored
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Photo/fastNlMeansDenoisingColored org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 int_4 int_5 ]
+  (Photo/fastNlMeansDenoisingColored org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 int_4 int_5 ))
+)
+
+(defn fast-nl-means-denoising-colored!
+([org_opencv_core_mat_0 ]
+  (Photo/fastNlMeansDenoisingColored org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 float_2 float_3 int_4 int_5 ]
+  (Photo/fastNlMeansDenoisingColored org_opencv_core_mat_0 org_opencv_core_mat_0 float_2 float_3 int_4 int_5 ) org_opencv_core_mat_0 )
+)
+
+(defn fast-nl-means-denoising-colored-multi
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Photo/fastNlMeansDenoisingColoredMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 ))
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 float_4 float_5 int_6 int_7 ]
+  (Photo/fastNlMeansDenoisingColoredMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 float_4 float_5 int_6 int_7 ))
+)
+
+(defn fast-nl-means-denoising-multi
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 org_opencv_core_matoffloat_4 ]
+  (Photo/fastNlMeansDenoisingMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 org_opencv_core_matoffloat_4 ))
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 org_opencv_core_matoffloat_4 int_5 int_6 int_7 ]
+  (Photo/fastNlMeansDenoisingMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 org_opencv_core_matoffloat_4 int_5 int_6 int_7 ))
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Photo/fastNlMeansDenoisingMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 ))
+([java_util_list_0 org_opencv_core_mat_1 int_2 int_3 float_4 int_5 int_6 ]
+  (Photo/fastNlMeansDenoisingMulti java_util_list_0 org_opencv_core_mat_1 int_2 int_3 float_4 int_5 int_6 ))
+)
+
+(defn illumination-change
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Photo/illuminationChange org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 ]
+  (Photo/illuminationChange org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 ))
+)
+
+(defn illumination-change!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Photo/illuminationChange org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 ]
+  (Photo/illuminationChange org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 ) org_opencv_core_mat_0 )
+)
+
+(defn inpaint
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ]
+  (Photo/inpaint org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ))
+)
+
+(defn inpaint!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ]
+  (Photo/inpaint org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ) org_opencv_core_mat_0 )
+)
+
+(defn pencil-sketch
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Photo/pencilSketch org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 float_5 ]
+  (Photo/pencilSketch org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 float_5 ))
+)
+
+(defn pencil-sketch!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Photo/pencilSketch org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 float_5 ]
+  (Photo/pencilSketch org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 float_5 ) org_opencv_core_mat_0 )
+)
+
+(defn seamless-clone
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 org_opencv_core_mat_4 int_5 ]
+  (Photo/seamlessClone org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 org_opencv_core_mat_4 int_5 ))
+)
+
+(defn seamless-clone!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 org_opencv_core_mat_4 int_5 ]
+  (Photo/seamlessClone org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 org_opencv_core_mat_4 int_5 ) org_opencv_core_mat_0 )
+)
+
+(defn stylization
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Photo/stylization org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 ]
+  (Photo/stylization org_opencv_core_mat_0 org_opencv_core_mat_1 float_2 float_3 ))
+)
+
+(defn stylization!
+([org_opencv_core_mat_0 ]
+  (Photo/stylization org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 float_2 float_3 ]
+  (Photo/stylization org_opencv_core_mat_0 org_opencv_core_mat_0 float_2 float_3 ) org_opencv_core_mat_0 )
+)
+
+(defn texture-flattening
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Photo/textureFlattening org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 int_5 ]
+  (Photo/textureFlattening org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 float_3 float_4 int_5 ))
+)
+
+(defn texture-flattening!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Photo/textureFlattening org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 int_5 ]
+  (Photo/textureFlattening org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 int_5 ) org_opencv_core_mat_0 )
+)

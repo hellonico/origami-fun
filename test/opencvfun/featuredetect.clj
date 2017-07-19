@@ -1,5 +1,6 @@
 (ns opencvfun.featuredetect
   (:use [opencvfun.utils])
+  (:require [opencv3.core :refer :all])
   (:import
     [java.util LinkedList]
     [org.opencv.calib3d Calib3d]
@@ -51,7 +52,7 @@
 ; show differences on a picture (not needed for after)
 (def mat3 (Mat. (.rows mat1) (* 2 (.cols mat1)) (.type mat1)))
 (Features2d/drawMatches mat1 points1 mat2 points2 sorted-matches mat3)
-(Imgcodecs/imwrite "target/1.jpg" mat3)
+(Imgcodecs/imwrite "output/detection.png" mat3)
 
 ; http://stackoverflow.com/questions/26615649/opencv-fitting-an-object-into-a-scene-using-homography-and-perspective-transfor
 ; https://stackoverflow.com/questions/26771285/opencv-how-to-use-findhomography-correctly
@@ -119,7 +120,7 @@
 
 (def H
   (Calib3d/findHomography obj scene Calib3d/RANSAC 3))
-(def warpimg (.clone mat1))
-(def ims (Size. (.cols mat1) (.rows mat1)))
-(Imgproc/warpPerspective mat1 warpimg H ims)
-(Imgcodecs/imwrite "target/1.jpg" warpimg)
+(def warpimg (clone mat1))
+(def ims (new-size (.cols mat1) (.rows mat1)))
+(warp-perspective mat1 warpimg H ims)
+(imwrite warpimg "output/detection.png")

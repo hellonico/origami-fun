@@ -3,7 +3,7 @@
 
 ;
 ; Combining multiple pictures into one
-; 
+;
 
 ; simple vertical
 (def left (imread "resources/images/cat.jpg"))
