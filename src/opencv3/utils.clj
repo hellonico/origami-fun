@@ -1,6 +1,6 @@
 (ns opencv3.utils
   (:use [gorilla-repl.image])
-  (:import [org.opencv.core CvType Core Mat MatOfByte]
+  (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.videoio VideoCapture]
     [org.opencv.imgproc Imgproc]
@@ -19,6 +19,20 @@
     (fn[j val] (.put mat i j (array-fn [val])))
     line))
 matrix))
+
+(defn matrix-to-mat [matrix]
+  (let[
+    flat (flatten matrix)
+    rows (count vertical-matrix)
+    cols (count (first vertical-matrix))
+    mat (Mat. rows cols CvType/CV_32F)
+    total (.total mat)
+    bytes (float-array total)
+    ]
+    (doseq [^int i (range 0 total)]
+      (aset-float bytes i (nth flat i)))
+    (.put mat 0 0 bytes)
+    mat))
 
 (defn mat-from [src]
   (Mat. (.rows src) (.cols src) (.type src)))

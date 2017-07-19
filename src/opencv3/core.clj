@@ -25,8 +25,9 @@
   ([](Mat.)))
 (defn new-point[x y]
   (Point. x y))
-(defn new-scalar[a b c]
-  (Scalar. a b c))
+(defn new-scalar
+  ([a b c] (Scalar. a b c))
+  ([a] (Scalar. a)))
 (defn new-list
   ([size]
   (java.util.ArrayList. size))
