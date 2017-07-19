@@ -1,4 +1,4 @@
-(ns opencvfun.utils
+(ns opencv3.utils
   (:use [gorilla-repl.image])
   (:import [org.opencv.core CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
