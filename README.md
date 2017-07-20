@@ -13,9 +13,11 @@ Photomosaic
 ; https://github.com/DavideA/photomosaic
 ; https://stackoverflow.com/questions/5478519/photo-mosaic-algorithm-how-to-create-a-mosaic-photo-given-the-basic-image-and-a
 
-
 Background Subtraction
 ; http://docs.opencv.org/trunk/d1/dc5/tutorial_background_subtraction.html
 
 Copy Image into camera frame
 ; https://stackoverflow.com/questions/22428448/copying-a-small-image-into-the-camera-frame-with-opencv-for-android
+
+TO READ
+; http://urbanhonking.com/ideasfordozens/2013/01/14/making-photomosaics-in-processing/

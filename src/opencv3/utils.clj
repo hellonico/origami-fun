@@ -23,8 +23,8 @@ matrix))
 (defn matrix-to-mat [matrix]
   (let[
     flat (flatten matrix)
-    rows (count vertical-matrix)
-    cols (count (first vertical-matrix))
+    rows (count matrix)
+    cols (count (first matrix))
     mat (Mat. rows cols CvType/CV_32F)
     total (.total mat)
     bytes (float-array total)
