@@ -4,14 +4,20 @@
 
 ; https://stackoverflow.com/questions/11424002/how-to-detect-simple-geometric-shapes-using-opencv
 ; https://stackoverflow.com/questions/11273588/how-to-convert-matofpoint-to-matofpoint2f-in-opencv-java-api
+(def target-image  "resources/morph/shapes3.jpg")
+
+; WORK SOME MORE
+; (def target-image  "resources/morph/colourful-shapes.jpg")
 
 (def img
-  (imread "resources/morph/shapes3.jpg"))
+  (imread target-image))
 (def gray
-  (imread "resources/morph/shapes3.jpg" 0))
+  (imread target-image 0))
 
 (def thresh (new-mat))
-(threshold gray thresh 127 255 1)
+(threshold gray thresh 127 240 1)
+(imwrite thresh "output/please.png")
+
 
 (def contours (new-list))
 (find-contours thresh contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE)
@@ -32,11 +38,7 @@
 ; CONTOUR FEATURES
 
 ; draw different color depending on the shape
-(def cloned
-  (clone img))
-(def contours
-  (new-list))
-(find-contours thresh contours (new-mat) RETR_LIST CHAIN_APPROX_NONE)
+(let [cloned (clone img)]
 (dotimes [i (.size contours)]
  (let[
    c (.get contours i)
@@ -48,9 +50,10 @@
    ]
    (draw-contours cloned contours i
     (condp = nb-sides
+     3 (new-scalar 255 0 255)
      4 (new-scalar 255 0 0)
      5 (new-scalar 0 0 255)
      9 (new-scalar 255 255 0)
      (new-scalar 0 255 255))
      -1)))
-(imwrite cloned "output/please.png")
+    (imwrite cloned "output/please.png"))
