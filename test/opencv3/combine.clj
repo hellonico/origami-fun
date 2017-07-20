@@ -21,8 +21,9 @@
 
 ; why it is interesting to use clojure here
 (defn dilate1[src dilation-size]
-  (-> src
-  (clone)
+  (->
+  src
+  clone
   (dilate!
     (get-structuring-element
       MORPH_RECT

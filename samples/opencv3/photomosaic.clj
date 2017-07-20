@@ -103,13 +103,15 @@
     (Integer/parseInt (nth args 4))))
 
 (comment
+
+  (count
+    (collect-pictures "/Users/niko/Dropbox/写真/IPHONE"))
+
   (photomosaic
   "/Users/niko/Dropbox/manonico"
   "/Users/niko/Dropbox/manonico/DSC_1889.JPG"
   "output/collage.png"
   50
   50)
-  )
 
-(count
-  (collect-pictures "/Users/niko/Dropbox/写真/IPHONE"))
+  )
