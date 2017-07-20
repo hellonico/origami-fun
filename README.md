@@ -21,3 +21,16 @@ Copy Image into camera frame
 
 TO READ
 ; http://urbanhonking.com/ideasfordozens/2013/01/14/making-photomosaics-in-processing/
+
+
+Find shapes
+https://rdmilligan.wordpress.com/2016/02/13/detect-shapes-using-opencv/
+https://opencvproject.wordpress.com/projects-files/detection-shape/
+https://stackoverflow.com/questions/11424002/how-to-detect-simple-geometric-shapes-using-opencv
+
+
+
+Clean the repl
+```
+(map #(ns-unmap *ns* %) (keys (ns-interns *ns*)))
+```
