@@ -22,13 +22,22 @@ Copy Image into camera frame
 TO READ
 ; http://urbanhonking.com/ideasfordozens/2013/01/14/making-photomosaics-in-processing/
 
+; add convert shape detection-shape
+http://www.pyimagesearch.com/2016/02/08/opencv-shape-detection/
 
 Find shapes
 https://rdmilligan.wordpress.com/2016/02/13/detect-shapes-using-opencv/
 https://opencvproject.wordpress.com/projects-files/detection-shape/
 https://stackoverflow.com/questions/11424002/how-to-detect-simple-geometric-shapes-using-opencv
 
+Make sure all examples are converter.
+http://opencvexamples.blogspot.com/2013/10/change-image-type-convert-8u-to-32f-or.html
 
+Make sure all the tutorial is converted
+http://docs.opencv.org/trunk/dd/d49/tutorial_py_contour_features.html
+
+HSV COLORS
+http://colorizer.org/
 
 Clean the repl
 ```
