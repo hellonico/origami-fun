@@ -28,7 +28,7 @@
 (.set capture Videoio/CAP_PROP_FRAME_HEIGHT height)
 
 (.open capture 0)
-(.release capture)
+; (.release capture)
 
 (def window
   (u/show (new-mat height width CV_8UC3 (new-scalar 255 255 255))))
@@ -38,6 +38,7 @@
 (dotimes [i 500]
   (.read capture buffer)
   (cvt-color! buffer COLOR_RGB2GRAY)
+  (put-text buffer (java.util.Date.) (new-point 100 300) FONT_HERSHEY_PLAIN 20 (new-scalar 255 255 0) 30)
   (u/re-show
     window
     buffer))

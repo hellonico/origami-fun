@@ -18,7 +18,6 @@
 (threshold gray thresh 127 240 1)
 (imwrite thresh "output/please.png")
 
-
 (def contours (new-list))
 (find-contours thresh contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE)
 
