@@ -13,8 +13,7 @@
    (cvt-color! COLOR_BGR2GRAY)
    (blur! (new-size 3 3))
    (threshold! 110 255 THRESH_BINARY)
-   (imwrite "output/kikyu_work.png")
-   ))
+   (imwrite "output/kikyu_work.png")))
 
 (def contours (new-list))
 (find-contours work contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE (new-point 0 0))
