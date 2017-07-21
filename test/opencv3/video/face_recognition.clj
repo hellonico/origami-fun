@@ -30,6 +30,7 @@
 
   (.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
   (.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
+  (.set capture Videoio/CV_CAP_PROP_FPS 30)
 
   (def window
     (u/show (new-mat 400 400 CV_8UC3
