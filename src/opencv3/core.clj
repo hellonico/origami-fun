@@ -1,6 +1,6 @@
 (ns opencv3.core
   (:import
-    [org.opencv.core MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
+    [org.opencv.core MatOfKeyPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
@@ -15,6 +15,9 @@
   (Imgcodecs/imwrite string mat)
   mat)
 
+(defn new-matofpoint2f
+  ([] (MatOfPoint2f.))
+  ([array] (MatOfPoint2f. array)))
 (defn new-size
   ([x y] (Size. x y))
   ([] (Size.)))

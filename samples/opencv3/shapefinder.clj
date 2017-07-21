@@ -1,16 +1,14 @@
 (ns opencv3.shapefinder
-  (:import [org.opencv.core MatOfPoint MatOfPoint2f])
   (:require [opencv3.core :refer :all]))
-
 ;
 ; redo exercice from shapes2
 ;
 (defn draw-contours! [img contours]
  (dotimes [i (.size contours)]
     (let [c (.get contours i)
-       m2f (MatOfPoint2f. (.toArray c))
+       m2f (new-matofpoint2f (.toArray c))
        len (arc-length m2f true)
-       ret (MatOfPoint2f.)
+       ret (new-matofpoint2f)
        approx (approx-poly-dp m2f ret (* 0.01 len) true)
        nb-sides (.size (.toList ret))]
  ; (println ">" nb-sides)
