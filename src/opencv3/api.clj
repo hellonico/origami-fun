@@ -1,4 +1,4 @@
-(ns opencvfun.api
+(ns opencv3.api
   (:use camel-snake-kebab.core)
   (:import
     [org.opencv.photo Photo]

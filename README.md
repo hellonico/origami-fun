@@ -30,6 +30,9 @@ https://rdmilligan.wordpress.com/2016/02/13/detect-shapes-using-opencv/
 https://opencvproject.wordpress.com/projects-files/detection-shape/
 https://stackoverflow.com/questions/11424002/how-to-detect-simple-geometric-shapes-using-opencv
 
+http://www.pyimagesearch.com/2016/02/08/opencv-shape-detection/
+http://www.pyimagesearch.com/2016/02/15/determining-object-color-with-opencv/
+
 Make sure all examples are converter.
 http://opencvexamples.blogspot.com/2013/10/change-image-type-convert-8u-to-32f-or.html
 
