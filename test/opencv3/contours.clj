@@ -18,7 +18,8 @@
 (imwrite image-a "output/contours.png")
 
 (def image-b (clone image-a))
-(def contours (java.util.ArrayList.))
+(def contours
+  (new-arraylist))
 (def mask (new-mat))
 (find-contours image-a contours mask RETR_LIST CHAIN_APPROX_SIMPLE)
 (doseq [c contours]
@@ -73,13 +74,28 @@
 (imwrite image-c "output/contours.png")
 
 ;
+; Find countours 3
+; draw contours using circles
+;
+(def headphones
+  (imread "resources/morph/headphone.png"))
+(def image-c (clone headphones))
+(cvt-color! headphones COLOR_BGR2GRAY)
+(def contours (java.util.ArrayList.))
+(def mask (new-mat))
+(find-contours headphones contours mask RETR_LIST CHAIN_APPROX_SIMPLE)
+(dotimes [ci (.size contours)]
+ (draw-contours image-c contours ci (new-scalar 255 100 100) 3))
+(imwrite image-c "output/contours.png")
+
+;
 ; contours using masking
 ;
 (def im  (imread "resources/images/cat.jpg"))
 (def hsv (new-mat))
 (def mask (new-mat))
 (def im2 (new-mat))
-(cvt-color im hsv COLOR_BGR2HSV)
+(cvt-color im hsv COLOR_BGR2GRAY)
 (in-range hsv (new-scalar 40 10 0) (new-scalar 120 255 255) mask)
 (.copyTo im im2 mask)
 (imwrite im2 "output/cat3.png")

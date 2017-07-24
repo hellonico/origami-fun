@@ -1,5 +1,6 @@
 (ns opencv3.utils
   (:use [gorilla-repl.image])
+  (:require [opencv3.core :as cv])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.videoio VideoCapture]
@@ -12,6 +13,10 @@
 ;;;
 ; MAT OPERATIONS
 ;;;
+(defn resize-by[ mat factor]
+  (let [height (.rows mat) width (.cols mat)]
+    (cv/resize! mat (cv/new-size (* width factor) (* height factor)) )))
+
 (defn matrix-to-mat [matrix mat array-fn]
 (map-indexed
  (fn[i line]
