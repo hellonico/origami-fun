@@ -3,7 +3,8 @@
 
 ; canny and reverse
 (->
- (imread "resources/images/cat.jpg")
+ "resources/images/cat.jpg"
+ (imread)
  (cvt-color! COLOR_RGB2GRAY)
  (canny! 300.0 100.0 3 true)
  (bitwise-not!)

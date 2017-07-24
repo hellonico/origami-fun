@@ -15,33 +15,34 @@
   (Imgcodecs/imwrite string mat)
   mat)
 
-(defn new-matofpoint2f
-  ([] (MatOfPoint2f.))
-  ([array] (MatOfPoint2f. array)))
-(defn new-size
-  ([x y] (Size. x y))
-  ([] (Size.)))
-(defn new-mat
-  ([height width type color] (Mat. height width type color))
-  ([height width type] (Mat. height width type))
-  ([height width] (Mat. height width))
-  ([](Mat.)))
-(defn new-matofint[]
-  (MatOfInt.))
-(defn new-matofpoint[]
-  (MatOfPoint.))
-(defn new-point[x y]
-  (Point. x y))
-(defn new-scalar
-  ([a b c] (Scalar. a b c))
-  ([a] (Scalar. a)))
-(defn new-rect[a b c d]
-  (Rect. a b c d)
-  )
-(defn new-list
-  ([size]
-  (java.util.ArrayList. size))
-  ([] (java.util.ArrayList.)))
+; (defn new-matofpoint2f
+;   ([] (MatOfPoint2f.))
+;   ([array] (MatOfPoint2f. array)))
+; (defn new-size
+;   ([x y] (Size. x y))
+;   ([] (Size.)))
+; (defn new-mat
+;   ([height width type color] (Mat. height width type color))
+;   ([height width type] (Mat. height width type))
+;   ([height width] (Mat. height width))
+;   ([](Mat.)))
+; (defn new-matofint[]
+;   (MatOfInt.))
+; (defn new-matofpoint[]
+;   (MatOfPoint.))
+; (defn new-point[x y]
+;   (Point. x y))
+; (defn new-scalar
+;   ([a b c] (Scalar. a b c))
+;   ([a] (Scalar. a)))
+; (defn new-rect[a b c d]
+;   (Rect. a b c d)
+;   )
+(declare new-arraylist)
+(def new-list new-arraylist)
+;   ([size]
+;   (java.util.ArrayList. size))
+;   ([] (java.util.ArrayList.)))
 
 (defn clone[mat]
   (.clone mat))
@@ -50,6 +51,101 @@
   (.convertTo mat mat a1 a2 a3)
   mat)
 (defn copy-to![])
+
+; AUTO GENERATED CONSTRUCTORS
+
+(defn new-matofbyte
+([array_b_0 ]
+  (new org.opencv.core.MatOfByte array_b_0 ))
+([]
+  (new org.opencv.core.MatOfByte )))
+
+(defn new-matofdmatch
+([array_lorg_opencv_core_dmatch_0 ]
+  (new org.opencv.core.MatOfDMatch array_lorg_opencv_core_dmatch_0 ))
+([]
+  (new org.opencv.core.MatOfDMatch )))
+
+
+(defn new-matofkeypoint
+([array_lorg_opencv_core_keypoint_0 ]
+  (new org.opencv.core.MatOfKeyPoint array_lorg_opencv_core_keypoint_0 ))
+([]
+  (new org.opencv.core.MatOfKeyPoint )))
+
+
+(defn new-matofint
+([array_i_0 ]
+  (new org.opencv.core.MatOfInt array_i_0 ))
+([]
+  (new org.opencv.core.MatOfInt )))
+(defn new-matofpoint2f
+([array_lorg_opencv_core_point_0 ]
+  (new org.opencv.core.MatOfPoint2f array_lorg_opencv_core_point_0 ))
+([]
+  (new org.opencv.core.MatOfPoint2f )))
+(defn new-matofpoint
+([array_lorg_opencv_core_point_0 ]
+  (new org.opencv.core.MatOfPoint array_lorg_opencv_core_point_0 ))
+([]
+  (new org.opencv.core.MatOfPoint )))
+(defn new-scalar
+([array_d_0 ]
+  (new org.opencv.core.Scalar array_d_0 ))
+([double_0 double_1 ]
+  (new org.opencv.core.Scalar double_0 double_1 ))
+([double_0 double_1 double_2 ]
+  (new org.opencv.core.Scalar double_0 double_1 double_2 ))
+([double_0 double_1 double_2 double_3 ]
+  (new org.opencv.core.Scalar double_0 double_1 double_2 double_3 )))
+(defn new-rect
+([array_d_0 ]
+  (new org.opencv.core.Rect array_d_0 ))
+([org_opencv_core_point_0 org_opencv_core_size_1 ]
+  (new org.opencv.core.Rect org_opencv_core_point_0 org_opencv_core_size_1 ))
+([]
+  (new org.opencv.core.Rect ))
+([int_0 int_1 int_2 int_3 ]
+  (new org.opencv.core.Rect int_0 int_1 int_2 int_3 )))
+(defn new-arraylist
+([java_util_collection_0 ]
+  (new java.util.ArrayList java_util_collection_0 ))
+([]
+  (new java.util.ArrayList )))
+(defn new-size
+([array_d_0 ]
+  (new org.opencv.core.Size array_d_0 ))
+([]
+  (new org.opencv.core.Size ))
+([double_0 double_1 ]
+  (new org.opencv.core.Size double_0 double_1 )))
+(defn new-videocapture
+([]
+  (new org.opencv.videoio.VideoCapture ))
+([int_0 ]
+  (new org.opencv.videoio.VideoCapture int_0 ))
+([java_lang_string_0 int_1 ]
+  (new org.opencv.videoio.VideoCapture java_lang_string_0 int_1 )))
+(defn new-mat
+([int_0 int_1 int_2 org_opencv_core_scalar_3 ]
+  (new org.opencv.core.Mat int_0 int_1 int_2 org_opencv_core_scalar_3 ))
+([org_opencv_core_size_0 int_1 org_opencv_core_scalar_2 ]
+  (new org.opencv.core.Mat org_opencv_core_size_0 int_1 org_opencv_core_scalar_2 ))
+([org_opencv_core_mat_0 org_opencv_core_range_1 ]
+  (new org.opencv.core.Mat org_opencv_core_mat_0 org_opencv_core_range_1 ))
+([long_0 ]
+  (new org.opencv.core.Mat long_0 ))
+([]
+  (new org.opencv.core.Mat )))
+
+(defn new-point
+([array_d_0 ]
+  (new org.opencv.core.Point array_d_0 ))
+([]
+  (new org.opencv.core.Point ))
+([double_0 double_1 ]
+  (new org.opencv.core.Point double_0 double_1 )))
+
 
 ; AUTO GENERATED
 

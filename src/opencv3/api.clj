@@ -1,9 +1,11 @@
 (ns opencv3.api
   (:use camel-snake-kebab.core)
   (:import
+    [java.util ArrayList]
     [org.opencv.photo Photo]
-    [org.opencv.core MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
+    [org.opencv.core MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
+    [org.opencv.videoio Videoio VideoCapture]
     [org.opencv.imgproc Imgproc]))
 
 (defn print-fields[klass]
@@ -18,6 +20,7 @@
 (defn param-name[pname]
   (->  pname
   (clojure.string/replace  #"\." "_")
+  (clojure.string/replace  #";" "")
   (clojure.string/replace  #"class " "")
   (clojure.string/replace  #"interface " "")
   (clojure.string/replace  #"\[" "array_")
@@ -132,11 +135,43 @@
            (print-bikkuri-method methods (.getName m))
            (.add done (.getName m))))))))
 
+(defn print-constructors
+ [klass]
+ (let[
+   cs (.getConstructors klass)
+   sname (clojure.string/lower-case (.getSimpleName klass))
+   ]
+ (print (str "(defn new-" sname " "))
+ (doseq[ c cs ]
+  (let [
+   params (.getParameterTypes c)
+   count-params (count params)
+   ]
+
+ (if (is-first-with-those-params c cs)
+  (do
+   (print "\n([")
+   (doseq [i (range 0 count-params)]
+    (print (str (param-name (nth params i)) "_" (str i) " ")))
+
+  (print "] ")
+  (print (str "\n  (new " (.getName klass) " "))
+
+ (doseq [i (range 0 count-params)]
+    (print (str (param-name (nth params i)) "_" (str i) " ")))
+ (print "))")))))
+
+ (print ")\n")))
+
 (defn generate-api
   ([] (generate-api "cv1.clj"))
   ([output-file]
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
+
+    (doseq [klass #{VideoCapture Scalar Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+      (print-constructors klass))
+
     (print-cv-methods Imgproc)
     (print-fields Imgproc)
     (println ";;;")
@@ -146,14 +181,15 @@
     (print-fields CvType)
     (println ";;; Photo")
     (print-cv-methods Photo)
+
     ))))
+
 
 (comment
 (generate-api)
 
-(with-open [w (-> "output.clj" clojure.java.io/writer)]
+(with-open [w (-> "output2.clj" clojure.java.io/writer)]
   (binding [*out* w]
-
-  ;  (print-fields CvType))
-  )
+      (print-constructors MatOfByte)
+  ))
 )
