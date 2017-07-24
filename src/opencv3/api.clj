@@ -169,7 +169,7 @@
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
 
-    (doseq [klass #{VideoCapture Scalar Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+    (doseq [klass #{VideoCapture Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
     (print-cv-methods Imgproc)
@@ -190,6 +190,6 @@
 
 (with-open [w (-> "output2.clj" clojure.java.io/writer)]
   (binding [*out* w]
-      (print-constructors MatOfByte)
+      (print-constructors Point)
   ))
 )
