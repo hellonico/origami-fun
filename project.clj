@@ -7,7 +7,9 @@
   [lein-gorilla "0.4.0"]]
   :test-paths ["test" "samples"]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
-  :profiles {:dev {:dependencies [
+  :profiles {:dev {
+    :repl-options {:init-ns opencv3.affine}
+    :dependencies [
     [org.clojure/tools.nrepl "0.2.11"]
     [proto-repl "0.3.1"]
     [camel-snake-kebab "0.4.0"]
@@ -26,5 +28,6 @@
   ; coz I cannot get 3.3 to compile under windows :'(
   ; [opencv/opencv "3.2.0"]
   ; [opencv/opencv-native "3.2.0-windows-x64"]
+  ; [opencv/opencv-native "3.2.0-osx"]
 
   ])
