@@ -163,18 +163,24 @@
 
  (print ")\n")))
 
+(defn print-headers[]
+  (println (slurp "resources/header.txt")))
+
 (defn generate-api
-  ([] (generate-api "cv1.clj"))
+  ([] (generate-api "cv.clj"))
   ([output-file]
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
 
+    (print-headers)
+
     (doseq [klass #{VideoCapture RotatedRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
+    (println ";;; ImgProc"
     (print-cv-methods Imgproc)
     (print-fields Imgproc)
-    (println ";;;")
+    (println ";;; Core")
     (print-fields Core)
     (print-cv-methods Core)
     (println ";;; CvType ")
@@ -186,10 +192,14 @@
 
 
 (comment
-(generate-api)
+(def target-file "output.clj")
+(generate-api target-file )
 
-(with-open [w (-> "output2.clj" clojure.java.io/writer)]
+; ad-hoc
+(with-open [w (-> target-file clojure.java.io/writer)]
   (binding [*out* w]
-      (print-constructors RotatedRect)
+      ; (print-constructors RotatedRect)
+      (print-headers)
   ))
+
 )

@@ -1,0 +1,31 @@
+(ns opencv3.core
+  (:import
+    [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
+    [org.opencv.photo Photo]
+    [org.opencv.imgcodecs Imgcodecs]
+    [org.opencv.imgproc Imgproc]))
+
+; NOT AUTO GENERATED YET
+
+(defn imread
+  ([string] (Imgcodecs/imread string))
+  ([string type] (Imgcodecs/imread string type)))
+
+(defn imwrite[mat string]
+  (Imgcodecs/imwrite string mat)
+  mat)
+
+(declare new-arraylist)
+(def new-list new-arraylist)
+
+(defn clone[mat]
+  (.clone mat))
+
+(defn convert-to! [mat a1 a2 a3]
+  (.convertTo mat mat a1 a2 a3)
+  mat)
+(defn copy-to![]
+
+  )
+
+; AUTO GENERATED CONSTRUCTORS

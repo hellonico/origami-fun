@@ -48,4 +48,5 @@
 (annotate conv (str "blurred (" k")"))
 (annotate boxed "ellipse")
 (vconcat [img conv boxed] results)
-(u/show results)
+; (u/show results)
+(imwrite results "output/boxing.png")
