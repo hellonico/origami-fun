@@ -50,7 +50,7 @@
 (defn convert-to! [mat a1 a2 a3]
   (.convertTo mat mat a1 a2 a3)
   mat)
-(defn copy-to![])
+;(defn copy-to![])
 
 ; AUTO GENERATED CONSTRUCTORS
 

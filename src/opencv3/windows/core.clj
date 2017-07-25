@@ -5,8 +5,6 @@
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
-
-
 (defn imread
   ([string] (Imgcodecs/imread string))
   ([string type] (Imgcodecs/imread string type)))
