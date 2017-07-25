@@ -188,6 +188,9 @@
     (println ";;; Photo")
     (print-cv-methods Photo)
 
+    ; (print-cv-methods VideoCapture)
+    ; (print-fields Videoio)
+
     )))))
 
 
@@ -199,7 +202,9 @@
 (with-open [w (-> target-file clojure.java.io/writer)]
   (binding [*out* w]
       ; (print-constructors RotatedRect)
-      (print-headers)
+      ; (print-headers)
+      (print-constructors VideoCapture)
+      (print-fields Videoio)
   ))
 
 )

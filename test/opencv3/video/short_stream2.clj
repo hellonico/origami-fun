@@ -1,5 +1,6 @@
 (ns opencv3.video.short-stream2
   (:require [opencv3.core :refer :all])
+  (:require [opencv3.video :as :v])
   (:require [opencv3.utils :as u])
   (:import
     [org.opencv.core Mat Core CvType]

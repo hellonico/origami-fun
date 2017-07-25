@@ -21,9 +21,12 @@
 (defn clone[mat]
   (.clone mat))
 
-(defn convert-to! [mat a1 a2 a3]
-  (.convertTo mat mat a1 a2 a3)
-  mat)
+(defn convert-to!
+  ([mat a1 a2 a3]
+  (.convertTo mat mat a1 a2 a3) mat)
+  ([mat a1]
+  (.convertTo mat mat a1) mat))
+
 (defn copy-to![]
 
   )
@@ -102,13 +105,7 @@
   (new org.opencv.core.Size ))
 ([double_0 double_1 ]
   (new org.opencv.core.Size double_0 double_1 )))
-(defn new-videocapture
-([]
-  (new org.opencv.videoio.VideoCapture ))
-([int_0 ]
-  (new org.opencv.videoio.VideoCapture int_0 ))
-([java_lang_string_0 int_1 ]
-  (new org.opencv.videoio.VideoCapture java_lang_string_0 int_1 )))
+
 (defn new-mat
 ([int_0 int_1 int_2 org_opencv_core_scalar_3 ]
   (new org.opencv.core.Mat int_0 int_1 int_2 org_opencv_core_scalar_3 ))
