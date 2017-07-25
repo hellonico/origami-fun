@@ -3,7 +3,7 @@
   (:import
     [java.util ArrayList]
     [org.opencv.photo Photo]
-    [org.opencv.core MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
+    [org.opencv.core RotatedRect MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
     [org.opencv.videoio Videoio VideoCapture]
     [org.opencv.imgproc Imgproc]))
@@ -169,7 +169,7 @@
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
 
-    (doseq [klass #{VideoCapture Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+    (doseq [klass #{VideoCapture RotatedRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
     (print-cv-methods Imgproc)
@@ -190,6 +190,6 @@
 
 (with-open [w (-> "output2.clj" clojure.java.io/writer)]
   (binding [*out* w]
-      (print-constructors Point)
+      (print-constructors RotatedRect)
   ))
 )

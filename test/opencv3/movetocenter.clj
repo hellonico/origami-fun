@@ -16,7 +16,7 @@
 ; find contours, and select first 1, (actually only one)
 (def contours (new-arraylist))
 (find-contours mask-on-yellow contours (new-mat) RETR_EXTERNAL CHAIN_APPROX_SIMPLE)
-
+(count contours)
 (def background-color (new-scalar 0 0 0))
 
 ; mask type CV_8UC1 is important !!
@@ -32,7 +32,6 @@
 
 (def center
   (new-point (/ (.cols img ) 2 ) (/ (.rows img) 2)))
-(def result  (u/mat-from img))
 
 (def center-box
   (new-rect
@@ -41,6 +40,8 @@
     (.-width box)
     (.-height box)))
 
+(def result  (u/mat-from img))
 (def final (.submat result center-box))
 (.copyTo segmented-item final (new-mat))
+
 (u/show result)

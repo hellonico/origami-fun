@@ -59,6 +59,12 @@ matrix))
     (.put mat 0 0 bytes)
     mat))
 
+; points
+(defn middle-of-two-points [p1 p2]
+  (cv/new-point
+    (/ (+ (.-x p1) (.-x p2)) 2)
+    (/ (+ (.-y p1) (.-y p2)) 2)))
+
 ; gorilla repl
 (defn mat-view[img]
   	(image-view (mat-to-buffered-image img)))

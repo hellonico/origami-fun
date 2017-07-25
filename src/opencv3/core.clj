@@ -15,34 +15,8 @@
   (Imgcodecs/imwrite string mat)
   mat)
 
-; (defn new-matofpoint2f
-;   ([] (MatOfPoint2f.))
-;   ([array] (MatOfPoint2f. array)))
-; (defn new-size
-;   ([x y] (Size. x y))
-;   ([] (Size.)))
-; (defn new-mat
-;   ([height width type color] (Mat. height width type color))
-;   ([height width type] (Mat. height width type))
-;   ([height width] (Mat. height width))
-;   ([](Mat.)))
-; (defn new-matofint[]
-;   (MatOfInt.))
-; (defn new-matofpoint[]
-;   (MatOfPoint.))
-; (defn new-point[x y]
-;   (Point. x y))
-; (defn new-scalar
-;   ([a b c] (Scalar. a b c))
-;   ([a] (Scalar. a)))
-; (defn new-rect[a b c d]
-;   (Rect. a b c d)
-;   )
 (declare new-arraylist)
 (def new-list new-arraylist)
-;   ([size]
-;   (java.util.ArrayList. size))
-;   ([] (java.util.ArrayList.)))
 
 (defn clone[mat]
   (.clone mat))
@@ -50,9 +24,19 @@
 (defn convert-to! [mat a1 a2 a3]
   (.convertTo mat mat a1 a2 a3)
   mat)
-;(defn copy-to![])
+(defn copy-to![]
+
+  )
 
 ; AUTO GENERATED CONSTRUCTORS
+(defn new-rotatedrect
+([array_d_0 ]
+  (new org.opencv.core.RotatedRect array_d_0 ))
+([org_opencv_core_point_0 org_opencv_core_size_1 double_2 ]
+  (new org.opencv.core.RotatedRect org_opencv_core_point_0 org_opencv_core_size_1 double_2 ))
+([]
+  (new org.opencv.core.RotatedRect )))
+
 
 (defn new-matofbyte
 ([array_b_0 ]
@@ -65,7 +49,6 @@
   (new org.opencv.core.MatOfDMatch array_lorg_opencv_core_dmatch_0 ))
 ([]
   (new org.opencv.core.MatOfDMatch )))
-
 
 (defn new-matofkeypoint
 ([array_lorg_opencv_core_keypoint_0 ]

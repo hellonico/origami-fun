@@ -1,4 +1,4 @@
-(defproject opencv-fun "0.1.0-SNAPSHOT"
+(defproject egami "0.1.0-SNAPSHOT"
   :injections [
   (clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
   ]
@@ -13,9 +13,10 @@
     [camel-snake-kebab "0.4.0"]
     [gorilla-repl "0.4.0"] ]}}
   :dependencies [
+
   [org.clojure/clojure "1.8.0"]
   [org.clojure/tools.cli "0.3.5"]
-  
+
   ; OSX and LINUX 3.3
   [opencv/opencv "3.3.0-rc"]
   [opencv/opencv-native "3.3.0-rc"]
