@@ -15,7 +15,7 @@
    (threshold! 110 255 THRESH_BINARY)
    (imwrite "output/kikyu_work.png")))
 
-(def contours (new-list))
+(def contours (new-arraylist))
 (find-contours work contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE (new-point 0 0))
 
 ; draw bounding box using bounding-rect

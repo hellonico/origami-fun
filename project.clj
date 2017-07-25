@@ -15,14 +15,13 @@
     [camel-snake-kebab "0.4.0"]
     [gorilla-repl "0.4.0"] ]}}
   :dependencies [
+   [org.clojure/clojure "1.8.0"]
+   [org.clojure/tools.cli "0.3.5"]
 
-  [org.clojure/clojure "1.8.0"]
-  [org.clojure/tools.cli "0.3.5"]
-
-  ; OSX and LINUX 3.3
-  [opencv/opencv "3.3.0-rc"]
-  [opencv/opencv-native "3.3.0-rc"]
-  [opencv/opencv-native "3.3.0-rc-linux"]
+   ; OSX and LINUX 3.3
+   [opencv/opencv "3.3.0-rc"]
+   [opencv/opencv-native "3.3.0-rc"]
+  ;  [opencv/opencv-native "3.3.0-rc-linux"]
 
   ; WINDOWS 3.2
   ; coz I cannot get 3.3 to compile under windows :'(
