@@ -5,35 +5,27 @@
     [opencv3.utils :as u]))
 
 ; https://stackoverflow.com/questions/45299447/python-overlapping-boxes-around-motion-detected
+(def height 300)
+(def width 400)
+(def SAVE_FRAME false)
 
 (def capture (new-videocapture))
-(.open capture 0)
-(def height 400)
-(def width 300)
-(.set capture CAP_PROP_FRAME_WIDTH width)
-(.set capture CAP_PROP_FRAME_HEIGHT height)
+(doto capture
+  (.open 0)
+  (.set CAP_PROP_FRAME_WIDTH width)
+  (.set CAP_PROP_FRAME_HEIGHT height))
 
 (def window
   (u/show (new-mat height width CV_8UC3 (new-scalar 255 255 255))))
 
-(defn quick-draw-contours[contours buffer]
-  (doseq [c contours]
-    (let [area (contour-area c)]
-       (if (> area 2000)
-         (let [rect (bounding-rect c)]
-         (rectangle
-           buffer
-           (new-point (.x rect) (.y rect))
-           (new-point (+ (.width rect) (.x rect)) (+ (.y rect) (.height rect)))
-           (new-scalar 50 135 135) 3))))))
-
 (let [buffer (new-mat) avg (atom nil) ]
   (dotimes [i 200]
    (.read capture buffer)
+   ; CV_32F conversion needed for accumulate weighted
    (let [gray (-> buffer clone (cvt-color! COLOR_BGR2GRAY) (gaussian-blur! (new-size 3 3) 0) (convert-to! CV_32F))
         frame-delta (new-mat)
+        output (new-mat)
         contours (new-arraylist)]
-      ; needed for accumulate weighted
      (if (nil? @avg)
       (reset! avg gray)
       (do
@@ -44,10 +36,17 @@
         (threshold! 35 255 THRESH_BINARY)
         (dilate! (new-mat))
         (convert-to! CV_8UC3)
-        (find-contours contours (new-mat) RETR_TREE CHAIN_APPROX_SIMPLE))
-        (quick-draw-contours contours buffer)
-       ;  see movement
-       ;  (u/re-show window frame-delta)
-       (u/re-show window buffer))))))
+        (find-contours contours (new-mat) RETR_EXTERNAL CHAIN_APPROX_SIMPLE))
+        ; choose one
+        (u/draw-contours-with-line! buffer contours )
+        ; (u/draw-contours-with-rect! buffer contours )
+
+       (cvt-color! frame-delta COLOR_GRAY2RGB)
+       (u/resize-by frame-delta 0.5)
+       (u/resize-by buffer 0.5)
+       (hconcat [frame-delta buffer] output)
+       (u/re-show window output)
+
+       )))))
 
 (.release capture)

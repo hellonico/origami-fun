@@ -21,9 +21,14 @@
 (defn clone[mat]
   (.clone mat))
 
+(defn convert-to [src target a1]
+  (.convertTo src target a1) target)
+
 (defn convert-to!
   ([mat a1 a2 a3]
   (.convertTo mat mat a1 a2 a3) mat)
+  ([mat a1 a2]
+  (.convertTo mat mat a1 a2) mat)
   ([mat a1]
   (.convertTo mat mat a1) mat))
 

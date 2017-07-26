@@ -82,6 +82,48 @@ matrix))
   (buffered-image-to-mat (image-from-url url)))
 
 ;;;
+; CONTOURS
+;;;
+(defn draw-contours-with-rect!
+([buffer contours] (draw-contours-with-rect! buffer contours false))
+([buffer contours save-frame]
+  (doseq [c contours]
+  (let [area (cv/contour-area c)]
+     (if (> area 1000)
+       (let [rect (cv/bounding-rect c)]
+       (if save-frame (cv/imwrite (.submat buffer rect) (str "video/" (java.util.Date.) ".png")))
+       (cv/rectangle
+         buffer
+         (cv/new-point (.x rect) (.y rect))
+         (cv/new-point (+ (.width rect) (.x rect)) (+ (.y rect) (.height rect)))
+         (cv/new-scalar 255 0 0) 3))))
+         buffer
+         )))
+
+(defn draw-contours-with-line! [img contours]
+(dotimes [i (.size contours)]
+   (let [c (.get contours i)
+      m2f (cv/new-matofpoint2f (.toArray c))
+      len (cv/arc-length m2f true)
+      ret (cv/new-matofpoint2f)
+      approx (cv/approx-poly-dp m2f ret (* 0.005 len) true)
+      nb-sides (.size (.toList ret))]
+; (println ">" nb-sides)
+(cv/draw-contours img contours i
+ (condp = nb-sides
+  3  (cv/new-scalar 56.09 68.05 66.27)
+  4  (cv/new-scalar 356.09 51.57 43.73)
+  7   (cv/new-scalar 26.09 51.57 43.73)
+  8 (cv/new-scalar 146.09 51.57 43.73)
+  9 (cv/new-scalar 266.09 51.57 43.73)
+  10  (cv/new-scalar 236.09 51.57 43.73)
+  11 (cv/new-scalar 206.09 68.05 66.27)
+  12 (cv/new-scalar 0 0 255)
+     (cv/new-scalar 127 50 0))
+  -1)))
+ img)
+
+;;;
 ; SWING
 ;;;
 (defn show[src]
