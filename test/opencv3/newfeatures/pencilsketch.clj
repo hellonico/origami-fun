@@ -1,4 +1,4 @@
-(ns opencv3.newfeatures
+(ns opencv3.pencilsketch
   (:require
     [opencv3.core :refer :all]
     [opencv3.utils :as u]))

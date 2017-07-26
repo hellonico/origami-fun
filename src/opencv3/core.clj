@@ -21,8 +21,9 @@
 (defn clone[mat]
   (.clone mat))
 
-(defn convert-to [src target a1]
-  (.convertTo src target a1) target)
+(defn convert-to
+  ([src target a1] (.convertTo src target a1) target)
+  ([src target type alpha beta] (.convertTo src target type alpha beta) target))
 
 (defn convert-to!
   ([mat a1 a2 a3]
@@ -32,9 +33,10 @@
   ([mat a1]
   (.convertTo mat mat a1) mat))
 
-(defn copy-to![]
-
-  )
+(defn copy-to [src target mask]
+  (.copyTo src target mask))
+(defn copy-to![src mask]
+  (copy-to src src mask))
 
 ; AUTO GENERATED CONSTRUCTORS
 (defn new-rotatedrect

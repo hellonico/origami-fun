@@ -3,9 +3,18 @@
   (clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
   ]
   :plugins [
-  [lein-codox "0.10.3"]
+  ; [lein-asciidoctor "0.1.12"]
+  ; [lein-codox "0.10.3"]
   [lein-gorilla "0.4.0"]]
   :test-paths ["test" "samples"]
+  ; :asciidoctor [{:sources ["docs/*.ascii"]
+  ;             :to-dir "doc-generated"
+  ;             :compact true
+  ;             :format :html5
+  ;             :extract-css true
+  ;             :toc :left
+  ;             :title "Just an example"
+  ;             :source-highlight true}]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
   :profiles {:dev {
     :repl-options {:init-ns opencv3.affine}

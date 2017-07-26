@@ -46,3 +46,13 @@ Clean the repl
 ```
 (map #(ns-unmap *ns* %) (keys (ns-interns *ns*)))
 ```
+
+
+
+```
+ (doseq [w (java.awt.Window/getWindows)]
+   (.setFullScreenWindow
+     (.getDefaultScreenDevice
+      (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment))
+      w))
+```
