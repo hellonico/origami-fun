@@ -31,6 +31,7 @@
   (dotimes [i (.size contours)]
    (draw-contours drawing contours i (new-scalar 0 0 0) 3))
   (cvt-color! work COLOR_GRAY2RGB)
+  
   (vconcat [
     (annotate! img "original" (new-scalar 255 255 255))
     (annotate! work "preprocessing" (new-scalar 255 255 255))
