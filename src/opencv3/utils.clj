@@ -168,7 +168,9 @@ matrix))
                     (do
                       (.putClientProperty pane "fullscreen" true)
                       (.setFullScreenWindow dsd frame))))
-             81  (.putClientProperty pane "quit" true)
+             81  (do
+               (.putClientProperty pane "quit" true)
+               (.dispose frame))
              (do)
              )))))
     (.addMouseListener label
@@ -204,5 +206,4 @@ matrix))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
          (re-show window (myvideofn buffer)))))
-       (.release capture)
-       (.dispose (.getParent  (.getParent (.getParent window)))))))))
+       (.release capture))))))

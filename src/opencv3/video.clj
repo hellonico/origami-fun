@@ -4,6 +4,15 @@
     [org.opencv.videoio Videoio VideoCapture]
     [org.opencv.video Video]))
 
+(defn new-videowriter
+([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ]
+  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ))
+([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ]
+  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ))
+([]
+  (new org.opencv.videoio.VideoWriter ))
+([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 ]
+  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 )))
 
 (defn new-videocapture
 ([]

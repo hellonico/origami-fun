@@ -1,11 +1,12 @@
 (ns opencv3.api
   (:use camel-snake-kebab.core)
+  (:require [clojure.string :as str])
   (:import
     [java.util ArrayList]
     [org.opencv.photo Photo]
     [org.opencv.core RotatedRect MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
-    [org.opencv.videoio Videoio VideoCapture]
+    [org.opencv.videoio Videoio VideoWriter VideoCapture]
     [org.opencv.imgproc Imgproc]))
 
 (defn print-fields[klass]
@@ -195,8 +196,6 @@
 
 (defn color-generator[]
 
-   (require '[clojure.string :as str])
-
    (with-open [w (-> "rgb.clj" clojure.java.io/writer)]
    (binding [*out* w]
 
@@ -233,7 +232,7 @@
       ; (print-headers)
       ; (print-constructors VideoCapture)
       ; (print-fields Videoio)
-      (print-constructors MatOfRect)
+      (print-constructors VideoWriter)
   ))
 
 )
