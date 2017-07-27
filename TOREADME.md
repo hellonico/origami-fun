@@ -38,14 +38,3 @@ http://opencvexamples.blogspot.com/2013/10/change-image-type-convert-8u-to-32f-o
 
 Make sure all the tutorial is converted
 http://docs.opencv.org/trunk/dd/d49/tutorial_py_contour_features.html
-
-
-
-
-```
- (doseq [w (java.awt.Window/getWindows)]
-   (.setFullScreenWindow
-     (.getDefaultScreenDevice
-      (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment))
-      w))
-```

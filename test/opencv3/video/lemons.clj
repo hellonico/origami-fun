@@ -20,11 +20,14 @@
     output)))
 
 (def high-low-1
-  (partial high-low 0.5 90 rgb/gray rgb/blue rgb/orange rgb/green)
-  )
+  (partial high-low 0.5 90 rgb/gray rgb/blue rgb/orange rgb/green))
+(def high-low-2
+  (partial high-low 0.75 90 rgb/crimson rgb/skyblue-1 rgb/green rgb/orange))
 
 (defn -main[& args]
-  (u/simple-cam-window high-low-1))
+  (u/simple-cam-window high-low-1)
+  (u/simple-cam-window high-low-2)
+  )
 
 (comment
   (u/simple-cam-window high-low-1)

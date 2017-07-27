@@ -158,8 +158,17 @@ matrix))
              83 (ImageIO/write
                  (.getImage (.getIcon label))
                  "png" (clojure.java.io/as-file (str "webcam_" (System/currentTimeMillis) ".png")))
-             70  (do) ; f
-             81  (do (.putClientProperty pane "quit" true))
+             70  (let [ dsd   (->
+                      (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
+                      (.getDefaultScreenDevice)) ]
+                    (if (.getClientProperty pane "fullscreen")
+                    (do
+                      (.putClientProperty pane "fullscreen" nil)
+                      (.setFullScreenWindow dsd nil))
+                    (do
+                      (.putClientProperty pane "fullscreen" true)
+                      (.setFullScreenWindow dsd frame))))
+             81  (.putClientProperty pane "quit" true)
              (do)
              )))))
     (.addMouseListener label
