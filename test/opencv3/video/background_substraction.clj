@@ -2,15 +2,13 @@
   (:require [opencv3.core :refer :all])
   (:require [opencv3.utils :as u])
   (:import
-    [org.opencv.core Mat Core CvType]
-    [org.opencv.videoio Videoio VideoCapture]
     [org.opencv.video Video]))
 
 (def width 200)
 (def height 150)
-(def capture (VideoCapture.))
-(.set capture Videoio/CAP_PROP_FRAME_WIDTH width)
-(.set capture Videoio/CAP_PROP_FRAME_HEIGHT height)
+(def capture (new-videocapture))
+(.set capture CAP_PROP_FRAME_WIDTH width)
+(.set capture CAP_PROP_FRAME_HEIGHT height)
 
 (.open capture 0)
 ; (.release capture)
@@ -55,6 +53,7 @@
 
 
 (comment
+
   (def buffer (new-mat))
   (dotimes [_ 100]
     (.read capture buffer)

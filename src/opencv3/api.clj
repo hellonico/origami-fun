@@ -174,7 +174,7 @@
 
     (print-headers)
 
-    (doseq [klass #{VideoCapture RotatedRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+    (doseq [klass #{VideoCapture RotatedRect MatOfRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
     (println ";;; ImgProc"
@@ -201,7 +201,7 @@
    (binding [*out* w]
 
   (println "
-  
+
    (ns opencv3.colors.rgb
      (:require [opencv3.core :only [new-scalar]])
      )
@@ -231,8 +231,9 @@
   (binding [*out* w]
       ; (print-constructors RotatedRect)
       ; (print-headers)
-      (print-constructors VideoCapture)
-      (print-fields Videoio)
+      ; (print-constructors VideoCapture)
+      ; (print-fields Videoio)
+      (print-constructors MatOfRect)
   ))
 
 )

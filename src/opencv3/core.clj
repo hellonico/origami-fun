@@ -39,6 +39,14 @@
   (copy-to src src mask))
 
 ; AUTO GENERATED CONSTRUCTORS
+
+(defn new-matofrect
+([array_lorg_opencv_core_rect_0 ]
+  (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
+([]
+  (new org.opencv.core.MatOfRect )))
+
+
 (defn new-rotatedrect
 ([array_d_0 ]
   (new org.opencv.core.RotatedRect array_d_0 ))

@@ -1,13 +1,13 @@
 (ns opencv3.video.take-one
-  (:require [opencv3.core :refer :all])
-  (:require [opencv3.utils :as u])
-  (:import
-    [org.opencv.videoio Videoio VideoCapture]
-    [org.opencv.video Video]))
+  (:require
+    [opencv3.core :refer :all]
+    [opencv3.utils :as u]
+    [opencv3.video :refer :all]
+    ))
 
-(def capture (VideoCapture.))
-(.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
-(.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
+(def capture (new-videocapture))
+(.set capture CAP_PROP_FRAME_WIDTH 400)
+(.set capture CAP_PROP_FRAME_HEIGHT 300)
 ;(.open capture 0)
 
 (defn capture-one

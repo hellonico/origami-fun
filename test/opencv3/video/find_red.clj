@@ -1,20 +1,16 @@
 (ns opencv3.video.find-red
-  (:require [opencv3.core :refer :all])
-  (:require [opencv3.utils :as u])
-  (:import
-    [org.opencv.core Mat Core CvType]
-    [org.opencv.objdetect CascadeClassifier]
-    [org.opencv.core MatOfRect]
-    [org.opencv.videoio Videoio VideoCapture]
-    [org.opencv.video Video]))
+  (:require
+    [opencv3.core :refer :all]
+    [opencv3.video :refer :all]
+    [opencv3.utils :as u]))
 
 (comment
 
-  (def capture (VideoCapture.))
+  (def capture (new-videocapture))
   (.open capture 0)
 
-  (.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
-  (.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
+  (.set capture CAP_PROP_FRAME_WIDTH 400)
+  (.set capture CAP_PROP_FRAME_HEIGHT 300)
 
   (def window
     (u/show (new-mat 400 300 CV_8UC3
@@ -23,21 +19,11 @@
 
   ; https://stackoverflow.com/questions/32522989/opencv-better-detection-of-red-color
 
-  ; Mat1b mask1, mask2;
-  ;     inRange(hsv, Scalar(0, 70, 50), Scalar(10, 255, 255), mask1);
-  ;     inRange(hsv, Scalar(170, 70, 50), Scalar(180, 255, 255), mask2);
-  ;
-  ;     Mat1b mask = mask1 | mask2;
-  ;
-  ;     imshow("Mask", mask);
-  ;
   (dotimes [i 100]
     (.read capture buffer)
     (let [
       work (new-mat)
       mat1 (new-mat)
-      ; mat2 (new-mat)
-      ; mask (new-mat)
       output (new-mat)
       ]
     (cvt-color buffer work COLOR_BGR2HSV)
@@ -54,7 +40,7 @@
     ; inRange(hsv, Scalar(0, 70, 50), Scalar(10, 255, 255), mask1);
     ;  inRange(hsv, Scalar(170, 70, 50), Scalar(180, 255, 255), mask2);
 
-    
+
 
     ; (bitwise-not! mat1)
     ; (.copyTo buffer output mat1)
@@ -71,6 +57,7 @@
     ; (threshold! buffer 10 255 (+ THRESH_BINARY_INV THRESH_OTSU))
 
     (u/re-show window output)))
+
   (.release capture)
 
   )

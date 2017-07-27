@@ -45,5 +45,4 @@
 (def truth (new-mat 2 3 CV_8SC1))
 (.put truth 0 0 (double-array [-8 -6 37]))
 (.put truth 1 0 (double-array [-7 -4 29]))
-
 (.dump truth)

@@ -1,12 +1,6 @@
 (ns opencv3.video.face-recognition
   (:require [opencv3.core :refer :all])
-  (:require [opencv3.utils :as u])
-  (:import
-    [org.opencv.core Mat Core CvType]
-    [org.opencv.objdetect CascadeClassifier]
-    [org.opencv.core MatOfRect]
-    [org.opencv.videoio Videoio VideoCapture]
-    [org.opencv.video Video]))
+  (:require [opencv3.utils :as u]))
 
 
 (defn draw-rects! [mat rect]
@@ -25,18 +19,18 @@
 
 (comment
 
-  (def capture (VideoCapture.))
+  (def capture (new-videocapture))
   (.open capture 0)
 
-  (.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
-  (.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
-  (.set capture Videoio/CV_CAP_PROP_FPS 30)
+  (.set capture CAP_PROP_FRAME_WIDTH 400)
+  (.set capture CAP_PROP_FRAME_HEIGHT 300)
+  (.set capture CV_CAP_PROP_FPS 30)
 
   (def window
     (u/show (new-mat 400 400 CV_8UC3
       (new-scalar 255 255 255))))
   (def buffer (new-mat))
-  (def rects (MatOfRect.))
+  (def rects (new-matofrect))
 
   (dotimes [i 200]
     (.read capture buffer)
