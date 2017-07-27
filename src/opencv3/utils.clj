@@ -11,6 +11,13 @@
     [java.awt FlowLayout]))
 
 ;;;
+; CLEAN
+;;;
+(defn clean-up-namespace[]
+  (map #(ns-unmap *ns* %) (keys (ns-interns *ns*))))
+
+
+;;;
 ; MAT OPERATIONS
 ;;;
 (defn resize-by[ mat factor]

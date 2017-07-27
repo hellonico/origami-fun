@@ -4,7 +4,12 @@
     [org.opencv.imgproc Imgproc])
   (:require [opencv3.core :refer :all]))
 
+;
+; NOT FINISHED !
+; 
+
 ; http://docs.opencv.org/3.1.0/d3/db4/tutorial_py_watershed.html
+
 (->
   (imread "resources/morph/water_coins.jpg")
   (cvt-color! COLOR_BGR2GRAY)

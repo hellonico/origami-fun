@@ -1,4 +1,6 @@
-(ns opencv3.affine)
+(ns opencv3.affine
+  (:require [opencv3.core :refer :all]
+        [opencv3.utils :as u]))
 
 ; http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html
 ;
@@ -24,3 +26,24 @@
 ; Imgproc.warpAffine(mat, rotated, rot, rotatedRect.size);
 
 ; http://docs.opencv.org/trunk/d2/dbd/tutorial_distance_transform.html
+
+(def rot-mat (new-mat 2 3 CV_32FC1))
+(def warp-mat (new-mat 2 3 CV_32FC1))
+
+(def rose
+  (imread "resources/matching/rose_flower.jpg"))
+(def warp-dst (u/mat-from rose))
+
+; https://github.com/opencv/opencv/blob/master/modules/imgproc/misc/java/test/ImgprocTest.java
+(def src (new-matofpoint2f
+  (into-array org.opencv.core.Point [(new-point 2 3) (new-point 3 1) (new-point 1 4)])))
+(def dst (new-matofpoint2f
+  (into-array org.opencv.core.Point [(new-point 3 3) (new-point 7 4) (new-point 5 6)])))
+(def transform-mat (get-affine-transform src dst))
+(.dump transform-mat)
+
+(def truth (new-mat 2 3 CV_8SC1))
+(.put truth 0 0 (double-array [-8 -6 37]))
+(.put truth 1 0 (double-array [-7 -4 29]))
+
+(.dump truth)

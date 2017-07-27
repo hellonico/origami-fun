@@ -193,6 +193,34 @@
 
     )))))
 
+(defn color-generator[]
+
+   (require '[clojure.string :as str])
+
+   (with-open [w (-> "rgb.clj" clojure.java.io/writer)]
+   (binding [*out* w]
+
+  (println "
+  
+   (ns opencv3.colors.rgb
+     (:require [opencv3.core :only [new-scalar]])
+     )
+
+   (defn rgb [r g b]
+     (new-scalar b g r))
+  ")
+
+  (with-open [rdr (clojure.java.io/reader "resources/colors.csv")]
+           (doseq[ l (rest (line-seq rdr))]
+           (let [
+             fields (str/split l #",")
+             fname  (str/replace (str/replace (first fields) #" " "_") #"_" "-")
+             ffname (str/replace fname #"[(].*[)]" "") ]
+            (println "(def " ffname " (rgb " (nth fields  2) (nth fields  3) (nth fields  4) "))"))))
+
+  ))
+
+  )
 
 (comment
 (def target-file "output.clj")
