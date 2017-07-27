@@ -6,23 +6,28 @@
     [opencv3.changesomecolors :refer [low-high!]]
     [opencv3.utils :as u]))
 
+(defn high-low
+  ([buffer]
+    (high-low 0.5 90 rgb/violetred rgb/wheat rgb/violetred-4 rgb/papayawhip buffer))
+  ([resize-factor color-limit c11 c12 c21 c22 buffer]
+  (let [ buffer-1 (-> buffer (u/resize-by resize-factor))
+         buffer-2 (clone buffer-1)
+         output (new-mat)]
+  (vconcat [
+    (low-high! buffer-1 90 c11 c12)
+    (low-high! buffer-2 90 c21 c22)
+    ] output)
+    output)))
+
+(def high-low-1
+  (partial high-low 0.5 90 rgb/gray rgb/blue rgb/orange rgb/green)
+  )
+
+(defn -main[& args]
+  (u/simple-cam-window high-low-1))
+
 (comment
-
-  (def capture (new-videocapture))
-  (.open capture 0)
-
-  (.set capture CAP_PROP_FRAME_WIDTH 400)
-  (.set capture CAP_PROP_FRAME_HEIGHT 300)
-
-  (def window
-    (u/show (new-mat 400 400 CV_8UC3 (new-scalar 255 255 255))))
-  (def buffer (new-mat))
-
-  (dotimes [i 200]
-    (.read capture buffer)
-    (u/re-show window
-      (-> buffer (low-high! 150 rgb/violetred 105 rgb/greenyellow))))
-
-  (.release capture)
+  (u/simple-cam-window high-low-1)
+  ; (u/simple-cam-window identity)
 
   )

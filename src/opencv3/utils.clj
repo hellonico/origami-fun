@@ -1,13 +1,16 @@
 (ns opencv3.utils
   (:use [gorilla-repl.image])
-  (:require [opencv3.core :as cv])
+  (:require
+    [opencv3.core :as cv]
+    [opencv3.video :as vid]
+    )
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.videoio VideoCapture]
     [org.opencv.imgproc Imgproc]
     [javax.imageio ImageIO]
     [javax.swing ImageIcon JFrame JLabel]
-    [java.awt.event MouseAdapter]
+    [java.awt.event KeyListener MouseAdapter]
     [java.awt FlowLayout]))
 
 ;;;
@@ -15,7 +18,6 @@
 ;;;
 (defn clean-up-namespace[]
   (map #(ns-unmap *ns* %) (keys (ns-interns *ns*))))
-
 
 ;;;
 ; MAT OPERATIONS
@@ -143,15 +145,26 @@ matrix))
     ]
     (.setLayout pane (FlowLayout.))
     (.add pane label)
+    (.addKeyListener frame
+      (proxy [KeyListener] []
+        (keyTyped [event])
+        (keyReleased [event])
+        (keyPressed [event]
+          (let [c (.getKeyCode event)]
+           (condp = c
+             32 (if (.getClientProperty pane "paused")
+                  (.putClientProperty pane "paused" false)
+                  (.putClientProperty pane "paused" true))
+             83 (ImageIO/write
+                 (.getImage (.getIcon label))
+                 "png" (clojure.java.io/as-file (str "webcam_" (System/currentTimeMillis) ".png")))
+             70  (do) ; f
+             81  (do (.putClientProperty pane "quit" true))
+             (do)
+             )))))
     (.addMouseListener label
       (proxy [MouseAdapter] []
-       (mousePressed [event]
-         (println "clicked")
-         (ImageIO/write
-           (.getImage (.getIcon label))
-           "png"
-           (clojure.java.io/as-file (str "webcam_" (System/currentTimeMillis) ".png"))
-           ))))
+       (mousePressed [event])))
     (doto frame
       (.pack)
       (.setVisible true)
@@ -164,3 +177,23 @@ matrix))
   (doto pane
     (.revalidate)
     (.repaint))))
+
+(defn simple-cam-window[myvideofn]
+  (let [
+    capture (vid/new-videocapture)
+    window (show (cv/new-mat 400 400 cv/CV_8UC3 (cv/new-scalar 255 255 255)))
+    buffer (cv/new-mat)]
+
+    (doto capture
+      (.open 0)
+      (.set vid/CAP_PROP_FRAME_WIDTH 400)
+      (.set vid/CAP_PROP_FRAME_HEIGHT 300))
+
+    (.start (Thread.
+      (fn []
+      (while (nil? (.getClientProperty window "quit"))
+       (if (.read capture buffer)
+        (if (not (.getClientProperty window "paused"))
+         (re-show window (myvideofn buffer)))))
+       (.release capture)
+       (.dispose (.getParent  (.getParent (.getParent window)))))))))

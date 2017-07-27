@@ -12,6 +12,8 @@
 ; https://stackoverflow.com/questions/45335691/change-rgb-value-of-pixel-based-on-threshold-opencv-c/45338692#45338692
 
 (defn low-high!
+  ([image t1 color1 color2 ]
+    (low-high! image t1 255 THRESH_BINARY color1 t1 255 THRESH_BINARY_INV color2))
   ([image t1 color1 t2 color2 ]
     (low-high! image t1 255 THRESH_BINARY color1 t2 255 THRESH_BINARY_INV color2))
   ([image a1 a2 a3 color1 b1 b2 b3 color2 ]
