@@ -198,7 +198,8 @@ matrix))
     (doto capture
       (.open 0)
       (.set vid/CAP_PROP_FRAME_WIDTH 400)
-      (.set vid/CAP_PROP_FRAME_HEIGHT 300))
+      (.set vid/CAP_PROP_FRAME_HEIGHT 300)
+      )
 
     (.start (Thread.
       (fn []

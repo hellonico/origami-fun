@@ -7,8 +7,6 @@
     [opencv3.utils :as u]))
 
 (defn high-low
-  ([buffer]
-    (high-low 0.5 90 rgb/violetred rgb/wheat rgb/violetred-4 rgb/papayawhip buffer))
   ([resize-factor color-limit c11 c12 c21 c22 buffer]
   (let [ buffer-1 (-> buffer (u/resize-by resize-factor))
          buffer-2 (clone buffer-1)
@@ -19,6 +17,8 @@
     ] output)
     output)))
 
+(def high-low-0
+  (parial high-low 0.5 90 rgb/violetred rgb/wheat rgb/violetred-4 rgb/papayawhip buffer))
 (def high-low-1
   (partial high-low 0.5 90 rgb/gray rgb/blue rgb/orange rgb/green))
 (def high-low-2

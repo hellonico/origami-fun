@@ -1,0 +1,1 @@
+lein run -m opencv3.video.writingv2 shots/cam.avi
