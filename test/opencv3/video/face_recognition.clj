@@ -1,9 +1,10 @@
 (ns opencv3.video.face-recognition
   (:require [opencv3.core :refer :all])
+  (:require [opencv3.video :refer :all])
   (:require [opencv3.utils :as u]))
 
 
-(defn draw-rects! [mat rect]
+(defn draw-rects! [mat rects]
   (doseq [rect (.toArray rects)]
    (rectangle
     mat
@@ -15,10 +16,20 @@
     ))
 
 (def detector
-  (CascadeClassifier. "resources/lbpcascade_frontalface.xml"))
+  (new-cascadeclassifier "resources/lbpcascade_frontalface.xml"))
+
+(defn -main[& args]
+    (u/simple-cam-window
+      (fn [buffer]
+       (let [rects (new-matofrect)]
+       (.detectMultiScale detector buffer rects)
+       (draw-rects! buffer rects)
+       buffer))))
 
 (comment
-
+  ; SHORT VERSION
+  (-main)
+  ; LONG VERSION
   (def capture (new-videocapture))
   (.open capture 0)
 

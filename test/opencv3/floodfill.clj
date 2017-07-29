@@ -6,20 +6,24 @@
 
 ; http://docs.opencv.org/trunk/d5/d26/ffilldemo_8cpp-example.html#a11
 (def rose
-  (-> "resources/matching/rose_flower.jpg" imread (u/resize-by 0.5) (cvt-color! COLOR_RGB2GRAY)))
+  (-> "resources/matching/rose_flower.jpg" imread (u/resize-by 0.5) ))
 
-(def flooded (new-mat))
+(def mask (new-mat))
 (def flood (new-point 1 1))
-(def low-diff (new-scalar 10 10 10))
-(def high-diff (new-scalar 10 15 15))
 
+(def low-diff (new-scalar 100 10 10))
+(def high-diff (new-scalar 100 15 15))
+
+; (threshold rose mask 1 128 THRESH_BINARY)
+(def copy (clone rose))
 (flood-fill
-  rose
-  flooded
+  copy
+  mask
   flood
   rgb/coral-1
-  (new-rect 20 20 20 20)
+  (new-rect 120 120 220 220)
   low-diff
-  high-diff 8)
+  high-diff
+  0)
 
-(u/show rose)
+(u/show copy)

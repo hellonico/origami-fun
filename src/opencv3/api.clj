@@ -4,6 +4,7 @@
   (:import
     [java.util ArrayList]
     [org.opencv.photo Photo]
+    [org.opencv.objdetect CascadeClassifier]
     [org.opencv.core RotatedRect MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
     [org.opencv.videoio Videoio VideoWriter VideoCapture]
@@ -175,7 +176,7 @@
 
     (print-headers)
 
-    (doseq [klass #{VideoCapture RotatedRect MatOfRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+    (doseq [klass #{VideoCapture CascadeClassifier RotatedRect MatOfRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
     (println ";;; ImgProc"
@@ -232,7 +233,7 @@
       ; (print-headers)
       ; (print-constructors VideoCapture)
       ; (print-fields Videoio)
-      (print-constructors VideoWriter)
+      (print-constructors CascadeClassifier)
   ))
 
 )

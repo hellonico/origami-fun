@@ -40,6 +40,13 @@
 
 ; AUTO GENERATED CONSTRUCTORS
 
+(defn new-cascadeclassifier
+([]
+  (new org.opencv.objdetect.CascadeClassifier ))
+([java_lang_string_0 ]
+  (new org.opencv.objdetect.CascadeClassifier java_lang_string_0 )))
+
+
 (defn new-matofrect
 ([array_lorg_opencv_core_rect_0 ]
   (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
