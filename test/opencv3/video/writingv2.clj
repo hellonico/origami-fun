@@ -1,6 +1,4 @@
 (ns opencv3.video.writingv2
-  ; (:import
-  ;   [org.opencv.videoio VideoWriter])
   (:require
     [opencv3.core :refer :all]
     [opencv3.utils :as u]
@@ -15,7 +13,7 @@
     ;(VideoWriter/fourcc \M \J \P \G)
     1196444237
     30
-    (new-size 240 320) ; 
+    (new-size 240 320) ;
     )
 
   (u/simple-cam-window
