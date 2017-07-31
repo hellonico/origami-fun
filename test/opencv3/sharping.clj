@@ -21,18 +21,23 @@
                          -1 -1 -1]])))
 (defn sharpen2! [src]
   (sharpen2 src src)
-  src
-  )
+  src)
+
 
 (comment
   ; https://stackoverflow.com/questions/4993082/how-to-sharpen-an-image-in-opencv
 
-(-> "http://www.petmd.com/sites/default/files/sleepy-cat-125522297.jpg"
-u/mat-from-url
-sharpen!
-u/show)
+(def original
+  (->
+  "http://www.petmd.com/sites/default/files/sleepy-cat-125522297.jpg"
+  u/mat-from-url))
 
-
+  (u/show original {:handlers
+   {38 #(flip! % -1)
+    39 #(flip! % 1)
+    40 (fn[_] original)
+    49 #(sharpen! %)
+    50 #(sharpen2! %)}})
 
 (->
   "resources/images/cat.jpg"

@@ -158,7 +158,11 @@ matrix))
         (keyTyped [event])
         (keyReleased [event])
         (keyPressed [event]
-          (let [c (.getKeyCode event)]
+
+          (let [c (.getKeyCode event) handler (-> options :handlers (get c))]
+          (println c ">" handler)
+          (if (not (nil? handler))
+             (re-show pane (handler (buffered-image-to-mat (.getImage  (.getIcon (first (.getComponents pane))))))))
            (condp = c
              32 (if (.getClientProperty pane "paused")
                   (.putClientProperty pane "paused" false)
