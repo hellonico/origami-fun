@@ -28,7 +28,7 @@
 
 (def mask (new-mat))
 (in-range in-range-pict (new-scalar 0 255 255) (new-scalar 0 0 0) mask)
-(bitwise-not! mask)
+; (bitwise-not! mask)
 (def mat2
   (new-mat (.size trees) CV_8UC3))
 (.setTo mat2 rgb/greenyellow)
