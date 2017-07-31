@@ -140,7 +140,8 @@ matrix))
   ([src _options]
   (let [
     options (merge-with merge {:frame {:color 0 :title "image" :width 400 :height 400}} _options)
-    buf (mat-to-buffered-image src)
+    is-atom? (= (class src) clojure.lang.Atom)
+    buf (if is-atom? (mat-to-buffered-image @src) (mat-to-buffered-image src))
     frame (JFrame. (-> options :frame :title))
     pane (.getContentPane frame)
     image (ImageIcon. buf)
@@ -188,6 +189,10 @@ matrix))
     (.addMouseListener label
       (proxy [MouseAdapter] []
        (mousePressed [event])))
+    (if is-atom?
+       (add-watch src :cat
+         (fn [key ref old new-s]
+           (re-show pane @src))))
     (doto frame
       (.setPreferredSize (java.awt.Dimension. (-> options :frame :width)  (-> options :frame :height) ))
       (.setVisible true)

@@ -39,6 +39,37 @@
     49 #(sharpen! %)
     50 #(sharpen2! %)}})
 
+ (def cat (-> "resources/images/cat.jpg" imread))
+
+(def p (atom 5))
+(u/show original
+ {:handlers {
+ 38  #(erode! % (get-structuring-element MORPH_RECT (new-size @p @p)))
+ 37  #(do (swap! p inc) %)
+ 39  #(do (swap! p inc) %)
+ 40  #(dilate! % (get-structuring-element MORPH_RECT (new-size @p @p)))
+ 49 (fn[_] original)
+ }})
+
+(def p (atom 2))
+ (u/show original
+  {:handlers {
+  37  #(do (swap! p dec) %)
+  39  #(do (swap! p inc) %)
+  38  #(u/resize-by % @p)
+  40  #(u/resize-by % (/ 1 @p))
+  49 (fn[_] original)
+  }})
+
+  (def cat (atom (-> "resources/images/cat.jpg" imread)))
+  (def w (u/show @cat))
+  (add-watch cat :cat (fn [key ref old new-s]
+    (u/re-show w @cat)))
+  (reset! cat (u/resize-by @cat 2))
+
+  (def neko (atom (-> "resources/images/cat.jpg" imread)))
+  
+
 (->
   "resources/images/cat.jpg"
   imread
