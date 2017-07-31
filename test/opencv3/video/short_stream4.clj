@@ -23,10 +23,12 @@
 
 (defn -main[ & args]
 
-  (u/simple-cam-window (fn [buffer]
+  (u/simple-cam-window
+    {:frame {:width 660 :height 520 :color 0 :title "filters"} :video {:device 0 :width 600 :height 200}}
+    (fn [buffer]
     (-> buffer
-     (u/resize-by 0.5)
-     (red-filter))))
+    ;  (u/resize-by 0.5)
+     (blue-filter))))
 
      )
 

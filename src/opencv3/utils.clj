@@ -135,17 +135,22 @@ matrix))
 ;;;
 ; SWING
 ;;;
-(defn show[src]
+(defn show
+  ([src] (show src {}))
+  ([src _options]
   (let [
+    options (merge-with merge {:frame {:color 0 :title "image" :width 400 :height 400}} _options)
     buf (mat-to-buffered-image src)
-    frame (JFrame. "image")
+    frame (JFrame. (options :title))
     pane (.getContentPane frame)
     image (ImageIcon. buf)
     label (JLabel. image)
     ]
+    (println options)
     (doto pane
      (.setOpaque true)
-     (.setBackground java.awt.Color/BLACK)
+     (.setPreferredSize (java.awt.Dimension. (-> options :frame :width)  (-> options :frame :height) ))
+     (.setBackground (java.awt.Color. (-> options :frame :color)))
      (.setLayout (FlowLayout.))
      (.add label))
     (.addKeyListener frame
@@ -180,10 +185,11 @@ matrix))
       (proxy [MouseAdapter] []
        (mousePressed [event])))
     (doto frame
-      (.pack)
+      (.setPreferredSize (java.awt.Dimension. (-> options :frame :width)  (-> options :frame :height) ))
       (.setVisible true)
+      (.pack)
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))
-      pane))
+      pane)))
 
 (defn re-show[pane mat]
   (let[image (.getIcon (first (.getComponents pane)))]
@@ -192,17 +198,20 @@ matrix))
     (.revalidate)
     (.repaint))))
 
-(defn simple-cam-window[myvideofn]
+(defn simple-cam-window
+  ([myvideofn] (simple-cam-window {} myvideofn ))
+  ([_options myvideofn]
+
   (let [
+    options (merge-with merge {:frame {:color 0 :title "video"} :video {:device 0 :width 200 :height 220}} _options )
     capture (vid/new-videocapture)
-    window (show (cv/new-mat 400 400 cv/CV_8UC3 (cv/new-scalar 255 255 255)))
+    window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)]
 
     (doto capture
-      (.open 0)
-      (.set vid/CAP_PROP_FRAME_WIDTH 400)
-      (.set vid/CAP_PROP_FRAME_HEIGHT 300)
-      )
+      (.open (int (-> options :video :device)))
+      (.set vid/CAP_PROP_FRAME_WIDTH (-> options :video :width))
+      (.set vid/CAP_PROP_FRAME_HEIGHT (-> options :video :height)))
 
     (.start (Thread.
       (fn []
@@ -210,4 +219,4 @@ matrix))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
          (re-show window (myvideofn buffer)))))
-       (.release capture))))))
+       (.release capture)))))))
