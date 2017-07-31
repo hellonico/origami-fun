@@ -16,11 +16,11 @@
     "resources/lbpcascade_frontalface.xml"))
 
 (defn -main[& args]
-    (u/simple-cam-window
-      (fn [buffer]
-       (let [rects (new-matofrect)]
-       (.detectMultiScale detector buffer rects)
-       (draw-rects! buffer rects)))))
+  (u/simple-cam-window
+    (fn [buffer]
+     (let [rects (new-matofrect)]
+     (.detectMultiScale detector buffer rects)
+     (draw-rects! buffer rects)))))
 
 (comment
 (-main)

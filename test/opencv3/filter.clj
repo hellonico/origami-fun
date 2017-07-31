@@ -31,13 +31,14 @@
   (let [ total (* 3 (.total image-3))
          bytes (byte-array total)]
         (.get image-3 0 0 bytes)
-        (println (count bytes))
+        ;(println (count bytes))
         (doseq[^int i (range 0 total)]
           (if (= 0 (mod (+ i _mod) 3))
             (aset-byte bytes i 0)))
         (.put image-3 0 0 bytes)
         image-3))
 
+(comment
 (->
   "resources/images/cat.jpg"
   (imread)
@@ -54,3 +55,4 @@
   target)
 
 (imwrite target "output/cat3.png")
+)

@@ -143,8 +143,11 @@ matrix))
     image (ImageIcon. buf)
     label (JLabel. image)
     ]
-    (.setLayout pane (FlowLayout.))
-    (.add pane label)
+    (doto pane
+     (.setOpaque true)
+     (.setBackground java.awt.Color/BLACK)
+     (.setLayout (FlowLayout.))
+     (.add label))
     (.addKeyListener frame
       (proxy [KeyListener] []
         (keyTyped [event])

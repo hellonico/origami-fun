@@ -4,8 +4,10 @@
     [opencv3.video :refer :all]
     [opencv3.utils :as u]))
 
-(def lower-red  (new-scalar 0 70 70))
-(def upper-red (new-scalar 10 255 255))
+(def lower-red
+  (new-scalar 0 70 70))
+(def upper-red
+  (new-scalar 10 255 255))
 
 (defn filter-stream[ lower upper buffer ]
    (u/resize-by buffer 0.5)
