@@ -15,7 +15,7 @@
   (threshold! 127 255 THRESH_BINARY)
   ))
 
-(u/show ret)
+; (u/show ret)
 
 (def contours (new-arraylist))
 (find-contours ret contours (new-mat) RETR_EXTERNAL CHAIN_APPROX_SIMPLE)
