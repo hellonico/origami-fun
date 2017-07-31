@@ -141,7 +141,7 @@ matrix))
   (let [
     options (merge-with merge {:frame {:color 0 :title "image" :width 400 :height 400}} _options)
     buf (mat-to-buffered-image src)
-    frame (JFrame. (options :title))
+    frame (JFrame. (-> options :frame :title))
     pane (.getContentPane frame)
     image (ImageIcon. buf)
     label (JLabel. image)

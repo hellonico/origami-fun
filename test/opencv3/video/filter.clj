@@ -24,6 +24,7 @@
 
 (defn -main[& args]
    (u/simple-cam-window
+     {:frame {:width 700 :height 200 :title "Red Red Red"}}
      (partial filter-stream lower-red upper-red )))
 
 (comment
