@@ -3,15 +3,18 @@
    [opencv3.utils :as u]
    [opencv3.core :refer :all]))
 
-; find average color of picture
+;
+; find average color of a picture using opencv mean function
+;
+
 (defn show-average[img]
   (let[
   target (new-mat)
   source
-    (resize! (imread img) (new-size 300 300))
+    (-> img imread (u/resize-by 0.25))
   avg-mat
-    (new-mat 300 300 CV_8UC3 (mean source))]
+    (new-mat (.rows source)  (.cols source)  CV_8UC3 (mean source))]
   (vconcat [source avg-mat] target)
-  (u/show target)  ))
+  (u/show target {:frame {:title "cat" :width 500 :height 700}})  ))
 
 (show-average "resources/images/cat.jpg")
