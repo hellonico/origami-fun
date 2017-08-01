@@ -61,14 +61,15 @@
   49 (fn[_] original)
   }})
 
-  (def cat (atom (-> "resources/images/cat.jpg" imread)))
-  (def w (u/show @cat))
-  (add-watch cat :cat (fn [key ref old new-s]
-    (u/re-show w @cat)))
-  (reset! cat (u/resize-by @cat 2))
-
   (def neko (atom (-> "resources/images/cat.jpg" imread)))
-  
+  (u/show neko)
+  (reset! neko
+    ; (sharpen2! @neko)
+    ; (-> "resources/images/cat.jpg" imread)
+    (u/resize-by @neko 0.5)
+    ; (dilate! @neko (get-structuring-element MORPH_RECT (new-size 5 5)))
+
+    )
 
 (->
   "resources/images/cat.jpg"
@@ -76,6 +77,5 @@
   (u/resize-by 0.5)
   sharpen2!
   u/show)
-
 
 )

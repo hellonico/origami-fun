@@ -146,6 +146,8 @@ matrix))
     pane (.getContentPane frame)
     image (ImageIcon. buf)
     label (JLabel. image)
+    history (cv/new-arraylist)
+    get-src (fn[] (buffered-image-to-mat (.getImage  (.getIcon (first (.getComponents pane))))))
     ]
     (println options)
     (doto pane
@@ -154,23 +156,26 @@ matrix))
      (.setBackground (java.awt.Color. (-> options :frame :color)))
      (.setLayout (FlowLayout.))
      (.add label))
+    (.addComponentListener frame
+      (proxy [java.awt.event.ComponentListener] []
+        (componentResized [event]
+          (re-show pane (cv/resize! (get-src) (cv/new-size (.getWidth frame) (.getHeight frame)))))))
     (.addKeyListener frame
       (proxy [KeyListener] []
         (keyTyped [event])
         (keyReleased [event])
         (keyPressed [event]
-
           (let [c (.getKeyCode event) handler (-> options :handlers (get c))]
           (println c ">" handler)
           (if (not (nil? handler))
-             (re-show pane (handler (buffered-image-to-mat (.getImage  (.getIcon (first (.getComponents pane))))))))
+             (re-show pane (handler (get-src))))
            (condp = c
              32 (if (.getClientProperty pane "paused")
                   (.putClientProperty pane "paused" false)
                   (.putClientProperty pane "paused" true))
              83 (ImageIO/write
                  (.getImage (.getIcon label))
-                 "png" (clojure.java.io/as-file (str "webcam_" (System/currentTimeMillis) ".png")))
+                 "png" (clojure.java.io/as-file (str (-> options :frame :title "_" (System/currentTimeMillis) ".png")))
              70  (let [ dsd   (->
                       (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
                       (.getDefaultScreenDevice)) ]
@@ -192,6 +197,8 @@ matrix))
     (if is-atom?
        (add-watch src :cat
          (fn [key ref old new-s]
+           (if (empty? history) (.add history old))
+           (.add history new-s)
            (re-show pane @src))))
     (doto frame
       (.setPreferredSize (java.awt.Dimension. (-> options :frame :width)  (-> options :frame :height) ))
