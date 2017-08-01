@@ -34,6 +34,14 @@
     _work)))
 
 (comment
+ 
+  ; first sample entirely on opencv 3.3-rc and on windows!!!
+  (->
+  (imread "resources/matching/rose_flower.jpg")
+  (u/resize-by 0.5)
+  (low-high! 150 rgb/crimson 105 rgb/lightblue-1)
+  (u/show {:frame {:width 800 :height 600}}))
+
 (->
   (imread "resources/matching/rose_flower.jpg")
   (low-high! 150 rgb/crimson 105 rgb/lightblue-1)
