@@ -1,4 +1,4 @@
-(ns opencv3.newfeatures.colormatching
+(ns opencv3.colormatching
   (:require
     [opencv3.core :refer :all]
     [opencv3.utils :as u]))
