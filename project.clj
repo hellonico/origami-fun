@@ -29,8 +29,10 @@
 
    ; OSX and LINUX 3.3
    [opencv/opencv "3.3.0-rc"]
+   
    [opencv/opencv-native "3.3.0-rc"]
-  ;  [opencv/opencv-native "3.3.0-rc-linux"]
+   [opencv/opencv-native "3.3.0-rc-linux"]
+   [opencv/opencv-native "3.3.0-rc-win"]
 
   ; WINDOWS 3.2
   ; coz I cannot get 3.3 to compile under windows :'(
