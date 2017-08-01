@@ -8,10 +8,11 @@
 ; http://docs.opencv.org/3.2.0/d8/d83/tutorial_py_grabcut.html
 
 ; should work better with a mask on the cat
-(def img (-> "resources/images/cat.jpg" imread (u/resize-by 0.25)))
-
+(def source "resources/images/kidrunning.jpeg")
+(def img (-> source imread (u/resize-by 0.5)))
+; (u/show img)
 (def mask (new-mat))
-(def rect (new-rect 50 50 300 400))
+(def rect (new-rect 50 50 250 350))
 (grab-cut img mask rect (new-mat) (new-mat) 5 GC_INIT_WITH_RECT)
 
 (def fg-mask (clone mask))
@@ -26,12 +27,12 @@
 (def fg_foreground (new-mat (.size img) (.type img) (new-scalar 0 0 0)))
 (def pfg_foreground (new-mat (.size img) (.type img) (new-scalar 0 0 0)))
 
-(def final-mask (new-mat)) ; no use ?
+(def final-mask (new-mat))
 (bitwise-or pfg-mask fg-mask final-mask)
 (.copyTo img fg_foreground fg-mask)
 (.copyTo img pfg_foreground pfg-mask)
 
-(u/show pfg_foreground)
+;(u/show pfg_foreground)
 
 (def foreground (new-mat (.size fg_foreground) CV_8UC3))
 (bitwise-or fg_foreground pfg_foreground foreground)
