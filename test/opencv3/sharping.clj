@@ -51,15 +51,14 @@
  49 (fn[_] original)
  }})
 
-(def p (atom 2))
+ (def p (atom 2))
  (u/show original
   {:handlers {
   37  #(do (swap! p dec) %)
   39  #(do (swap! p inc) %)
   38  #(u/resize-by % @p)
   40  #(u/resize-by % (/ 1 @p))
-  49 (fn[_] original)
-  }})
+  49 (fn[_] original)}})
 
   (def neko (atom (-> "resources/images/cat.jpg" imread)))
   (u/show neko)

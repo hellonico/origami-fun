@@ -135,6 +135,13 @@ matrix))
 ;;;
 ; SWING
 ;;;
+
+(defn re-show[pane mat]
+  (let[image (.getIcon (first (.getComponents pane)))]
+  (.setImage image (mat-to-buffered-image mat))
+  (doto pane
+    (.revalidate)
+    (.repaint))))
 (defn show
   ([src] (show src {}))
   ([src _options]
@@ -156,10 +163,11 @@ matrix))
      (.setBackground (java.awt.Color. (-> options :frame :color)))
      (.setLayout (FlowLayout.))
      (.add label))
-    (.addComponentListener frame
-      (proxy [java.awt.event.ComponentListener] []
-        (componentResized [event]
-          (re-show pane (cv/resize! (get-src) (cv/new-size (.getWidth frame) (.getHeight frame)))))))
+    ; (.addComponentListener frame
+    ;   (proxy [java.awt.event.ComponentListener] []
+    ;     (componentMoved [event])
+    ;     (componentResized [event]
+    ;       (re-show pane (cv/resize! (get-src) (cv/new-size (.getWidth frame) (.getHeight frame)))))))
     (.addKeyListener frame
       (proxy [KeyListener] []
         (keyTyped [event])
@@ -175,7 +183,7 @@ matrix))
                   (.putClientProperty pane "paused" true))
              83 (ImageIO/write
                  (.getImage (.getIcon label))
-                 "png" (clojure.java.io/as-file (str (-> options :frame :title "_" (System/currentTimeMillis) ".png")))
+                 "png" (clojure.java.io/as-file (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png")))
              70  (let [ dsd   (->
                       (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
                       (.getDefaultScreenDevice)) ]
@@ -207,12 +215,6 @@ matrix))
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))
       pane)))
 
-(defn re-show[pane mat]
-  (let[image (.getIcon (first (.getComponents pane)))]
-  (.setImage image (mat-to-buffered-image mat))
-  (doto pane
-    (.revalidate)
-    (.repaint))))
 
 (defn simple-cam-window
   ([myvideofn] (simple-cam-window {} myvideofn ))
