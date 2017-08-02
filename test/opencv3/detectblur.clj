@@ -51,9 +51,12 @@
 ;
 
 (comment
+  ; blurred
  (-> "resources/images/tiger-blur.gif" imread is-image-blurred?)
  (-> "resources/blurred/blurred_cat.jpg" imread is-image-blurred?)
 
+ ; not blurred
  (-> "resources/images/laptop-cat.jpg" imread is-image-blurred?)
+ (-> "resources/nico.jpg" imread is-image-blurred?)
 
 )
