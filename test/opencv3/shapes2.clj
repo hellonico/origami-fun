@@ -18,7 +18,7 @@
 (threshold gray thresh 127 240 1)
 (imwrite thresh "output/please.png")
 
-(def contours (new-list))
+(def contours (new-arraylist))
 (find-contours thresh contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE)
 
 ; draw filled contours
@@ -41,9 +41,9 @@
 (dotimes [i (.size contours)]
  (let[
    c (.get contours i)
-   m2f (MatOfPoint2f. (.toArray c))
+   m2f (new-matofpoint2f (.toArray c))
    len (arc-length m2f true)
-   ret (MatOfPoint2f.)
+   ret (new-matofpoint2f)
    approx (approx-poly-dp m2f ret (* 0.01 len) true)
    nb-sides (.size (.toList ret))
    ]

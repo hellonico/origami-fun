@@ -66,7 +66,7 @@
   (imread "resources/morph/headphone.png"))
 (def image-c (clone headphones))
 (cvt-color! headphones COLOR_BGR2GRAY)
-(def contours (java.util.ArrayList.))
+(def contours (new-arraylist))
 (def mask (new-mat))
 (find-contours headphones contours mask RETR_LIST CHAIN_APPROX_SIMPLE)
 (dotimes [ci (.size contours)]
@@ -81,7 +81,7 @@
   (imread "resources/morph/headphone.png"))
 (def image-c (clone headphones))
 (cvt-color! headphones COLOR_BGR2GRAY)
-(def contours (java.util.ArrayList.))
+(def contours (new-arraylist))
 (def mask (new-mat))
 (find-contours headphones contours mask RETR_LIST CHAIN_APPROX_SIMPLE)
 (dotimes [ci (.size contours)]
