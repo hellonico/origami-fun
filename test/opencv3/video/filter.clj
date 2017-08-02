@@ -31,6 +31,7 @@
   (-main)
 
   (u/simple-cam-window
+     {:frame {:width 700 :height 200 :title "Red Red Red"}}
      (partial filter-stream
         (new-scalar 100 70 70)
         (new-scalar 110 255 255)))

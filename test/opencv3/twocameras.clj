@@ -16,6 +16,6 @@
      :fn #(-> % clone (flip! -1))}
    ]
    :frame
-    {:width 700
-     :height 400
-     :title "Two Cellos"}})
+    {:width 650
+     :height 300
+     :title "TwoCellos"}})
