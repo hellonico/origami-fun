@@ -62,6 +62,12 @@
 ([]
   (new org.opencv.core.RotatedRect )))
 
+(defn new-matofdouble
+([array_d_0 ]
+  (new org.opencv.core.MatOfDouble array_d_0 ))
+([]
+  (new org.opencv.core.MatOfDouble )))
+
 
 (defn new-matofbyte
 ([array_b_0 ]

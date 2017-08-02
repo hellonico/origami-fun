@@ -3,6 +3,13 @@
         [opencv3.utils :as u]))
 
 ; http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html
+
+(->
+"resources/images/cat.jpg"
+ (imread)
+ (warp-affine! (get-rotation-matrix-2-d (new-point 400 400) 90 1) (new-size 600 800) INTER_NEAREST)
+ (imwrite  "output/simple.png"))
+
 ;
 ; (def )
 ; Rect roi = Imgproc.boundingRect(contour);
