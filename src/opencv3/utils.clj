@@ -229,7 +229,9 @@ matrix))
     options (merge-with merge {:frame {:color 0 :title "video"} :video {:device 0 :width 200 :height 220}} _options )
     capture (vid/new-videocapture)
     window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
-    buffer (cv/new-mat)]
+    buffer (cv/new-mat)
+
+    ]
 
     (doto capture
       (.open (int (-> options :video :device)))
@@ -243,3 +245,62 @@ matrix))
         (if (not (.getClientProperty window "paused"))
          (re-show window (myvideofn buffer)))))
        (.release capture)))))))
+
+
+(defn two-cams-window
+ ([_options]
+ (let [
+   options (merge-with merge {:frame {:color 0 :title "video"}} _options )
+   device1 (->  options :devices first)
+   device2 (->  options :devices second)
+
+   capture1 (vid/new-videocapture)
+   capture2 (vid/new-videocapture)
+   window (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
+   buffer-left (atom (cv/new-mat))
+   buffer-right (atom (cv/new-mat))
+   output (cv/new-mat)
+   buffer1 (cv/new-mat)
+   buffer2 (cv/new-mat)
+   ]
+
+   (doto capture1
+     (.open (int (-> device1 :device)))
+     (.open 0)
+     (.set vid/CAP_PROP_FRAME_WIDTH (-> device1 :width))
+     (.set vid/CAP_PROP_FRAME_HEIGHT (-> device1 :height)))
+
+   (doto capture2
+      (.open (int (-> device2 :device)))
+     (.set vid/CAP_PROP_FRAME_WIDTH (-> device2 :width))
+     (.set vid/CAP_PROP_FRAME_HEIGHT (-> device2 :height)))
+
+   (.start (Thread.
+     (fn []
+     (while (nil? (.getClientProperty window "quit"))
+      (if (.read capture1 buffer1)
+       (if (not (.getClientProperty window "paused"))
+        (reset! buffer-left ((-> device1 :fn) buffer1)))))
+      (.release capture1))))
+
+   (.start (Thread.
+     (fn []
+     (while (nil? (.getClientProperty window "quit"))
+      (if (.read capture2 buffer2)
+       (if (not (.getClientProperty window "paused"))
+        (reset! buffer-right ((-> device2 :fn) buffer2)))))
+      (.release capture2))))
+
+  (.start (Thread.
+    (fn []
+    (while (nil? (.getClientProperty window "quit"))
+      (if (not (.getClientProperty window "paused"))
+          (if (not
+            (or (= 0 (.cols @buffer-left))
+                (= 0 (.cols @buffer-right))))
+          (do
+          ; (cv/hconcat [@buffer-left (-> @buffer-right cv/clone (cv/resize! (.size @buffer-left)))] output)
+          (cv/hconcat [@buffer-left @buffer-right] output)
+          (re-show window output))))))))
+
+      )))
