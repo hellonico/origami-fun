@@ -243,7 +243,7 @@ matrix))
       (while (nil? (.getClientProperty window "quit"))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
-         (re-show window (myvideofn buffer)))))
+         (re-show window (myvideofn (cv/clone buffer))))))
        (.release capture)))))))
 
 
@@ -280,7 +280,7 @@ matrix))
      (while (nil? (.getClientProperty window "quit"))
       (if (.read capture1 buffer1)
        (if (not (.getClientProperty window "paused"))
-        (reset! buffer-left ((-> device1 :fn) buffer1)))))
+        (reset! buffer-left ((-> device1 :fn) (cv/clone buffer1))))))
       (.release capture1))))
 
    (.start (Thread.
@@ -288,7 +288,7 @@ matrix))
      (while (nil? (.getClientProperty window "quit"))
       (if (.read capture2 buffer2)
        (if (not (.getClientProperty window "paused"))
-        (reset! buffer-right ((-> device2 :fn) buffer2)))))
+        (reset! buffer-right ((-> device2 :fn) (cv/clone buffer2))))))
       (.release capture2))))
 
   (.start (Thread.

@@ -16,7 +16,7 @@
   output))
 
 (defn to-gray[buffer ]
-  (-> buffer clone (cvt-color! COLOR_RGB2GRAY) (cvt-color! COLOR_GRAY2RGB)))
+  (-> buffer (cvt-color! COLOR_RGB2GRAY) (cvt-color! COLOR_GRAY2RGB)))
 
 (u/two-cams-window
   {:devices [
