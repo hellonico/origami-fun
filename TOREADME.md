@@ -1,5 +1,11 @@
 Grasping OpenCV from Clojure
 
+Image alignment
+; https://www.learnopencv.com/image-alignment-ecc-in-opencv-c-python/
+
+Perspective Transformation
+; http://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
+
 Watershed
 ; http://docs.opencv.org/3.1.0/d3/db4/tutorial_py_watershed.html
 

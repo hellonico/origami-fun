@@ -34,6 +34,11 @@
     line))
 matrix))
 
+(defn matrix-to-matofpoint2f[pts]
+(cv/new-matofpoint2f
+(into-array org.opencv.core.Point
+  (map #(cv/new-point (first %) (second %)) pts))))
+
 (defn matrix-to-mat [matrix]
   (let[
     flat (flatten matrix)
