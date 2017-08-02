@@ -8,6 +8,7 @@
 ; laplacian variation
 ;
 ; https://stackoverflow.com/questions/36413394/opencv-variation-of-the-laplacian-java
+; http://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/
 ;
 ; used to detect blur in an image
 
