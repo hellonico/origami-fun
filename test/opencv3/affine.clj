@@ -18,11 +18,14 @@
 ; http://docs.opencv.org/trunk/d2/dbd/tutorial_distance_transform.html
 ; https://github.com/opencv/opencv/blob/master/modules/imgproc/misc/java/test/ImgprocTest.java
 
-(def rose
-  (imread "resources/matching/rose_flower.jpg"))
+(def rose (->
+  "resources/matching/rose_flower.jpg"
+  imread
+  (u/resize-by 0.3)))
+
 (def src
-  (u/matrix-to-matofpoint2f [[0 0] [3 1] [10 40]]))
+  (u/matrix-to-matofpoint2f [[1 0] [3 1] [5 6]]))
 (def dst
-  (u/matrix-to-matofpoint2f [[3 3] [7 4] [5 6]]))
+  (u/matrix-to-matofpoint2f [[1 0] [3 1] [3 6]]))
 (def transform-mat (get-affine-transform dst src))
-(-> rose clone (u/resize-by 0.3) (warp-affine! transform-mat (.size rose)) u/show)
+(-> rose clone (warp-affine! transform-mat (.size rose)) u/show)
