@@ -1,12 +1,9 @@
 (ns opencv3.detection
-  (:require [opencv3.core :refer :all])
-  (:import
-    [org.opencv.objdetect CascadeClassifier]
-    [org.opencv.core MatOfRect]))
+  (:require [opencv3.core :refer :all]))
 
-  ;;;
-  ; face detection
-  ;;;
+;;;
+; face detection
+;;;
 
 (defn draw-rect [mat rect]
   (rectangle
@@ -16,21 +13,26 @@
     (new-scalar 0 0 255)
     5))
 
-  (defn recognize [xml-file image-file]
-    (let[ rects (MatOfRect.)
-          detector (CascadeClassifier. xml-file)
-          mat (imread image-file)]
-      (.detectMultiScale detector mat rects)
-      (doseq [rect (.toArray rects)]
-        (draw-rect mat rect))
-      (imwrite mat "output/detection.png")))
+(defn recognize [xml-file mat]
+  (let[ rects (new-matofrect)
+        detector (new-cascadeclassifier xml-file)]
+    (.detectMultiScale detector mat rects)
+    (doseq [rect (.toArray rects)]
+      (draw-rect mat rect))
+      mat))
+
+(comment
 
 ; face detection
-(recognize
-  "resources/lbpcascade_frontalface.xml"
-  "resources/nico.jpg")
+(-> "resources/nico.jpg"
+ imread
+ (partial recognized "resources/lbpcascade_frontalface.xml")
+ (imwrite mat "output/detection.png"))
 
 ; eyes detection
-(recognize
-  "resources/data/haarcascades_cuda/haarcascade_eye.xml"
-  "resources/nico.jpg")
+(-> "resources/nico.jpg"
+ imread
+ (partial recognized "resources/data/haarcascades_cuda/haarcascade_eye.xml")
+ (imwrite mat "output/detection.png"))
+
+)
