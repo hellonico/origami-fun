@@ -13,3 +13,5 @@ bin
 .gorilla-port
 nohup.out
 shots
+.idea
+*.iml

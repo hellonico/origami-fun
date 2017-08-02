@@ -1,4 +1,6 @@
 
+  # opencv core
+
   # mvn deploy:deploy-file -DgroupId=opencv \
   # -DartifactId=opencv \
   # -Dversion=3.3.0-rc \
@@ -7,6 +9,13 @@
   # -DrepositoryId=vendredi \
   # -Durl=http://hellonico.info:8081/repository/hellonico/
 
+  # mvn deploy:deploy-file -DgroupId=opencv \
+  # -DartifactId=opencv-native \
+  # -Dversion=3.3.0-rc-osx \
+  # -Dpackaging=jar \
+  # -Dfile=opencv-native-osx.jar \
+  # -DrepositoryId=vendredi \
+  # -Durl=http://hellonico.info:8081/repository/hellonico/
 
   # mvn deploy:deploy-file -DgroupId=opencv \
   # -DartifactId=opencv-native \
@@ -16,10 +25,11 @@
   # -DrepositoryId=vendredi \
   # -Durl=http://hellonico.info:8081/repository/hellonico/
 
-  mvn deploy:deploy-file -DgroupId=opencv \
-  -DartifactId=opencv-native \
-  -Dversion=3.3.0-rc-win \
-  -Dpackaging=jar \
-  -Dfile=opencv-native-windows.jar \
-  -DrepositoryId=vendredi \
-  -Durl=http://hellonico.info:8081/repository/hellonico/
+  # windows
+  # mvn deploy:deploy-file -DgroupId=opencv \
+  # -DartifactId=opencv-native \
+  # -Dversion=3.3.0-rc-win \
+  # -Dpackaging=jar \
+  # -Dfile=opencv-native-windows.jar \
+  # -DrepositoryId=vendredi \
+  # -Durl=http://hellonico.info:8081/repository/hellonico/
