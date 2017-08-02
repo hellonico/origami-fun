@@ -1,4 +1,4 @@
-(ns opencv3.core
+  (ns opencv3.core
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
@@ -18,8 +18,13 @@
 (declare new-arraylist)
 (def new-list new-arraylist)
 
-(defn clone[mat]
-  (.clone mat))
+(defn clone[mat] (.clone mat))
+(defn set-to[mat scalar] (.setTo mat scalar))
+(defn copy-to [src target] (.copyTo src target))
+(defn submat[src rect] (.submat src rect))
+(defn size[src] (.size src))
+(defn rows[src] (.rows src))
+(defn cols[src] (.cols src))
 
 (defn convert-to
   ([src target a1] (.convertTo src target a1) target)
