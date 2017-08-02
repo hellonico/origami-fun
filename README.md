@@ -11,7 +11,7 @@ This is an opencv generated wrapper for Clojure which allows some of the opencv 
  (canny! 300.0 100.0 3 true)
  (bitwise-not!)
  (u/resize-by 0.5)
- (imwrite "output/canny-cat.jpg")
- 
- )
+ (imwrite "output/canny-cat.jpg"))
 ```
+
+![](output/canny-cat.jpg)
