@@ -1,4 +1,4 @@
-(ns opencv3.affine
+(ns opencv3.warpaffine
   (:require
     [opencv3.core :refer :all]
     [opencv3.utils :as u]))

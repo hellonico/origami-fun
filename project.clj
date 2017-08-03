@@ -7,7 +7,7 @@
   :test-paths ["test" "samples"]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
   :profiles {:dev {
-    :repl-options {:init-ns opencv3.affine}
+    ; :repl-options {:init-ns opencv3.affine}
     :dependencies [
     [org.clojure/tools.nrepl "0.2.11"]
     [proto-repl "0.3.1"]
@@ -18,10 +18,8 @@
    [org.clojure/tools.cli "0.3.5"]
 
    [opencv/opencv "3.3.0-rc"]
-  ;  [opencv/opencv-native "3.3.0-rc-osx"]
-   [opencv/opencv-native "3.3.0-rc"]
-   [opencv/opencv-native "3.3.0-rc-linux"]
-   [opencv/opencv-native "3.3.0-rc-win"]
-
+   [opencv/opencv-native "3.3.0-rc" :classifier "osx"]
+   [opencv/opencv-native "3.3.0-rc" :classifier "linux"]
+   [opencv/opencv-native "3.3.0-rc" :classifier "win"]
 
   ])
