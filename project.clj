@@ -18,7 +18,8 @@
    [org.clojure/tools.cli "0.3.5"]
 
    [opencv/opencv "3.3.0-rc"]
-   [opencv/opencv-native "3.3.0-rc-osx"]
+  ;  [opencv/opencv-native "3.3.0-rc-osx"]
+   [opencv/opencv-native "3.3.0-rc"]
    [opencv/opencv-native "3.3.0-rc-linux"]
    [opencv/opencv-native "3.3.0-rc-win"]
 
