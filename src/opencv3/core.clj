@@ -20,7 +20,12 @@
 
 (defn clone[mat] (.clone mat))
 (defn set-to[mat scalar] (.setTo mat scalar))
-(defn copy-to [src target] (.copyTo src target))
+(defn copy-to
+  ([src target] (.copyTo src target))
+  ([src target mask] (.copyTo src target)))
+(defn copy-to![src mask]
+  (copy-to src src mask))
+
 (defn submat[src rect] (.submat src rect))
 (defn size[src] (.size src))
 (defn rows[src] (.rows src))
@@ -38,10 +43,6 @@
   ([mat a1]
   (.convertTo mat mat a1) mat))
 
-(defn copy-to [src target mask]
-  (.copyTo src target mask))
-(defn copy-to![src mask]
-  (copy-to src src mask))
 
 ; AUTO GENERATED CONSTRUCTORS
 

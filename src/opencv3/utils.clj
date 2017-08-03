@@ -299,9 +299,6 @@ matrix))
             (or (= 0 (.cols @buffer-left))
                 (= 0 (.cols @buffer-right))))
           (do
-          ; (cv/hconcat [@buffer-left (-> @buffer-right cv/clone (cv/resize! (.size @buffer-left)))] output)
-          ; (cv/hconcat [@buffer-left @buffer-right] output)
-
           (re-show window ((-> options :video :fn) @buffer-left @buffer-right)))))))))
 
       )))
