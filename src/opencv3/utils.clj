@@ -1,3 +1,4 @@
+
 (ns opencv3.utils
   (:use [gorilla-repl.image])
   (:require
@@ -246,59 +247,43 @@ matrix))
          (re-show window (myvideofn (cv/clone buffer))))))
        (.release capture)))))))
 
+(defn start-cam-thread [ window device-map buffer-atom]
+    (.start (Thread.
+      (fn []
+        (println ">> Starting: " (-> device-map :device) " << ")
+        (let [ buffer (cv/new-mat) capture (vid/new-videocapture)]
+        (doto capture
+          (.open (int (-> device-map :device)))
+          (.set vid/CAP_PROP_FRAME_WIDTH (-> device-map :width))
+          (.set vid/CAP_PROP_FRAME_HEIGHT (-> device-map :height)))
+      (while (nil? (.getClientProperty window "quit"))
+       (if (.read capture buffer)
+        (if (not (.getClientProperty window "paused"))
+         (reset! buffer-atom ((-> device-map :fn) (cv/clone buffer))))))
+       (.release capture))))))
 
-(defn two-cams-window
- ([_options]
+(defn cams-window[ _options ]
  (let [
-   options (merge-with merge {:frame {:color 0 :title "video"}} _options )
-   device1 (->  options :devices first)
-   device2 (->  options :devices second)
-
-   capture1 (vid/new-videocapture)
-   capture2 (vid/new-videocapture)
-   window (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
-   buffer-left (atom (cv/new-mat))
-   buffer-right (atom (cv/new-mat))
-   output (cv/new-mat)
-   buffer1 (cv/new-mat)
-   buffer2 (cv/new-mat)
+   options        (merge-with merge {:frame {:color 0 :title "video"}} _options )
+   devices        (-> options :devices)
+   devices-count  (count devices)
+   buffer-atoms   (into [] (map (fn [_] (atom (cv/new-mat))) devices))
+   window         (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
+   output         (cv/new-mat)
    ]
-
-   (doto capture1
-     (.open (int (-> device1 :device)))
-     (.open 0)
-     (.set vid/CAP_PROP_FRAME_WIDTH (-> device1 :width))
-     (.set vid/CAP_PROP_FRAME_HEIGHT (-> device1 :height)))
-
-   (doto capture2
-      (.open (int (-> device2 :device)))
-     (.set vid/CAP_PROP_FRAME_WIDTH (-> device2 :width))
-     (.set vid/CAP_PROP_FRAME_HEIGHT (-> device2 :height)))
+   (doall
+     (map #(start-cam-thread window %2 (get buffer-atoms %1)) (range) devices))
 
    (.start (Thread.
-     (fn []
-     (while (nil? (.getClientProperty window "quit"))
-      (if (.read capture1 buffer1)
-       (if (not (.getClientProperty window "paused"))
-        (reset! buffer-left ((-> device1 :fn) (cv/clone buffer1))))))
-      (.release capture1))))
-
-   (.start (Thread.
-     (fn []
-     (while (nil? (.getClientProperty window "quit"))
-      (if (.read capture2 buffer2)
-       (if (not (.getClientProperty window "paused"))
-        (reset! buffer-right ((-> device2 :fn) (cv/clone buffer2))))))
-      (.release capture2))))
-
-  (.start (Thread.
     (fn []
     (while (nil? (.getClientProperty window "quit"))
       (if (not (.getClientProperty window "paused"))
-          (if (not
-            (or (= 0 (.cols @buffer-left))
-                (= 0 (.cols @buffer-right))))
-          (do
-          (re-show window ((-> options :video :fn) @buffer-left @buffer-right)))))))))
+            (do
+            (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
+            (do
+             (re-show window
+               (apply (-> options :video :fn) (into [] (map deref buffer-atoms))
+             ))
+            ))))))))
 
-      )))
+            ))
