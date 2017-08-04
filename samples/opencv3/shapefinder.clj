@@ -30,7 +30,7 @@
 (defn contour-finder[target-image output-file]
   (let [ img (imread target-image)
          thresh (-> target-image (imread 0) (threshold! 210 240 1))
-         contours (new-list)]
+         contours (new-arraylist)]
 
     (find-contours thresh contours (new-mat) RETR_LIST CHAIN_APPROX_SIMPLE)
     (-> target-image
