@@ -9,6 +9,7 @@
 ; binding
 ; https://daveray.github.io/seesaw/seesaw.bind-api.html
 
+(def picts ["resources/images/cat.jpg" "resources/images/cat2.png" "resources/images/cat3.png"])
 
 (defn get-random-pict[]
   (-> (rand-nth picts) imread (resize! (new-size 200 200))))
@@ -20,11 +21,6 @@
  (canny! (double 300) (double a) 3 true)
  bitwise-not!))
 
-(defn refresh-img []
- (config! mylabel :icon (icon
-    (-> @IMG clone (get-canny @a) (u/mat-to-buffered-image)))))
-
-(def picts ["resources/images/cat.jpg" "resources/images/cat2.png" "resources/images/cat3.png"])
 (def IMG (atom (get-random-pict)))
 (def mylabel (label :id :img :icon (icon (u/mat-to-buffered-image @IMG) )))
 (def myslide (slider :id :slider :min 0 :max 100 :listen [:state-changed (fn [_] (refresh-img)) ]))
@@ -34,8 +30,12 @@
 (add-watch a :canny (fn [ key reference old-state new-state]
   (refresh-img)
   (config! mytext :text (str "slider value: " new-state))))
-(remove-watch a :canny )
+; (remove-watch a :canny )
 (b/bind myslide a)
+
+(defn refresh-img []
+ (config! mylabel :icon (icon
+    (-> @IMG clone (get-canny @a) (u/mat-to-buffered-image)))))
 
 (def f
   (frame
