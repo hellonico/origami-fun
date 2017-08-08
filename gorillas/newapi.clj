@@ -1,13 +1,10 @@
 ;; gorilla-repl.fileformat = 1
 
 ;; **
-;;; # Gorilla REPL
+;;; # Short Sample 
 ;;; 
-;;; Welcome to gorilla :-)
-;;; 
-;;; Shift + enter evaluates code. Hit ctrl+g twice in quick succession or click the menu icon (upper-right corner) for more commands ...
-;;; 
-;;; It's a good habit to run each worksheet in its own namespace: feel free to use the declaration we've provided below if you'd like.
+;;; Welcome to this tutorial.
+;;; This is a short sample to show how to use this fantastic API to do OpenCV stuff in the browser.
 ;; **
 
 ;; @@
