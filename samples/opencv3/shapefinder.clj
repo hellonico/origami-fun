@@ -39,4 +39,9 @@
       (imwrite output-file))))
 
 (defn -main[& args]
-  (contour-finder (first args) (second args)))
+  (if (< (count args) 2)
+    (println 
+      "Usage shapefinder <shape-file> <output-file>\n"
+      "Example:\n"
+      "shapefinder resources/morph/shapes3.jpg output/findingshapes.png")
+    (contour-finder (first args) (second args))))
