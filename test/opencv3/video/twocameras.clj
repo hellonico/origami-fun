@@ -80,9 +80,9 @@
 (defn mode-four[]
     (u/cams-window
      {:devices [
-       {:device 0 :width 200 :height 150 :fn to-gray}
+       {:device 0 :width 200 :height 150 :fn identity}
       ]
-      :video { :fn identity :recording true}
+      :video { :fn identity :recording {:width 500 :height 400 :output "nico.avi" :frame-rate 20}}
       :frame
       {:width 650 :height 300 :title "OneOfTheSame"}})
     )
@@ -99,6 +99,7 @@
     (let [ mode (first args)]
       (condp = mode
     "one"  (mode-one)
-  "two" (mode-two)
-  "three" (mode-three)
-  (do)))))
+    "two" (mode-two)
+    "three" (mode-three)
+    "four" (mode-four)
+    (do)))))

@@ -1,1 +1,1 @@
-lein run -m opencv3.video.writingv2 shots/cam.avi
+lein run -m opencv3.video.twocameras four

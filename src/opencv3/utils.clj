@@ -270,18 +270,21 @@ matrix))
    buffer-atoms   (into [] (map (fn [_] (atom (cv/new-mat))) devices))
    window         (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
    output         (cv/new-mat)
-  outputVideo     (vid/new-videowriter)
+   outputVideo     (vid/new-videowriter)
+   recording       (-> options :video :recording)
    ]
    (doall
      (map #(start-cam-thread window %2 (get buffer-atoms %1)) (range) devices))
 
-     (if (-> options :video :recording)
-     (.open
-       outputVideo
-       "hello.avi"
-       1196444237
-       30
-       (cv/new-size 400 300)))
+     (if (not (nil? recording))
+       (do
+         (println "Recording Mode")
+         (.open
+         outputVideo
+         (get-in recording [:output] "opencv3.avi")
+         1196444237
+         (get-in recording [:frame-rate] 30)
+         (cv/new-size (get-in recording [:width] 400) (get-in recording [:height] 300) ))))
 
    (.start (Thread.
     (fn []
@@ -291,8 +294,12 @@ matrix))
             (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
             (let [ output (apply (-> options :video :fn) (into [] (map deref buffer-atoms))) ]
              (re-show window output)
-             (if (-> options :video :recording)
-             (.write outputVideo (-> output (cv/clone) (cv/resize! (cv/new-size 400 300)))))
-             )))))
-            (.release outputVideo)
-            )))))
+             (if (not (nil? recording))
+              (.write outputVideo
+               (->
+                 output
+                 (cv/clone)
+                 (cv/resize!
+                   (cv/new-size (get-in recording [:width] 400) (get-in recording [:height] 300)))))))))))
+
+            (.release outputVideo))))))
