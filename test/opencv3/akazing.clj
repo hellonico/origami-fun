@@ -21,6 +21,15 @@
 (def points2 (new-matofkeypoint))
 (.detect detector mat2 points2)
 
+(def show-keypoints1 (new-mat))
+(Features2d/drawKeypoints mat1 points1 show-keypoints1 (new-scalar 255 0 0) 0)
+(u/show show-keypoints1)
+
+(def show-keypoints2 (new-mat))
+(Features2d/drawKeypoints mat2 points2 show-keypoints2 (new-scalar 255 0 0) 0)
+(u/show show-keypoints2)
+
+
 (def desc1 (new-mat))
 (def desc2 (new-mat))
 (.compute extractor mat1 points1 desc1)
@@ -54,15 +63,15 @@
 
 (imwrite
   (draw-matches mat1 points1 mat2 points2 matches 10 Features2d/NOT_DRAW_SINGLE_POINTS)
-  "output/detection.png")
+  "output/detection1.png")
 
 (imwrite
   (draw-matches mat1 points1 mat2 points2 matches 20 Features2d/DRAW_RICH_KEYPOINTS)
-  "output/detection.png")
+  "output/detection2.png")
 
 (imwrite
   (draw-matches mat1 points1 mat2 points2 matches 20 Features2d/NOT_DRAW_SINGLE_POINTS)
-  "output/detection.png")
+  "output/detection3.png")
 
 
 
@@ -93,8 +102,11 @@
 (def scene (doto (new-matofpoint2f)
   (.fromList scene-list)))
 
+; (def H
+;   (find-homography obj scene RANSAC 3))
+
 (def H
-  (find-homography obj scene RANSAC 3))
+  (find-homography obj scene RHO 5))
 
 (def warpimg (clone mat2))
 (def ims (new-size (.cols mat2) (.rows mat2)))
@@ -115,6 +127,6 @@
 (line detect-mat (new-point (.get scene-corners 2 0)) (new-point (.get scene-corners 3 0)) (new-scalar 0 255 0) 4)
 (line detect-mat (new-point (.get scene-corners 3 0)) (new-point (.get scene-corners 0 0)) (new-scalar 0 255 0) 4)
 
-(imwrite detect-mat "output/detection.png")
+(imwrite detect-mat "output/detection4.png")
 
 ; (u/show (u/resize-by detect-mat 0.5))
