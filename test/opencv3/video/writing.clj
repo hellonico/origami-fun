@@ -6,8 +6,6 @@
     [org.opencv.video Video]))
 
 (def capture (VideoCapture.))
-(.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
-(.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
 
 (def outputVideo (VideoWriter.))
 
@@ -21,19 +19,25 @@
   30
   (new-size 400 300))
 
-(def buffer (new-mat 400 300 CV_8UC3))
+(def buffer
+  (new-mat 400 300 CV_8UC3))
 
 (.open capture 0)
-(.release capture)
+
+(.set capture Videoio/CAP_PROP_FRAME_WIDTH 400)
+(.set capture Videoio/CAP_PROP_FRAME_HEIGHT 300)
+
 (dotimes [i 150]
   (.read capture buffer)
   ; (cvt-color! buffer COLOR_RGB2GRAY)
-  (rotate! buffer ROTATE_90_CLOCKWISE)
+  ; (rotate! buffer ROTATE_90_CLOCKWISE)
   ; (put-text buffer "Funny text inside the box"
   ; (new-point (/ (.rows buffer) 2) (/ (.cols buffer) 2))
   ;           FONT_ITALIC 1.0 (new-scalar 255))
   ; (flip! buffer -1)
   (resize! buffer (new-size 400 300))
+  ; (println (.size buffer))
   (.write outputVideo buffer))
 
-(.release outputVideo)
+(.release capture)
+; (.release outputVideo)

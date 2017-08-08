@@ -77,6 +77,16 @@
 
   )
 
+(defn mode-four[]
+    (u/cams-window
+     {:devices [
+       {:device 0 :width 200 :height 150 :fn to-gray}
+      ]
+      :video { :fn identity :recording true}
+      :frame
+      {:width 650 :height 300 :title "OneOfTheSame"}})
+    )
+
 (defn -main [& args]
   (if (empty? args)
     (println "Usage: lein run -m opencv3.video.twocameras <mode>\n
@@ -84,6 +94,7 @@
       one           |   run two different cameras
       two           |   run the same camera twice with different filters
       three         |   run one camera, one filter
+      fourt         |   run one camera, one filter, recording
       ")
     (let [ mode (first args)]
       (condp = mode
