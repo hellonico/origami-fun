@@ -101,7 +101,7 @@
   (.fromList scene-list)))
 
 (def H
-  (Calib3d/findHomography obj scene Calib3d/RHO 5))
+  (find-homography obj scene RHO 5))
 
 (def warpimg (clone mat2))
 (def ims (new-size (.cols mat2) (.rows mat2)))

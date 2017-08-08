@@ -14,20 +14,11 @@
   (resize! (.size image2))))
 
 (def prev
-  (u/matrix-to-matofpoint2f [
-    [-30 -60]
-    [(+ (cols image) 50) -50]
-    [(+ (cols image) 100) (+ (rows image) 50)]
-    [-50 (+ 50 (rows image))]
-    ]))
+  (u/matrix-to-matofpoint2f [[-30 -60] [(+ (cols image) 50) -50] [(+ (cols image) 100) (+ (rows image) 50)] [-50 (+ 50 (rows image))]]))
 
 (def post
   (u/matrix-to-matofpoint2f [
-    [0 0]
-    [ (dec (cols image)) 0]
-    [(dec (cols image)) (dec (rows image))]
-    [ 0 (dec (rows image))]
-    ]))
+    [0 0] [ (dec (cols image)) 0] [(dec (cols image)) (dec (rows image))] [ 0 (dec (rows image))]]))
 
 (def homography (Calib3d/findHomography prev post))
 (def warped (new-mat))
@@ -42,8 +33,6 @@
 (def mask (new-mat (.size image) CV_8U))
 (set-to mask (new-scalar 0.0))
 (draw-contours mask contours 0 (new-scalar 255.0) -1)
-
-(erode mask mask (new-mat))
+(erode! mask (new-mat))
 (copy-to warped image2 mask)
-
 (u/show image2 {:frame {:width 600 :height 600}})

@@ -2,6 +2,7 @@
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
+    [org.opencv.calib3d Calib3d]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
@@ -22,7 +23,7 @@
 (defn set-to[mat scalar] (.setTo mat scalar))
 (defn copy-to
   ([src target] (.copyTo src target))
-  ([src target mask] (.copyTo src target)))
+  ([src target mask] (.copyTo src target mask)))
 (defn copy-to![src mask]
   (copy-to src src mask))
 
@@ -3206,3 +3207,578 @@
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 int_5 ]
   (Photo/textureFlattening org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 float_3 float_4 int_5 ) org_opencv_core_mat_0 )
 )
+
+(defn init-undistort-rectify-map
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 int_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ]
+  (Calib3d/initUndistortRectifyMap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 int_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ))
+)
+
+(defn init-undistort-rectify-map!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 int_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ]
+  (Calib3d/initUndistortRectifyMap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 int_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
+)
+
+(defn undistort-points
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/undistortPoints org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/undistortPoints org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(defn undistort-points!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/undistortPoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/undistortPoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
+)
+
+(defn estimate-affine-2-d
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/estimateAffine2D org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ]
+  (Calib3d/estimateAffine2D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ))
+)
+
+(defn estimate-affine-2-d!
+([org_opencv_core_mat_0 ]
+  (Calib3d/estimateAffine2D org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ]
+  (Calib3d/estimateAffine2D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ) org_opencv_core_mat_0 )
+)
+
+(defn estimate-affine-partial-2-d
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/estimateAffinePartial2D org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ]
+  (Calib3d/estimateAffinePartial2D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ))
+)
+
+(defn estimate-affine-partial-2-d!
+([org_opencv_core_mat_0 ]
+  (Calib3d/estimateAffinePartial2D org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ]
+  (Calib3d/estimateAffinePartial2D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 long_5 double_6 long_7 ) org_opencv_core_mat_0 )
+)
+
+(defn find-essential-mat
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_point_3 int_4 double_5 double_6 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_point_3 int_4 double_5 double_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_point_3 int_4 double_5 double_6 org_opencv_core_mat_7 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_point_3 int_4 double_5 double_6 org_opencv_core_mat_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 double_5 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 double_4 double_5 ))
+)
+
+(defn find-essential-mat!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 org_opencv_core_point_3 int_4 double_5 double_6 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 org_opencv_core_point_3 int_4 double_5 double_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 org_opencv_core_point_3 int_4 double_5 double_6 org_opencv_core_mat_7 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 org_opencv_core_point_3 int_4 double_5 double_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 double_5 ]
+  (Calib3d/findEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 double_4 double_5 ) org_opencv_core_mat_0 )
+)
+
+(defn find-fundamental-mat
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 ]
+  (Calib3d/findFundamentalMat org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 ))
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 double_4 ]
+  (Calib3d/findFundamentalMat org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 double_4 ))
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 double_4 org_opencv_core_mat_5 ]
+  (Calib3d/findFundamentalMat org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 double_4 org_opencv_core_mat_5 ))
+)
+
+(defn find-homography
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 org_opencv_core_mat_4 int_5 double_6 ]
+  (Calib3d/findHomography org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 org_opencv_core_mat_4 int_5 double_6 ))
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 ]
+  (Calib3d/findHomography org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 ))
+([org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 ]
+  (Calib3d/findHomography org_opencv_core_matofpoint2f_0 org_opencv_core_matofpoint2f_1 int_2 double_3 ))
+)
+
+(defn get-optimal-new-camera-matrix
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 ]
+  (Calib3d/getOptimalNewCameraMatrix org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 org_opencv_core_size_4 org_opencv_core_rect_5 boolean_6 ]
+  (Calib3d/getOptimalNewCameraMatrix org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 org_opencv_core_size_4 org_opencv_core_rect_5 boolean_6 ))
+)
+
+(defn get-optimal-new-camera-matrix!
+([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ]
+  (Calib3d/getOptimalNewCameraMatrix org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 org_opencv_core_size_4 org_opencv_core_rect_5 boolean_6 ]
+  (Calib3d/getOptimalNewCameraMatrix org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 org_opencv_core_size_4 org_opencv_core_rect_5 boolean_6 ) org_opencv_core_mat_0 )
+)
+
+(defn init-camera-matrix-2-d
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 double_3 ]
+  (Calib3d/initCameraMatrix2D java_util_list_0 java_util_list_1 org_opencv_core_size_2 double_3 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 ]
+  (Calib3d/initCameraMatrix2D java_util_list_0 java_util_list_1 org_opencv_core_size_2 ))
+)
+
+(defn get-valid-disparity-roi
+([org_opencv_core_rect_0 org_opencv_core_rect_1 int_2 int_3 int_4 ]
+  (Calib3d/getValidDisparityROI org_opencv_core_rect_0 org_opencv_core_rect_1 int_2 int_3 int_4 ))
+)
+
+(defn rq-decomp-3x-3
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Calib3d/RQDecomp3x3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/RQDecomp3x3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(defn rq-decomp-3x-3!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Calib3d/RQDecomp3x3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/RQDecomp3x3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
+)
+
+(defn find-chessboard-corners
+([org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 ]
+  (Calib3d/findChessboardCorners org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 ))
+([org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 int_3 ]
+  (Calib3d/findChessboardCorners org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 int_3 ))
+)
+
+(defn find-circles-grid
+([org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_mat_2 ]
+  (Calib3d/findCirclesGrid org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_mat_2 int_3 ]
+  (Calib3d/findCirclesGrid org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_mat_2 int_3 ))
+)
+
+(defn solve-pn-p-ransac
+([org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 boolean_6 int_7 float_8 double_9 org_opencv_core_mat_10 int_11 ]
+  (Calib3d/solvePnPRansac org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 boolean_6 int_7 float_8 double_9 org_opencv_core_mat_10 int_11 ))
+([org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/solvePnPRansac org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(defn stereo-rectify-uncalibrated
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/stereoRectifyUncalibrated org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ]
+  (Calib3d/stereoRectifyUncalibrated org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ))
+)
+
+(defn stereo-rectify-uncalibrated!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/stereoRectifyUncalibrated org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ]
+  (Calib3d/stereoRectifyUncalibrated org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ) org_opencv_core_mat_0 )
+)
+
+(defn calibrate-camera-extended
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 ]
+  (Calib3d/calibrateCameraExtended java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 ]
+  (Calib3d/calibrateCameraExtended java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 org_opencv_core_termcriteria_11 ]
+  (Calib3d/calibrateCameraExtended java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 org_opencv_core_termcriteria_11 ))
+)
+
+(defn calibrate-camera
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 ]
+  (Calib3d/calibrateCamera java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 org_opencv_core_termcriteria_8 ]
+  (Calib3d/calibrateCamera java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 org_opencv_core_termcriteria_8 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 ]
+  (Calib3d/calibrateCamera java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 ))
+)
+
+(defn stereo-calibrate
+([java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_termcriteria_13 ]
+  (Calib3d/stereoCalibrate java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_termcriteria_13 ))
+([java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 org_opencv_core_termcriteria_11 ]
+  (Calib3d/stereoCalibrate java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 org_opencv_core_termcriteria_11 ))
+([java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ]
+  (Calib3d/stereoCalibrate java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ))
+([java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 ]
+  (Calib3d/stereoCalibrate java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 ))
+([java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 ]
+  (Calib3d/stereoCalibrate java_util_list_0 java_util_list_1 java_util_list_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_size_7 org_opencv_core_mat_8 org_opencv_core_mat_9 int_10 ))
+)
+
+(defn calibrate
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 org_opencv_core_termcriteria_8 ]
+  (Calib3d/calibrate java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 org_opencv_core_termcriteria_8 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 ]
+  (Calib3d/calibrate java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 int_7 ))
+([java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 ]
+  (Calib3d/calibrate java_util_list_0 java_util_list_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 java_util_list_5 java_util_list_6 ))
+)
+
+(defn sampson-distance
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Calib3d/sampsonDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+)
+
+(defn sampson-distance!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Calib3d/sampsonDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+)
+
+(defn triangulate-points
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/triangulatePoints org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ))
+)
+
+(defn triangulate-points!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/triangulatePoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
+)
+
+(defn distort-points
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ]
+  (Calib3d/distortPoints org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/distortPoints org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+)
+
+(defn distort-points!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ]
+  (Calib3d/distortPoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/distortPoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+)
+
+(defn estimate-new-camera-matrix-for-undistort-rectify
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_size_6 double_7 ]
+  (Calib3d/estimateNewCameraMatrixForUndistortRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_size_6 double_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/estimateNewCameraMatrixForUndistortRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ))
+)
+
+(defn estimate-new-camera-matrix-for-undistort-rectify!
+([org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_size_6 double_7 ]
+  (Calib3d/estimateNewCameraMatrixForUndistortRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_size_6 double_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/estimateNewCameraMatrixForUndistortRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
+)
+
+(defn undistort-image
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/undistortImage org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_size_5 ]
+  (Calib3d/undistortImage org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_size_5 ))
+)
+
+(defn undistort-image!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/undistortImage org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_size_5 ]
+  (Calib3d/undistortImage org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_size_5 ) org_opencv_core_mat_0 )
+)
+
+(defn compose-rt
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 ]
+  (Calib3d/composeRT org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/composeRT org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(defn compose-rt!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 ]
+  (Calib3d/composeRT org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/composeRT org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
+)
+
+(defn compute-correspond-epilines
+([org_opencv_core_mat_0 int_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/computeCorrespondEpilines org_opencv_core_mat_0 int_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+)
+
+; (defn rectify-3-collinear
+; ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 java_util_list_6 java_util_list_7 org_opencv_core_size_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 org_opencv_core_mat_14 org_opencv_core_mat_15 org_opencv_core_mat_16 org_opencv_core_mat_17 org_opencv_core_mat_18 org_opencv_core_mat_19 double_20 org_opencv_core_size_21 org_opencv_core_rect_22 org_opencv_core_rect_23 int_24 ]
+;   (Calib3d/rectify3Collinear org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 java_util_list_6 java_util_list_7 org_opencv_core_size_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 org_opencv_core_mat_14 org_opencv_core_mat_15 org_opencv_core_mat_16 org_opencv_core_mat_17 org_opencv_core_mat_18 org_opencv_core_mat_19 double_20 org_opencv_core_size_21 org_opencv_core_rect_22 org_opencv_core_rect_23 int_24 ))
+; )
+
+; (defn rectify-3-collinear!
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 java_util_list_6 java_util_list_7 org_opencv_core_size_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 org_opencv_core_mat_14 org_opencv_core_mat_15 org_opencv_core_mat_16 org_opencv_core_mat_17 org_opencv_core_mat_18 org_opencv_core_mat_19 double_20 org_opencv_core_size_21 org_opencv_core_rect_22 org_opencv_core_rect_23 int_24 ]
+;   (Calib3d/rectify3Collinear org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 java_util_list_6 java_util_list_7 org_opencv_core_size_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 org_opencv_core_mat_12 org_opencv_core_mat_13 org_opencv_core_mat_14 org_opencv_core_mat_15 org_opencv_core_mat_16 org_opencv_core_mat_17 org_opencv_core_mat_18 org_opencv_core_mat_19 double_20 org_opencv_core_size_21 org_opencv_core_rect_22 org_opencv_core_rect_23 int_24 ) org_opencv_core_mat_0 )
+; )
+
+(defn convert-points-from-homogeneous
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/convertPointsFromHomogeneous org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+)
+
+(defn convert-points-from-homogeneous!
+([org_opencv_core_mat_0 ]
+  (Calib3d/convertPointsFromHomogeneous org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+)
+
+(defn convert-points-to-homogeneous
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/convertPointsToHomogeneous org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+)
+
+(defn convert-points-to-homogeneous!
+([org_opencv_core_mat_0 ]
+  (Calib3d/convertPointsToHomogeneous org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+)
+
+(defn correct-matches
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/correctMatches org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ))
+)
+
+(defn correct-matches!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/correctMatches org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
+)
+
+(defn decompose-essential-mat
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/decomposeEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+)
+
+(defn decompose-essential-mat!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/decomposeEssentialMat org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+)
+
+(defn decompose-projection-matrix
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/decomposeProjectionMatrix org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ]
+  (Calib3d/decomposeProjectionMatrix org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ))
+)
+
+(defn decompose-projection-matrix!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/decomposeProjectionMatrix org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ]
+  (Calib3d/decomposeProjectionMatrix org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
+)
+
+(defn draw-chessboard-corners
+([org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 boolean_3 ]
+  (Calib3d/drawChessboardCorners org_opencv_core_mat_0 org_opencv_core_size_1 org_opencv_core_matofpoint2f_2 boolean_3 ))
+)
+
+(defn filter-speckles
+([org_opencv_core_mat_0 double_1 int_2 double_3 ]
+  (Calib3d/filterSpeckles org_opencv_core_mat_0 double_1 int_2 double_3 ))
+([org_opencv_core_mat_0 double_1 int_2 double_3 org_opencv_core_mat_4 ]
+  (Calib3d/filterSpeckles org_opencv_core_mat_0 double_1 int_2 double_3 org_opencv_core_mat_4 ))
+)
+
+(defn mat-mul-deriv
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/matMulDeriv org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+)
+
+(defn mat-mul-deriv!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/matMulDeriv org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+)
+
+(defn project-points
+([org_opencv_core_matofpoint3f_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_matofdouble_4 org_opencv_core_matofpoint2f_5 org_opencv_core_mat_6 double_7 ]
+  (Calib3d/projectPoints org_opencv_core_matofpoint3f_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_matofdouble_4 org_opencv_core_matofpoint2f_5 org_opencv_core_mat_6 double_7 ))
+([org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/projectPoints org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(defn reproject-image-to-3-d
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 int_4 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 int_4 ))
+)
+
+(defn reproject-image-to-3-d!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 int_4 ]
+  (Calib3d/reprojectImageTo3D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 int_4 ) org_opencv_core_mat_0 )
+)
+
+(defn estimate-affine-3-d
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 double_5 ]
+  (Calib3d/estimateAffine3D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 double_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/estimateAffine3D org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+)
+
+(defn estimate-affine-3-d!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 double_5 ]
+  (Calib3d/estimateAffine3D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 double_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Calib3d/estimateAffine3D org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+)
+
+(defn recover-pose
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 org_opencv_core_mat_7 org_opencv_core_mat_8 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 org_opencv_core_mat_7 org_opencv_core_mat_8 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_point_6 org_opencv_core_mat_7 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_point_6 org_opencv_core_mat_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ))
+)
+
+(defn recover-pose!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 org_opencv_core_mat_7 org_opencv_core_mat_8 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 org_opencv_core_mat_7 org_opencv_core_mat_8 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 double_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_point_6 org_opencv_core_mat_7 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 double_5 org_opencv_core_point_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
+  (Calib3d/recoverPose org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
+)
+
+(defn decompose-homography-mat
+([org_opencv_core_mat_0 org_opencv_core_mat_1 java_util_list_2 java_util_list_3 java_util_list_4 ]
+  (Calib3d/decomposeHomographyMat org_opencv_core_mat_0 org_opencv_core_mat_1 java_util_list_2 java_util_list_3 java_util_list_4 ))
+)
+
+(defn decompose-homography-mat!
+([org_opencv_core_mat_0 java_util_list_2 java_util_list_3 java_util_list_4 ]
+  (Calib3d/decomposeHomographyMat org_opencv_core_mat_0 org_opencv_core_mat_0 java_util_list_2 java_util_list_3 java_util_list_4 ) org_opencv_core_mat_0 )
+)
+
+(defn solve-p-3-p
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 java_util_list_4 java_util_list_5 int_6 ]
+  (Calib3d/solveP3P org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 java_util_list_4 java_util_list_5 int_6 ))
+)
+
+(defn solve-p-3-p!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 java_util_list_4 java_util_list_5 int_6 ]
+  (Calib3d/solveP3P org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 java_util_list_4 java_util_list_5 int_6 ) org_opencv_core_mat_0 )
+)
+
+(defn stereo-rectify
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 double_13 org_opencv_core_size_14 org_opencv_core_rect_15 org_opencv_core_rect_16 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 double_13 org_opencv_core_size_14 org_opencv_core_rect_15 org_opencv_core_rect_16 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_size_13 double_14 double_15 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_size_13 double_14 double_15 ))
+)
+
+(defn stereo-rectify!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 double_13 org_opencv_core_size_14 org_opencv_core_rect_15 org_opencv_core_rect_16 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 double_13 org_opencv_core_size_14 org_opencv_core_rect_15 org_opencv_core_rect_16 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_size_13 double_14 double_15 ]
+  (Calib3d/stereoRectify org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_size_4 org_opencv_core_mat_5 org_opencv_core_mat_6 org_opencv_core_mat_7 org_opencv_core_mat_8 org_opencv_core_mat_9 org_opencv_core_mat_10 org_opencv_core_mat_11 int_12 org_opencv_core_size_13 double_14 double_15 ) org_opencv_core_mat_0 )
+)
+
+(defn validate-disparity
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Calib3d/validateDisparity org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
+  (Calib3d/validateDisparity org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
+)
+
+(defn validate-disparity!
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Calib3d/validateDisparity org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 ]
+  (Calib3d/validateDisparity org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
+)
+
+(defn rodrigues
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Calib3d/Rodrigues org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Calib3d/Rodrigues org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+)
+
+(defn rodrigues!
+([org_opencv_core_mat_0 ]
+  (Calib3d/Rodrigues org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Calib3d/Rodrigues org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+)
+
+(defn calibration-matrix-values
+([org_opencv_core_mat_0 org_opencv_core_size_1 double_2 double_3 array_d_4 array_d_5 array_d_6 org_opencv_core_point_7 array_d_8 ]
+  (Calib3d/calibrationMatrixValues org_opencv_core_mat_0 org_opencv_core_size_1 double_2 double_3 array_d_4 array_d_5 array_d_6 org_opencv_core_point_7 array_d_8 ))
+)
+
+(defn solve-pn-p
+([org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 boolean_6 int_7 ]
+  (Calib3d/solvePnP org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 boolean_6 int_7 ))
+([org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ]
+  (Calib3d/solvePnP org_opencv_core_matofpoint3f_0 org_opencv_core_matofpoint2f_1 org_opencv_core_mat_2 org_opencv_core_matofdouble_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ))
+)
+
+(def CALIB_USE_INTRINSIC_GUESS Calib3d/CALIB_USE_INTRINSIC_GUESS)
+(def CALIB_RECOMPUTE_EXTRINSIC Calib3d/CALIB_RECOMPUTE_EXTRINSIC)
+(def CALIB_CHECK_COND Calib3d/CALIB_CHECK_COND)
+(def CALIB_FIX_SKEW Calib3d/CALIB_FIX_SKEW)
+(def CALIB_FIX_K1 Calib3d/CALIB_FIX_K1)
+(def CALIB_FIX_K2 Calib3d/CALIB_FIX_K2)
+(def CALIB_FIX_K3 Calib3d/CALIB_FIX_K3)
+(def CALIB_FIX_K4 Calib3d/CALIB_FIX_K4)
+(def CALIB_FIX_INTRINSIC Calib3d/CALIB_FIX_INTRINSIC)
+(def CV_ITERATIVE Calib3d/CV_ITERATIVE)
+(def CV_EPNP Calib3d/CV_EPNP)
+(def CV_P3P Calib3d/CV_P3P)
+(def CV_DLS Calib3d/CV_DLS)
+(def LMEDS Calib3d/LMEDS)
+(def RANSAC Calib3d/RANSAC)
+(def RHO Calib3d/RHO)
+(def SOLVEPNP_ITERATIVE Calib3d/SOLVEPNP_ITERATIVE)
+(def SOLVEPNP_EPNP Calib3d/SOLVEPNP_EPNP)
+(def SOLVEPNP_P3P Calib3d/SOLVEPNP_P3P)
+(def SOLVEPNP_DLS Calib3d/SOLVEPNP_DLS)
+(def SOLVEPNP_UPNP Calib3d/SOLVEPNP_UPNP)
+(def SOLVEPNP_AP3P Calib3d/SOLVEPNP_AP3P)
+(def CALIB_CB_ADAPTIVE_THRESH Calib3d/CALIB_CB_ADAPTIVE_THRESH)
+(def CALIB_CB_NORMALIZE_IMAGE Calib3d/CALIB_CB_NORMALIZE_IMAGE)
+(def CALIB_CB_FILTER_QUADS Calib3d/CALIB_CB_FILTER_QUADS)
+(def CALIB_CB_FAST_CHECK Calib3d/CALIB_CB_FAST_CHECK)
+(def CALIB_CB_SYMMETRIC_GRID Calib3d/CALIB_CB_SYMMETRIC_GRID)
+(def CALIB_CB_ASYMMETRIC_GRID Calib3d/CALIB_CB_ASYMMETRIC_GRID)
+(def CALIB_CB_CLUSTERING Calib3d/CALIB_CB_CLUSTERING)
+(def CALIB_FIX_ASPECT_RATIO Calib3d/CALIB_FIX_ASPECT_RATIO)
+(def CALIB_FIX_PRINCIPAL_POINT Calib3d/CALIB_FIX_PRINCIPAL_POINT)
+(def CALIB_ZERO_TANGENT_DIST Calib3d/CALIB_ZERO_TANGENT_DIST)
+(def CALIB_FIX_FOCAL_LENGTH Calib3d/CALIB_FIX_FOCAL_LENGTH)
+(def CALIB_FIX_K5 Calib3d/CALIB_FIX_K5)
+(def CALIB_FIX_K6 Calib3d/CALIB_FIX_K6)
+(def CALIB_RATIONAL_MODEL Calib3d/CALIB_RATIONAL_MODEL)
+(def CALIB_THIN_PRISM_MODEL Calib3d/CALIB_THIN_PRISM_MODEL)
+(def CALIB_FIX_S1_S2_S3_S4 Calib3d/CALIB_FIX_S1_S2_S3_S4)
+(def CALIB_TILTED_MODEL Calib3d/CALIB_TILTED_MODEL)
+(def CALIB_FIX_TAUX_TAUY Calib3d/CALIB_FIX_TAUX_TAUY)
+(def CALIB_USE_QR Calib3d/CALIB_USE_QR)
+(def CALIB_FIX_TANGENT_DIST Calib3d/CALIB_FIX_TANGENT_DIST)
+(def CALIB_SAME_FOCAL_LENGTH Calib3d/CALIB_SAME_FOCAL_LENGTH)
+(def CALIB_ZERO_DISPARITY Calib3d/CALIB_ZERO_DISPARITY)
+(def CALIB_USE_LU Calib3d/CALIB_USE_LU)
+(def FM_7POINT Calib3d/FM_7POINT)
+(def FM_8POINT Calib3d/FM_8POINT)
+(def FM_LMEDS Calib3d/FM_LMEDS)
+(def FM_RANSAC Calib3d/FM_RANSAC)

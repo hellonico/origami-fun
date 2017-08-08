@@ -4,6 +4,7 @@
   (:import
     [java.util ArrayList]
     [org.opencv.photo Photo]
+    [org.opencv.calib3d Calib3d]
     [org.opencv.objdetect CascadeClassifier]
     [org.opencv.core MatOfDouble RotatedRect MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
@@ -233,7 +234,10 @@
       ; (print-headers)
       ; (print-constructors VideoCapture)
       ; (print-fields Videoio)
-      (print-constructors MatOfDouble)
+      ; (print-constructors MatOfDouble)
+
+      (print-cv-methods Calib3d)
+      (print-fields Calib3d)
   ))
 
 )
