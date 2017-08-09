@@ -14,6 +14,7 @@
   (copy-to left ol)
   (resize! right (size or))
   (copy-to right or)
+  (u/resize-by output 0.3)
   output))
 
 (defn to-gray[buffer ]
@@ -80,9 +81,11 @@
 (defn mode-four[]
     (u/cams-window
      {:devices [
-       {:device 0 :width 200 :height 150 :fn identity}
+       {:device 0 :width 1280 :height 960 :fn to-gray}
       ]
-      :video { :fn identity :recording {:width 500 :height 400 :output "nico.avi" :frame-rate 20}}
+      :video { :fn identity
+        :recording {:width 500 :height 400 :output "nico.avi" :frame-rate 30}
+      }
       :frame
       {:width 650 :height 300 :title "OneOfTheSame"}})
     )

@@ -3,7 +3,6 @@
     [opencv3.core :refer :all]
     [opencv3.utils :as u])
   (:import
-    [org.opencv.calib3d Calib3d]
     [org.opencv.features2d Features2d DescriptorExtractor DescriptorMatcher FeatureDetector]))
 ;;;
 ; DETECTION WITH AKAZE
@@ -17,7 +16,19 @@
 (def points1 (new-matofkeypoint))
 (.detect detector mat1 points1)
 
-(def mat2 (imread "resources/images/cat_face.jpg"))
+; (def mat2 (imread "resources/images/cat_face.jpg" ))
+; (def mat2 (imread "resources/images/lena.png" ))
+; (def mat2 (->
+  ; (imread "resources/images/rotate/rotatedcat30.png" )
+  ; (blur! (new-size 51 51))
+  ; (gaussian-blur! (new-size 9 9) 20 20)
+  ; (dilate! (get-structuring-element MORPH_RECT (new-size 3 3)))
+  ; ))
+; (def mat2 (imread "resources/nico.jpg"))
+; (def mat2 (->
+;   (imread "resources/images/rotate/rotatedcat60.png" )))
+(def mat2 (-> "resources/images/rotate/warped.png" imread))
+
 (def points2 (new-matofkeypoint))
 (.detect detector mat2 points2)
 
@@ -30,14 +41,14 @@
 (def matches (new-matofdmatch))
 (.match matcher desc1 desc2 matches)
 
-(defn best-n-dmatches[n dmatches]
+(defn best-n-dmatches2[dmatches]
   (new-matofdmatch
     (into-array org.opencv.core.DMatch
-      (take n (sort-by #(.-distance %) (.toArray dmatches))))))
+      (filter #(< (.-distance %) 10) (.toArray dmatches)))))
 
-(defn draw-matches [_mat1 _points1 _mat2 _points2 _matches n draw-method]
+(defn draw-matches [_mat1 _points1 _mat2 _points2 _matches draw-method]
   (let[ _mat (new-mat (* 2 (.rows _mat1)) (* 2 (.cols _mat1)) (.type _mat1))
-        _sorted-matches (best-n-dmatches n _matches)]
+        _sorted-matches (best-n-dmatches2 _matches)]
 
     (Features2d/drawMatches
               _mat1
@@ -51,70 +62,11 @@
               (new-matofbyte)
               draw-method)
       _mat))
+(defn is-a-match [dmatches]
+  (> (count (filter #(< (.-distance %) 10) (.toArray dmatches))) 0))
+
+(is-a-match matches)
 
 (imwrite
-  (draw-matches mat1 points1 mat2 points2 matches 10 Features2d/NOT_DRAW_SINGLE_POINTS)
+  (draw-matches mat1 points1 mat2 points2 matches Features2d/NOT_DRAW_SINGLE_POINTS)
   "output/detection.png")
-
-(imwrite
-  (draw-matches mat1 points1 mat2 points2 matches 20 Features2d/DRAW_RICH_KEYPOINTS)
-  "output/detection.png")
-
-(imwrite
-  (draw-matches mat1 points1 mat2 points2 matches 20 Features2d/NOT_DRAW_SINGLE_POINTS)
-  "output/detection.png")
-
-
-
-;;;
-; HOMOGRAPHY
-;;;
-
-(def re-matches
-  (best-n-dmatches 30 matches))
-
-(def good-matches-list
-  (.toList re-matches) )
-
-(def points1-list (.toList points1))
-(def points2-list (.toList points2))
-
-(def obj-list (new-arraylist))
-(def scene-list (new-arraylist))
-
-(doseq [match good-matches-list]
-  (.add obj-list (.-pt (.get points2-list (.-queryIdx match))))
-  (.add scene-list (.-pt (.get points1-list (.-trainIdx match)))))
-
-(def obj
-  (doto (new-matofpoint2f)
-    (.fromList obj-list)))
-
-(def scene (doto (new-matofpoint2f)
-  (.fromList scene-list)))
-
-(def H
-  (find-homography obj scene RANSAC 3))
-
-(def warpimg (clone mat2))
-(def ims (new-size (.cols mat2) (.rows mat2)))
-(warp-perspective mat2 warpimg H ims)
-
-(def obj-corners (new-mat 4 1 CV_32FC2))
-(.put obj-corners 0 0 (double-array [0 0]))
-(.put obj-corners 1 0 (double-array [(.cols mat2)  0]))
-(.put obj-corners 2 0 (double-array [(.cols mat2)  (.rows mat2)]))
-(.put obj-corners 3 0 (double-array [0 (.rows mat2)]))
-
-(def scene-corners (new-mat 4 1 CV_32FC2))
-(perspective-transform obj-corners scene-corners H)
-
-(def detect-mat (clone mat1))
-(line detect-mat (new-point (.get scene-corners 0 0)) (new-point (.get scene-corners 1 0)) (new-scalar 0 255 0) 4)
-(line detect-mat (new-point (.get scene-corners 1 0)) (new-point (.get scene-corners 2 0)) (new-scalar 255 0) 4)
-(line detect-mat (new-point (.get scene-corners 2 0)) (new-point (.get scene-corners 3 0)) (new-scalar 0 255 0) 4)
-(line detect-mat (new-point (.get scene-corners 3 0)) (new-point (.get scene-corners 0 0)) (new-scalar 0 255 0) 4)
-
-(imwrite detect-mat "output/detection.png")
-
-; (u/show (u/resize-by detect-mat 0.5))
