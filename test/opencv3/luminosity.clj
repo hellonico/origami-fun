@@ -70,10 +70,13 @@
      (merge channels target)
      target)))
 
+luma[y] = (luma[y]-128)*1.10+128
+
 (-> img
   clone
   ; (cvt-color! COLOR_BGR2YUV)
   ; (update-channel! #(int (mod (+ % 0) 256)) 0)
-  (update-channel! (fn[x] -200) 2)
+  ; (update-channel! (fn [x] (+ (* 1.2 (- x 128)) 128)) 2  )
+  (update-channel! (fn [x] (if (> x 20) 20 x)) 1)
   ; (cvt-color! COLOR_YUV2BGR)
   (imwrite "output/channels.png"))
