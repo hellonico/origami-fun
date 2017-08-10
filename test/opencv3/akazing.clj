@@ -32,6 +32,15 @@
 (def points2 (new-matofkeypoint))
 (.detect detector mat2 points2)
 
+(def show-keypoints1 (new-mat))
+(Features2d/drawKeypoints mat1 points1 show-keypoints1 (new-scalar 255 0 0) 0)
+(u/show show-keypoints1)
+
+(def show-keypoints2 (new-mat))
+(Features2d/drawKeypoints mat2 points2 show-keypoints2 (new-scalar 255 0 0) 0)
+(u/show show-keypoints2)
+
+
 (def desc1 (new-mat))
 (def desc2 (new-mat))
 (.compute extractor mat1 points1 desc1)
@@ -70,3 +79,4 @@
 (imwrite
   (draw-matches mat1 points1 mat2 points2 matches Features2d/NOT_DRAW_SINGLE_POINTS)
   "output/detection.png")
+
