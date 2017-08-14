@@ -17,8 +17,6 @@
       (-> neko clone (rotate-by! i))
       ))))
 
-; (-main "resources/images/cat_face.jpg")
-
 (comment
 (u/show
   (-> "resources/images/cat_face.jpg"

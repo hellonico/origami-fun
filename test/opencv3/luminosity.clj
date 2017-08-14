@@ -24,8 +24,6 @@
 (defn average [coll]
   (/ (apply + coll) (count coll)))
 
-; (average (mat-to-bytes (first channels)))
-
 ;
 ; COLORS
 ;
@@ -62,21 +60,33 @@
 (defn update-channel! [ mat fnc chan]
   (let [ channels (new-arraylist)  target (new-mat)]
     (split img channels)
-    (let [new-ch
+    (let [
+      old-ch (nth channels chan)
+      new-ch
     (byte-to-mat
-     (byte-array (map fnc (mat-to-bytes (nth channels chan)) ))
-     (new-mat (.height mat) (.width mat) CV_8U)   )]
+     (byte-array (map fnc (mat-to-bytes old-ch) ))
+     (new-mat (.height mat) (.width mat) (.type old-ch) )  )]
      (.set channels chan new-ch)
      (merge channels target)
      target)))
 
-luma[y] = (luma[y]-128)*1.10+128
+(comment
+; luma[y] = (luma[y]-128)*1.10+128
+
+(-> img
+  clone
+  ; (update-channel! (fn [x] (if (> x 30) 30 x)) 0) ; goes yellow
+  ; (update-channel! (fn [x] (if (> x 30) 30 x)) 1) ; goes red
+  ; (update-channel! identity 2)
+  (update-channel! (fn [x] (let [y (+ x 128)] (if (< y 0) (spit "test.log" y :append true))) x) 2) ; goes green
+  (cvt-color! COLOR_YUV2RGB)
+  (imwrite "output/channels.png"))
 
 (-> img
   clone
   ; (cvt-color! COLOR_BGR2YUV)
-  ; (update-channel! #(int (mod (+ % 0) 256)) 0)
-  ; (update-channel! (fn [x] (+ (* 1.2 (- x 128)) 128)) 2  )
-  (update-channel! (fn [x] (if (> x 20) 20 x)) 1)
+  (update-channel! identity 2)
   ; (cvt-color! COLOR_YUV2BGR)
   (imwrite "output/channels.png"))
+
+)

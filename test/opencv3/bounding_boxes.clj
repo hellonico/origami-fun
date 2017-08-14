@@ -3,7 +3,7 @@
   (:require [opencv3.utils :as u]))
 ; http://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/bounding_rects_circles/bounding_rects_circles.html
 
-(def kikyu
+(def kikyuq
   (-> "http://www.v3wall.com/wallpaper/1366_768/0912/1366_768_20091223010850201138.jpg"
    u/mat-from-url))
 
