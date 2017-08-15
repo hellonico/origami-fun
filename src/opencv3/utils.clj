@@ -54,6 +54,22 @@ matrix))
     (.put mat 0 0 bytes)
     mat))
 
+
+(defn matrix-to-mat-of-double [matrix]
+  (let[
+    flat (flatten matrix)
+    rows (count matrix)
+    cols (count (first matrix))
+    mat (cv/new-mat rows cols cv/CV_64F)
+    total (.total mat)
+    bytes (double-array total)
+    ]
+    (doseq [^int i (range 0 total)]
+      (aset-double bytes i (nth flat i)))
+    (.put mat 0 0 bytes)
+    mat))
+
+
 (defn mat-from [src]
   (Mat. (.rows src) (.cols src) (.type src)))
 

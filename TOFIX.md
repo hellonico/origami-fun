@@ -1,13 +1,27 @@
+# wrong method in multiply!
+
+parameters are in the wrong order
+
+(defn multiply!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ]
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ]
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+)
+
+
 # wrong method in mean!
 
 (defn mean!
-([org_opencv_core_mat_0 ] 
+([org_opencv_core_mat_0 ]
   (Core/mean org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
-; ([org_opencv_core_mat_0 ] 
+; ([org_opencv_core_mat_0 ]
 ;   (Core/mean org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
-# too long 
+# too long
 
 
 ; (defn rectify-3-collinear
@@ -23,8 +37,8 @@
 
 # missing method
 
-(defn in-range! 
-  ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2] 
+(defn in-range!
+  ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2]
   (Core/inRange org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_0 )
   ))
 
