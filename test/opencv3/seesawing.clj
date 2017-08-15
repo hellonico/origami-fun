@@ -19,12 +19,12 @@
   (-> rr imread (resize! (new-size 300 300)))))
 
 
-  (defn process-image [ _img state  ]
-  (let [tmp (->
-   _img
-   (cvt-color! COLOR_RGB2GRAY)
-   (canny! (double (state :b)) (double (state :a)) 3 true))]
-   (if (state :bitwise) (bitwise-not! tmp)) tmp))
+(defn process-image [ _img state  ]
+(let [tmp (->
+ _img
+ (cvt-color! COLOR_RGB2GRAY)
+ (canny! (double (state :b)) (double (state :a)) 3 true))]
+ (if (state :bitwise) (bitwise-not! tmp)) tmp))
 
 (def state
   (atom {:bitwise true :IMG (get-random-pict) :a 0 :b 300}))
@@ -86,3 +86,5 @@
     (-> f
     pack!
     show!)))
+
+(-main)

@@ -50,13 +50,27 @@
 
 (def brect
   (bounding-rect (first contours)))
-; (println brect)
+(println brect)
 (def work3 (clone img))
 (def work4 (.submat work3 brect))
 
 (def M2
   (get-rotation-matrix-2-d
-    (new-point 33 102) angle 1))
+    (new-point (/ (.height brect) 2) (/ (.width brect) 2)) angle 1))
 
-(warp-affine! work4 M2 (.size work3))
+; (warp-affine! work4 M2 (.size work3) INTER_CUBIC BORDER_TRANSPARENT color/red-1-)
 (imwrite work4 "output/minarearect.png" )
+
+
+; https://stackoverflow.com/questions/12852578/image-rotation-with-opencv-in-android-cuts-off-the-edges-of-an-image
+
+; (def sinv (first (.get M 0 1)))
+; (def cosv (first (.get M 0 0)))
+; (def dst-size (new-size
+;   (+
+;   (* cosv (.width img ))
+;   (* sinv (.height img)))
+;   (+
+;   (* sinv (.width img ))
+;   (* cosv (.height img)))   ))
+; (.put M2 1 2 (double-array [(* (.width img ) sinv)]))

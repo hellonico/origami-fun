@@ -105,7 +105,7 @@
      (.set channels chan new-ch)
      (merge channels target)
      target)))
-
+(comment
 ; "Elapsed time: 1543.476998 msecs"
 (time
  (->
@@ -166,3 +166,4 @@
   (update-channel! (fn [x] 120) 0) ; red filter
   (cvt-color! COLOR_HLS2RGB)
   (imwrite "output/filter-cat.png")))
+)
