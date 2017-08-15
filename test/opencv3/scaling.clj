@@ -38,6 +38,21 @@
   imread
   (u/resize-by 0.2)
   (cvt-color! COLOR_RGB2HLS)
-  (multiply! (u/matrix-to-mat-of-double [ [1.0 0.8 0.8]] ))
+  (multiply! (u/matrix-to-mat-of-double [ [1.0 0.7 0.7]] ))
   (cvt-color! COLOR_HLS2RGB)
   (imwrite "output/scaling.png"))
+
+
+; brighten only one part of the image
+(def img (->
+  "resources/images/cat.jpg"
+  imread
+  (u/resize-by 0.2)))
+
+(-> img
+  (.submat (new-rect 100 30  120 120))
+  (cvt-color! COLOR_RGB2HLS)
+  (multiply! (u/matrix-to-mat-of-double [ [1.0 1.3 1.3]] ))
+  (cvt-color! COLOR_HLS2RGB))
+
+(imwrite img "output/scaling.png")
