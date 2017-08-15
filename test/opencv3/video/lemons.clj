@@ -18,7 +18,7 @@
     output)))
 
 (def high-low-0
-  (parial high-low 0.5 90 rgb/violetred rgb/wheat rgb/violetred-4 rgb/papayawhip buffer))
+  (partial high-low 0.5 90 rgb/violetred rgb/wheat rgb/violetred-4 rgb/papayawhip))
 (def high-low-1
   (partial high-low 0.5 90 rgb/gray rgb/blue rgb/orange rgb/green))
 (def high-low-2
