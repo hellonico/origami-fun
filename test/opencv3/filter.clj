@@ -27,6 +27,8 @@
 ;   (imwrite "output/cat3.png"))
 
 ; manual filter faster
+
+
 (defn filter-buffer [image-3 _mod]
   (let [ total (* 3 (.total image-3))
          bytes (byte-array total)]
@@ -39,6 +41,8 @@
         image-3))
 
 (comment
+
+
 (->
   "resources/images/cat.jpg"
   (imread)
@@ -55,4 +59,5 @@
   target)
 
 (imwrite target "output/cat3.png")
+
 )
