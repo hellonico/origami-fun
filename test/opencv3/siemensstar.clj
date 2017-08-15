@@ -16,4 +16,4 @@
     star)))
 
 (u/show
-  (siemens-star 256 20 [color/blueviolet color/greenyellow color/magenta-3]))
+  (siemens-star 120 20 [color/blueviolet color/greenyellow color/magenta-3]))

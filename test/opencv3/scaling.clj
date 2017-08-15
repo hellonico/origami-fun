@@ -48,6 +48,7 @@
   "resources/images/cat.jpg"
   imread
   (u/resize-by 0.2)))
+  
 
 (-> img
   (.submat (new-rect 100 30  120 120))

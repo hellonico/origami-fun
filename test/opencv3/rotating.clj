@@ -1,8 +1,9 @@
-  (:require
-    (ns opencv3.rotating
-    [opencv3.core :refer :all]
-    [opencv3.utils :as u]
-    [opencv3.colors.rgb :as color]))
+
+  (ns opencv3.rotating
+    (:require
+  [opencv3.core :refer :all]
+  [opencv3.utils :as u]
+  [opencv3.colors.rgb :as color]))
 
 ;
 ; generate image
