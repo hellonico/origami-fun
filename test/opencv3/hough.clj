@@ -19,12 +19,12 @@
 ;
 ; hough lines p starts here
 ;
-(def parking (imread "resources/images/lines/parking.png"))
-(def gray (-> parking clone (cvt-color! COLOR_BGR2GRAY)))
-(def blur-gray (-> gray clone (gaussian-blur! (new-size 3 3) 0 )))
-(def edges (-> blur-gray clone (canny! 50 150 )))
+(def parking    (imread "resources/images/lines/parking.png"))
+(def gray       (-> parking clone (cvt-color! COLOR_BGR2GRAY)))
+(def blur-gray  (-> gray clone (gaussian-blur! (new-size 3 3) 0 )))
+(def edges      (-> blur-gray clone (canny! 50 150 )))
 
-(def rho  1) ; distance resolution in pixels of the Hough grid
+(def rho 1) ; distance resolution in pixels of the Hough grid
 (def theta  (/ Math/PI 180)) ;  # angular resolution in radians of the Hough grid
 (def min-intersections 15) ;  # minimum number of votes (intersections in Hough grid cell)
 (def min-line-length  50) ;  # minimum number of pixels making up a line
@@ -52,3 +52,8 @@
 
 ; (imwrite result "output/hough.png")
 ; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
+
+;
+; I wanna find the intersection between all those lines
+;
+; http://answers.opencv.org/question/961/can-i-use-cvfitline-to-robustly-find-an-intersection-point/
