@@ -21,21 +21,21 @@
 ;
 (def parking (imread "resources/images/lines/parking.png"))
 (def gray (-> parking clone (cvt-color! COLOR_BGR2GRAY)))
-(def blur-gray (-> gray clone (gaussian-blur! (new-size 5 5) 0 )))
+(def blur-gray (-> gray clone (gaussian-blur! (new-size 3 3) 0 )))
 (def edges (-> blur-gray clone (canny! 50 150 )))
 
-(def rho  2) ; distance resolution in pixels of the Hough grid
+(def rho  1) ; distance resolution in pixels of the Hough grid
 (def theta  (/ Math/PI 180)) ;  # angular resolution in radians of the Hough grid
-(def threshold_ 15) ;  # minimum number of votes (intersections in Hough grid cell)
-(def min_line_length  50) ;  # minimum number of pixels making up a line
-(def max_line_gap  50 ) ; # maximum gap in pixels between connectable line segments
+(def min-intersections 15) ;  # minimum number of votes (intersections in Hough grid cell)
+(def min-line-length  50) ;  # minimum number of pixels making up a line
+(def max-line-gap  20 ) ; # maximum gap in pixels between connectable line segments
 
 (def lines (new-mat))
-(hough-lines-p edges lines rho theta threshold_ min_line_length max_line_gap)
+(hough-lines-p edges lines rho theta min-intersections min-line-length  max-line-gap)
 
 (def result (clone parking))
-(dotimes [ i (.cols lines)]
-(let [ val (.get lines 0 i)]
+(dotimes [ i (.rows lines)]
+(let [ val (.get lines i 0)]
   (line result
     (new-point (nth val 0) (nth val 1))
     (new-point (nth val 2) (nth val 3))
@@ -49,3 +49,6 @@
   (-> edges clone (cvt-color! COLOR_GRAY2RGB))
   result] output)
 (imwrite output "output/hough.png")
+
+; (imwrite result "output/hough.png")
+; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
