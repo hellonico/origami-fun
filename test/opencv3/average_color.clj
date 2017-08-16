@@ -4,7 +4,8 @@
    [opencv3.core :refer :all]))
 
 ;
-; find average color of a picture using opencv mean function
+; find average color of a picture using opencv core
+; mean function
 ;
 
 (defn show-average[img]

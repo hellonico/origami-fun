@@ -14,7 +14,7 @@
     kernel-size (+ 3 (* 2 (mod ind 10)))
     kernel (new-mat kernel-size kernel-size CV_32F)]
   (set-to kernel (new-scalar (/ 1.0 (* kernel-size kernel-size))))
-  (filter-2-d img target ddepth kernel anchor delta BORDER_DEFAULT)
+  (filter-2-d src target ddepth kernel anchor delta BORDER_DEFAULT)
   target))
 
 (defn range-view [ img max ]
