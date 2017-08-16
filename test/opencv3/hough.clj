@@ -4,20 +4,8 @@
     [opencv3.colors.rgb :as color]
     [opencv3.core :refer :all]))
 
-(defn same-image? [ img1 img2]
-  (let [result (new-mat)]
-    (subtract img1 img2 result)
-    (let[ total (* 3 (.total result))
-          bytes (byte-array total)]
-      (.get result 0 0 bytes)
-      (= 0 (count (filter #(not (= 0 %)) bytes ))))))
-
-(same-image?
-  (imread "resources/images/cat.jpg")
-  (imread "resources/images/cat.jpg"))
-
 ;
-; hough lines p starts here
+; use hough lines p to find lines interesections
 ;
 (def parking    (imread "resources/images/lines/parking.png"))
 (def gray       (-> parking clone (cvt-color! COLOR_BGR2GRAY)))
@@ -31,7 +19,7 @@
 (def max-line-gap  20 ) ; # maximum gap in pixels between connectable line segments
 
 (def lines (new-mat))
-(hough-lines-p edges lines rho theta min-intersections min-line-length  max-line-gap)
+(hough-lines-p edges lines rho theta min-intersections min-line-length max-line-gap)
 
 (def result (clone parking))
 (dotimes [ i (.rows lines)]
@@ -51,9 +39,6 @@
 (imwrite output "output/hough.png")
 
 ; (imwrite result "output/hough.png")
-; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
 
-;
-; I wanna find the intersection between all those lines
-;
+; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
 ; http://answers.opencv.org/question/961/can-i-use-cvfitline-to-robustly-find-an-intersection-point/
