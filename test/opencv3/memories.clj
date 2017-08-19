@@ -5,6 +5,8 @@
 
 ;
 ; basic mat performance test.
+; inspired by
+; https://stackoverflow.com/questions/45709607/too-large-an-array-of-mat-objects-causes-seg-fault/45709608#45709608
 ;
 
 ; COUNT | TIME          |  machine  | use clone
@@ -38,5 +40,7 @@
   (-> target (u/resize-by 1))
   {:frame {:width 1600 :height 1200 }}
   )
+
+  (imwrite target "output/memories.png")
 
   ))
