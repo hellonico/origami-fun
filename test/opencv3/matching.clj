@@ -27,7 +27,7 @@
 (rectangle
   image
   match-loc
-  (new-point (+ (.x match-loc) (.cols lips)) (+ (.y match-loc) (.rows lips)))
+  (new-point (+ (.x match-loc) (.cols template)) (+ (.y match-loc) (.rows template)))
   color/teal)
 
 ; show the image
