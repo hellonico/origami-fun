@@ -41,17 +41,3 @@
 
 ; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
 ; http://answers.opencv.org/question/961/can-i-use-cvfitline-to-robustly-find-an-intersection-point/
-
-;
-; same using draw segment
-;
-; http://docs.opencv.org/java/3.0.0/org/opencv/imgproc/LineSegmentDetector.html
-(def parking2    (imread "resources/images/lines/parking.png" CV_8UC1))
-(def det (create-line-segment-detector))
-(def lines (new-mat))
-(def result (clone parking2))
-(.detect det parking2 lines)
-(.drawSegments det result lines)
-(def output (new-mat))
-(vconcat [(cvt-color! parking2 COLOR_GRAY2BGR) result] output)
-(imwrite output "output/hough2.png")
