@@ -14,7 +14,7 @@
   ]))
 (-> img
   clone
-  (transform! sepia)
+  (transform!  blue-sepia)
   (u/show  {:frame {:title "blue sepia"}}))
 
 (def sepia-2 (u/matrix-to-mat [
