@@ -31,13 +31,13 @@
     color/teal
     2)))
 
-(def output (new-mat))
-(vconcat [
+(->
+  (vconcat! [
   parking
   (-> blur-gray clone (cvt-color! COLOR_GRAY2RGB))
   (-> edges clone (cvt-color! COLOR_GRAY2RGB))
-  result] output)
-(imwrite output "output/hough.png")
+  result])
+  (imwrite  "output/hough.png"))
 
 ; http://answers.opencv.org/question/2966/how-do-the-rho-and-theta-values-work-in-houghlines/
 ; http://answers.opencv.org/question/961/can-i-use-cvfitline-to-robustly-find-an-intersection-point/
