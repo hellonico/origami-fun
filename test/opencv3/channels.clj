@@ -11,10 +11,11 @@
   (fnc bytes i))
   (.put img 0 0 bytes)
   img))
-  (defn yellow-filter[ bytes ^long i]
-    (let [ _mod 0]
-      (if (= 0 (mod (+ i _mod) 3))
-      (aset-byte bytes i 0))))
+
+(defn yellow-filter[ bytes ^long i]
+  (let [ _mod 0]
+    (if (= 0 (mod (+ i _mod) 3))
+    (aset-byte bytes i 0))))
 
 ; 2000ms
 (comment

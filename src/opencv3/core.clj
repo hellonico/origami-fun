@@ -45,6 +45,32 @@
   (.convertTo mat mat a1) mat))
 
 
+(declare put-text)
+(defn put-text!
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 )
+  org_opencv_core_mat_0
+  )
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8)
+  org_opencv_core_mat_0)
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 )
+  org_opencv_core_mat_0))
+
+(declare hconcat)
+(defn hconcat! [mats]
+  (let [ output (new-mat) ]
+  (hconcat mats output)
+  output))
+
+(declare vconcat)
+(defn vconcat! [mats]
+  (let [ output (new-mat) ]
+  (vconcat mats output)
+  output))
+
+
 ; AUTO GENERATED CONSTRUCTORS
 
 (defn new-cascadeclassifier
