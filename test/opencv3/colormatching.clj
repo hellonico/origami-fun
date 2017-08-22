@@ -38,6 +38,7 @@
 (copy-to cl2 cl3 mask)
 
 ; concat all the steps
-(def output (new-mat))
-(vconcat [rose (-> mask clone (cvt-color! COLOR_GRAY2RGB)) res res2 cl cl3] output)
-(imwrite output "output/colormatching.png")
+
+(imwrite
+  (vconcat! [rose (-> mask clone (cvt-color! COLOR_GRAY2RGB)) res res2 cl cl3])
+  "output/colormatching.png")
