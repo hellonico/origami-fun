@@ -46,7 +46,7 @@
   (->
   source
   clone
-  (apply-color-map! (eval (read-string color-map-string)))
+  (apply-color-map! (eval (read-string (str "opencv3.core/" color-map-string))))
   (watermark color-map-string)))
 
 (comment
