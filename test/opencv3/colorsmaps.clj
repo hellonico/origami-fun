@@ -36,23 +36,31 @@
 "COLORMAP_AUTUMN"
 "COLORMAP_SPRING"])
 
+(defn watermark [ source text]
+  (put-text! source
+    text
+    (new-point 70 70) FONT_HERSHEY_PLAIN 5 (new-scalar 255 255 255) 3)
+  )
+
 (defn change-color [ source color-map-string ]
   (->
   source
   clone
   (apply-color-map! (eval (read-string color-map-string)))
-  (put-text!
-    color-map-string
-    (new-point 70 70) FONT_HERSHEY_PLAIN 5 (new-scalar 255 255 255) 3)))
+  (watermark color-map-string)))
+
+(comment
 
 (def source
   (-> "resources/images/planets/kepler.jpg" imread))
 
 (def targets
   (cons
-    (-> source clone   (put-text!
-      "ORIGINAL"
-      (new-point 70 70) FONT_HERSHEY_PLAIN 5 (new-scalar 255 255 255) 3))
-   (map (partial change-color source) colors-maps)))
+    (-> source clone (watermark "ORIGINAL"))
+    (map (partial change-color source) colors-maps)))
 
-(imwrite (vconcat! targets) "output/colormaps.png")
+(imwrite
+  (vconcat! targets)
+  "output/colormaps.png")
+
+)
