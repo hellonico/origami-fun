@@ -9,6 +9,8 @@
 ;; **
 
 ;; **
+;;; The reference clojure code file can be found here: [bgdiff.clj](https://github.com/hellonico/opencv-fun/blob/master/test/opencv3/bgdiff.clj)
+;;; 
 ;;; Let's see first what our background looks like. 
 ;; **
 
