@@ -17,7 +17,7 @@
     5))
 
 (defn recognize
-  ([xml-file mat] (recognize xml-file mat color/red-2))
+  ([xml-file mat] (recognize xml-file color/red-2 mat))
   ([xml-file _color mat ]
   (let[ rects (new-matofrect)
         detector (new-cascadeclassifier xml-file)]
@@ -40,16 +40,16 @@
  ((partial recognize "resources/data/haarcascades_cuda/haarcascade_eye.xml"))
  (imwrite "output/detection.png"))
 
-; hand detection
+; palm detection
 (-> "resources/images/threehands.jpg"
  imread
  ((partial recognize "resources/XML/palm.xml"))
  (imwrite "output/detection.png"))
 
-; palm vs fist
+; fist (none found)
  (-> "resources/images/threehands.jpg"
   imread
-  ((partial recognize "resources/XML2/palm.xml"))
+  ((partial recognize "resources/XML2/fist.xml"))
   (imwrite "output/detection.png"))
 
 (-> "resources/images/threefists.jpg"
@@ -57,11 +57,12 @@
  ((partial recognize "resources/XML2/fist.xml"))
  (imwrite "output/detection.png"))
 
-; fist and palm
+; fist and palm both found
 (-> "resources/images/hands/fist-palm.jpg"
  imread
  ((partial recognize "resources/XML2/palm.xml" color/orange-2))
  ((partial recognize "resources/XML2/fist.xml" color/green-2))
  (imwrite "output/detection.png"))
+
 
 )
