@@ -50,5 +50,5 @@
 (add-watch state :state (fn [ _ _ _ new-state]
   (redraw new-state)))
 
-(remove-watch state :state)
+; (remove-watch state :state)
 ; (println @state)

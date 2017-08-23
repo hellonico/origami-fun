@@ -1,38 +1,67 @@
 (ns opencv3.detection
-  (:require [opencv3.core :refer :all]))
+  (:require
+    [opencv3.core :refer :all]
+    [opencv3.colors.rgb :as color]))
 
 ;;;
 ; face detection
 ;;;
 
-(defn draw-rect [mat rect]
+(defn draw-rect
+  [mat rect _color]
   (rectangle
     mat
     (new-point (.-x rect) (.-y rect))
     (new-point (+ (.-width rect) (.-x rect)) (+ (.-height rect) (.-y rect)))
-    (new-scalar 0 0 255)
+    _color
     5))
 
-(defn recognize [xml-file mat]
+(defn recognize
+  ([xml-file mat] (recognize xml-file mat color/red-2))
+  ([xml-file _color mat ]
   (let[ rects (new-matofrect)
         detector (new-cascadeclassifier xml-file)]
     (.detectMultiScale detector mat rects)
     (doseq [rect (.toArray rects)]
-      (draw-rect mat rect))
-      mat))
+      (draw-rect mat rect _color))
+      mat)))
 
 (comment
 
 ; face detection
 (-> "resources/nico.jpg"
  imread
- (partial recognized "resources/lbpcascade_frontalface.xml")
- (imwrite mat "output/detection.png"))
+ ((partial recognize "resources/lbpcascade_frontalface.xml"))
+ (imwrite "output/detection.png"))
 
 ; eyes detection
 (-> "resources/nico.jpg"
  imread
- (partial recognized "resources/data/haarcascades_cuda/haarcascade_eye.xml")
- (imwrite mat "output/detection.png"))
+ ((partial recognize "resources/data/haarcascades_cuda/haarcascade_eye.xml"))
+ (imwrite "output/detection.png"))
+
+; hand detection
+(-> "resources/images/threehands.jpg"
+ imread
+ ((partial recognize "resources/XML/palm.xml"))
+ (imwrite "output/detection.png"))
+
+; palm vs fist
+ (-> "resources/images/threehands.jpg"
+  imread
+  ((partial recognize "resources/XML2/palm.xml"))
+  (imwrite "output/detection.png"))
+
+(-> "resources/images/threefists.jpg"
+ imread
+ ((partial recognize "resources/XML2/fist.xml"))
+ (imwrite "output/detection.png"))
+
+; fist and palm
+(-> "resources/images/hands/fist-palm.jpg"
+ imread
+ ((partial recognize "resources/XML2/palm.xml" color/orange-2))
+ ((partial recognize "resources/XML2/fist.xml" color/green-2))
+ (imwrite "output/detection.png"))
 
 )
