@@ -19,7 +19,7 @@
 (defn recognize
   ([xml-file mat] (recognize xml-file color/red-2 mat))
   ([xml-file _color mat ]
-  (let[ rects (new-matofrect)
+  (let [ rects (new-matofrect)
         detector (new-cascadeclassifier xml-file)]
     (.detectMultiScale detector mat rects)
     (doseq [rect (.toArray rects)]
@@ -63,6 +63,5 @@
  ((partial recognize "resources/XML2/palm.xml" color/orange-2))
  ((partial recognize "resources/XML2/fist.xml" color/green-2))
  (imwrite "output/detection.png"))
-
 
 )
