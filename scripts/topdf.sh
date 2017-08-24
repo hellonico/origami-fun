@@ -19,12 +19,23 @@ function convertall() {
   for i in `ls gorillas` ; do
     convertone $i
   done
+}
 
+function toc() {
+  echo "Generating TOC"
+  rm -f toc.*
+  grep "# " gorillas/* | awk '{ $1=""; print}' | sed 's/ //' > toc.md
+  # echo '<head><link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"></head>' > toc.html
+  pandoc toc.md >> toc.html
+  cupsfilter toc.html > toc.pdf
+  # wkhtmltopdf -T 0 -R 0 -B 0 -L 0 --orientation Portrait --page-size --zoom 0.8 A4 toc.html toc.pdf
+  # rm toc.md toc.html toc.txt
 }
 
 function book() {
-  rm book.pdf
-  java -jar ~/Downloads/pdfbox-app-2.0.7.jar PDFMerger pdf/*.pdf book.pdf
+  rm -f book.pdf
+  toc
+  java -jar ~/Downloads/pdfbox-app-2.0.7.jar PDFMerger toc.pdf pdf/*.pdf book.pdf
 }
 
 if [ -z ${1+x} ]; then
