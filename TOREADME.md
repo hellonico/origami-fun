@@ -1,5 +1,17 @@
 Grasping OpenCV from Clojure
 
+2017-08-28
+
+https://github.com/opencv-java/image-segmentation/blob/master/src/it/polito/elite/teaching/cv/ImageSegController.java
+https://github.com/opencv/opencv/blob/master/samples/cpp/tutorial_code/ShapeDescriptors/findContours_demo.cpp
+http://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/bounding_rects_circles/bounding_rects_circles.html
+https://stackoverflow.com/questions/11816245/detecting-small-circles-with-opencv-bad-image-quality?rq=1
+http://www.askaswiss.com/2016/01/how-to-create-cartoon-effect-opencv-python.html
+https://github.com/MasteringOpenCV/code/blob/master/Chapter1_AndroidCartoonifier/Cartoonifier_Desktop/cartoon.cpp
+https://stackoverflow.com/questions/10595161/convert-an-image-into-color-pencil-sketch-in-opencv
+_
+
+
 Image alignment
 ; https://www.learnopencv.com/image-alignment-ecc-in-opencv-c-python/
 
