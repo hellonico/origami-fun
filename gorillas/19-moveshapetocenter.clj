@@ -3,6 +3,8 @@
 ;; **
 ;;; # Move a shape to the center of the scene
 ;;; 
+;;; Say you have a shape inside a picture, and you want to move it somewhere else inside the same picture.
+;;; 
 ;; **
 
 ;; @@

@@ -119,6 +119,10 @@ matrix))
 (defn mat-from-url[url]
   (buffered-image-to-mat (image-from-url url)))
 
+(defn annotate[mat text]
+ (put-text mat
+  text (new-point 100 100) FONT_HERSHEY_PLAIN 1 (new-scalar 255 0 0) 1))
+
 ;;;
 ; CONTOURS
 ;;;
