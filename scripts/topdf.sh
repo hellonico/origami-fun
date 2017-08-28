@@ -26,6 +26,7 @@ function toc() {
   rm -f toc.*
   grep "# " gorillas/* | awk '{ $1=""; print}' | sed 's/ //' > toc.md
   # echo '<head><link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"></head>' > toc.html
+  cat scripts/toc_header.html > toc.html
   pandoc toc.md >> toc.html
   cupsfilter toc.html > toc.pdf
   # wkhtmltopdf -T 0 -R 0 -B 0 -L 0 --orientation Portrait --page-size --zoom 0.8 A4 toc.html toc.pdf

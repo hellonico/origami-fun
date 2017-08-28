@@ -14,7 +14,7 @@
 ;; **
 
 ;; **
-;;; ### Load the picture that will be sketched
+;;; ## Load the picture that will be sketched
 ;; **
 
 ;; @@
