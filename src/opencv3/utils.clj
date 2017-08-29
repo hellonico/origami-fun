@@ -119,9 +119,10 @@ matrix))
 (defn mat-from-url[url]
   (buffered-image-to-mat (image-from-url url)))
 
-(defn annotate[mat text]
- (put-text mat
-  text (new-point 100 100) FONT_HERSHEY_PLAIN 1 (new-scalar 255 0 0) 1))
+(defn annotate![mat text]
+ (cv/put-text mat
+  text (cv/new-point 100 100) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 0 0) 1)
+ mat)
 
 ;;;
 ; CONTOURS
@@ -155,10 +156,10 @@ matrix))
  (condp = nb-sides
   3  (cv/new-scalar 56.09 68.05 66.27)
   4  (cv/new-scalar 356.09 51.57 43.73)
-  7   (cv/new-scalar 26.09 51.57 43.73)
-  8 (cv/new-scalar 146.09 51.57 43.73)
-  9 (cv/new-scalar 266.09 51.57 43.73)
-  10  (cv/new-scalar 236.09 51.57 43.73)
+  7  (cv/new-scalar 26.09 51.57 43.73)
+  8  (cv/new-scalar 146.09 51.57 43.73)
+  9  (cv/new-scalar 266.09 51.57 43.73)
+  10 (cv/new-scalar 236.09 51.57 43.73)
   11 (cv/new-scalar 206.09 68.05 66.27)
   12 (cv/new-scalar 0 0 255)
      (cv/new-scalar 127 50 0))

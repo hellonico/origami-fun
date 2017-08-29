@@ -746,10 +746,20 @@
 
 (defn bilateral-filter!
 ([org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ]
-  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
+  (let [ org_opencv_core_mat_1 (clone org_opencv_core_mat_0)]
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 int_5 )
+  org_opencv_core_mat_1))
 ([org_opencv_core_mat_0 int_2 double_3 double_4 ]
-  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 ) org_opencv_core_mat_0 )
-)
+  (let [ org_opencv_core_mat_1 (clone org_opencv_core_mat_0)]
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 )
+  org_opencv_core_mat_1)))
+
+; (defn bilateral-filter!
+; ([org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ]
+;   (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 int_2 double_3 double_4 ]
+;   (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 ) org_opencv_core_mat_0 )
+; )
 
 (defn blur
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 int_4 ]

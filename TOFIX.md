@@ -1,3 +1,16 @@
+# bilateral filter!
+
+DOES NOT WORK SINCE CANNOT BE THE SAME MAT.
+USING CLONE INTERNALLY 
+
+(defn bilateral-filter!
+([org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ]
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 double_3 double_4 ]
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 ) org_opencv_core_mat_0 )
+)
+
+
 # wrong method in multiply!
 
 parameters are in the wrong order
