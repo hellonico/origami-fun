@@ -5,7 +5,8 @@
     [opencv3.utils :as u]))
 
 (defn -main[ & args]
-  (u/simple-cam-window (fn [buffer]
+  (u/simple-cam-window
+    (fn [buffer]
     (u/resize-by buffer 0.5)
     (let [ output (new-mat) bottom (-> buffer clone (flip! -1)) ]
      (-> buffer (cvt-color! COLOR_RGB2GRAY) (cvt-color! COLOR_GRAY2RGB))

@@ -3,7 +3,7 @@
 ;; **
 ;;; # Matching triangle, and other shapes
 ;;; 
-;;; 
+;;; In this recipe you learn how to match shapes with each others. Matching shapes can be used to count thing automatically.
 ;; **
 
 ;; @@
