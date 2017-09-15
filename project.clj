@@ -18,6 +18,8 @@
     ; use to start a gorilla repl
     [gorilla-repl "0.4.0"]
     [seesaw "1.4.5"]
+
+    [com.javarepl/javarepl "428"]
      ]}}
   :dependencies [
    [org.clojure/clojure "1.8.0"]

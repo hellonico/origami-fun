@@ -16,3 +16,5 @@ shots
 .idea
 *.iml
 pdf
+target
+.nrepl-history

@@ -75,6 +75,13 @@
 
 ; AUTO GENERATED CONSTRUCTORS
 
+(defn new-matoffloat
+([array_f_0 ]
+  (new org.opencv.core.MatOfFloat array_f_0 ))
+([]
+  (new org.opencv.core.MatOfFloat )))
+
+
 (defn new-cascadeclassifier
 ([]
   (new org.opencv.objdetect.CascadeClassifier ))

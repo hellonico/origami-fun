@@ -1,10 +1,11 @@
 ;; gorilla-repl.fileformat = 1
 
 ;; **
-;;; # Short Sample 
+;;; # API Teaser
 ;;; 
-;;; Welcome to this tutorial.
-;;; This is a short sample to show how to use this fantastic API to do OpenCV stuff in the browser.
+;;; This is a one pager to give you an idea on how to the Clojure wrapper for OpenCV can be used.
+;;; 
+;;; 
 ;; **
 
 ;; @@
@@ -19,11 +20,12 @@
 
 ;; @@
 (defn load-cvt-resize-show[url]
-(-> url
-  (u/mat-from-url)
-  (cvt-color! COLOR_RGB2GRAY)
-  (resize! (new-size 150 200))
-  (u/mat-view)))
+ (-> 
+   url
+   (u/mat-from-url)
+   (cvt-color! COLOR_RGB2GRAY)
+   (resize! (new-size 150 200))
+   (u/mat-view)))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;composed-pine/load-cvt-resize-show</span>","value":"#'composed-pine/load-cvt-resize-show"}
@@ -46,5 +48,15 @@
 ;; <=
 
 ;; @@
-
+(-> "https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg"
+  (u/mat-from-url)
+  (u/resize-by 0.80)
+  (u/show))
 ;; @@
+;; ->
+;;; {:frame {:color 0, :title image, :width 400, :height 400}}
+;;; 
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-unkown'>#object[javax.swing.JPanel 0x64dc9ae7 &quot;javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777225,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]&quot;]</span>","value":"#object[javax.swing.JPanel 0x64dc9ae7 \"javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777225,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]\"]"}
+;; <=

@@ -6,7 +6,7 @@
     [org.opencv.photo Photo]
     [org.opencv.calib3d Calib3d]
     [org.opencv.objdetect CascadeClassifier]
-    [org.opencv.core MatOfDouble RotatedRect MatOfDMatch MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
+    [org.opencv.core MatOfDouble RotatedRect MatOfDMatch MatOfFloat MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
     [org.opencv.videoio Videoio VideoWriter VideoCapture]
     [org.opencv.imgproc Imgproc]))
@@ -235,9 +235,10 @@
       ; (print-constructors VideoCapture)
       ; (print-fields Videoio)
       ; (print-constructors MatOfDouble)
+      (print-constructors MatOfFloat)
 
-      (print-cv-methods Calib3d)
-      (print-fields Calib3d)
+      ; (print-cv-methods Calib3d)
+      ; (print-fields Calib3d)
   ))
 
 )
