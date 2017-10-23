@@ -1,36 +1,39 @@
 import org.opencv.core.*;
-import static org.opencv.core.CvType.*;
+import org.opencv.core.Core;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.imgcodecs.Imgcodecs.*;
-import static java.lang.System.*;
+import org.opencv.imgcodecs.Imgcodecs;
 import clojure.lang.RT;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DrawingContours {
-
-    public static void main(String[] args) {
-         
-
-
+    static {
+        RT.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    static Mat findAndDrawContours(Mat image, List<MatOfPoint> edgeContours) {
-        int method = Imgproc.CHAIN_APPROX_SIMPLE;
-        int mode = Imgproc.RETR_LIST;
-        Mat img = image.clone();
-        int contourIdx = -1; // draw all contours
-        Mat hierarchy = new Mat();
+    public static void main(String[] args) {
+        Mat image = Imgcodecs.imread("images/lena.png");
+        Mat contours = findAndDrawContours(image);
+        Imgcodecs.imwrite("target/contours.png", contours);
+    }
 
-        /*
-         * The canny filter finds the outlines.
-         */
-        Mat imgCanny = ImageCanny(image);
-        /*
-         * Finding contours amounts to finding "outside" edges. So of the set of
-         * edges found by the canny filter, further reduce them
-         */
-        Imgproc.findContours(imgCanny, edgeContours, hierarchy, mode, method);
-        Scalar color = new Scalar(255, 255, 0);
-        Imgproc.drawContours(img, edgeContours, contourIdx, color);
-        return img;
+    static Mat findAndDrawContours(Mat image) {
+        Mat imageHSV = new Mat();
+        Mat imageBlurr = new Mat();
+        Mat imageA = new Mat();
+        Imgproc.cvtColor(image, imageHSV, Imgproc.COLOR_BGR2GRAY);
+        Imgproc.GaussianBlur(imageHSV, imageBlurr, new Size(5,5), 0);
+        Imgproc.adaptiveThreshold(imageBlurr, imageA, 255,Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY,7, 5);
+
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        Imgproc.findContours(imageA, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+
+        Mat contourImg = image.clone();
+
+        for (int i = 0; i < contours.size(); i++) {
+            Imgproc.drawContours(contourImg, contours, i, new Scalar(255, 255, 255), -1);
+        }
+
+        return contourImg;
     }
 }
