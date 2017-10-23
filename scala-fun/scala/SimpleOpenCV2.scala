@@ -9,14 +9,14 @@ object SimpleOpenCV2 {
 
   def main(args: Array[String]) {
     val lena = imread("images/lena.png")
-    imwrite("output/blurred100.png", blur_(lena,100))
+    imwrite("output/blurred100.png", blur_(lena,10))
   }
 
   def blur_(input: Mat, numberOfTimes:Integer) : Mat = {
     for(_ <- 1 to numberOfTimes ) {
       blur(input, input, new Size(9.0, 9.0))
     }
-    return input
+    input
   }
 
 }

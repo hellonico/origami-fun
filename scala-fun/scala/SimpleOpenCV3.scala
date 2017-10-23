@@ -19,7 +19,7 @@ object SimpleOpenCV3 {
       val cat2 = cat.clone()
       bitwise_not(cat2,cat2)
 
-      val target = new Mat()
+      val target = new Mat
       hconcat(Arrays.asList(cat,cat2), target)
 
       imwrite("output/canny-cat.png", target)
