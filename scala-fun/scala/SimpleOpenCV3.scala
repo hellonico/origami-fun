@@ -8,7 +8,7 @@ import clojure.lang.RT.loadLibrary
 
 object SimpleOpenCV3 {
 
- 	loadLibrary(Core.NATIVE_LIBRARY_NAME)
+ 	  loadLibrary(Core.NATIVE_LIBRARY_NAME)
 
     def main(args: Array[String]) {
       val cat = imread("images/cat.jpg")
