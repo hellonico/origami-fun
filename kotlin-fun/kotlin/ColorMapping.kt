@@ -1,8 +1,6 @@
 import org.opencv.core.*
 import org.opencv.imgproc.Imgproc.*
-import org.opencv.core.Core.*
 import org.opencv.imgcodecs.Imgcodecs.*
-import org.opencv.core.CvType.*
 import clojure.lang.RT
 
 object ColorMapping {

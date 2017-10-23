@@ -1,13 +1,12 @@
 import org.opencv.core.*;
 import static org.opencv.imgproc.Imgproc.*;
 import static org.opencv.imgcodecs.Imgcodecs.*;
-import static java.lang.System.*;
 import static org.opencv.core.CvType.*;
-import clojure.lang.RT;
+import static clojure.lang.RT.loadLibrary;
 
 public class SimpleOpenCV3 {
     static {
-        RT.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
     public static void main(String[] args) {
