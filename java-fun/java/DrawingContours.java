@@ -2,19 +2,18 @@ import org.opencv.core.*;
 import org.opencv.core.Core;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgcodecs.Imgcodecs;
-import clojure.lang.RT;
 import java.util.List;
 import java.util.ArrayList;
 
 public class DrawingContours {
     static {
-        RT.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
     public static void main(String[] args) {
         Mat image = Imgcodecs.imread("images/lena.png");
         Mat contours = findAndDrawContours(image);
-        Imgcodecs.imwrite("target/contours.png", contours);
+        Imgcodecs.imwrite("output/contours.png", contours);
     }
 
     static Mat findAndDrawContours(Mat image) {

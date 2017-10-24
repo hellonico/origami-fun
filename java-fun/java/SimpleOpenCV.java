@@ -1,11 +1,13 @@
-import org.opencv.core.*;
-import static org.opencv.core.CvType.*;
-import static java.lang.System.*;
-import clojure.lang.RT;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+
+import static java.lang.System.loadLibrary;
+import static java.lang.System.out;
+import static org.opencv.core.CvType.CV_8UC1;
 
 public class SimpleOpenCV {
 	static {
-		RT.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		loadLibrary(Core.NATIVE_LIBRARY_NAME);
 	}
 
 	public static void main(String[] args) {
