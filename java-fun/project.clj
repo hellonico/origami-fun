@@ -7,8 +7,8 @@
   :auto {:default {:file-pattern #"\.(java)$"}}
   :dependencies [
    [org.clojure/clojure "1.8.0"]
-   [opencv/opencv "3.3.0-rc"]
-   [opencv/opencv-native "3.3.0-rc" :classifier "osx"]
+   [opencv/opencv "3.3.1"]
+   [opencv/opencv-native "3.3.1"]
    ; [opencv/opencv-native "3.3.0-rc" :classifier "linux"]
    ; [opencv/opencv-native "3.3.0-rc" :classifier "win"]
    ])
