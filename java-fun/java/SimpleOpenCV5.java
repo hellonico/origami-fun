@@ -2,8 +2,6 @@ import org.opencv.core.*;
 import static org.opencv.imgproc.Imgproc.*;
 import static org.opencv.core.Core.*;
 import static org.opencv.imgcodecs.Imgcodecs.*;
-import static java.lang.System.*;
-import static org.opencv.core.CvType.*;
 import clojure.lang.RT;
 import java.util.Arrays;
 
