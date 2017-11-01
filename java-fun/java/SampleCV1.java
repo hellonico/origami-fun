@@ -31,7 +31,9 @@ public class SampleCV1 {
     }
 
     static void sample2() {
-        Mat mat = Imgcodecs.imread("images/kitten.jpg", Imgcodecs.IMREAD_GRAYSCALE);
+        Mat mat = Imgcodecs.imread("images/glasses.jpg", Imgcodecs.IMREAD_REDUCED_COLOR_2);
+        Imgcodecs.imwrite("target/output.png", mat);
+
         MatOfInt moi = new MatOfInt();
         moi.put(CV_IMWRITE_PNG_COMPRESSION, 10);
         Imgcodecs.imwrite("target/output.png", mat, moi);
