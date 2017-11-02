@@ -1,23 +1,36 @@
-import org.opencv.core.*;
+import org.opencv.core.Core;
+import org.opencv.core.Scalar;
+import org.opencv.core.Mat;
 
+import org.opencv.imgcodecs.Imgcodecs;
 import static java.lang.System.loadLibrary;
-import static org.opencv.imgproc.Imgproc.*;
-import static org.opencv.imgcodecs.Imgcodecs.*;
+import static org.opencv.core.CvType.CV_8UC3;
 
 public class SimpleOpenCV2 {
-    static {
-        loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
+	static {
+		loadLibrary(Core.NATIVE_LIBRARY_NAME);
+	}
 
-    public static void main(String[] args) {
-        Mat lena = imread("images/lena.png");
-        imwrite("target/blurred100.png", blur_(lena,100));
-    }
+  public static void setColor(Mat mat, boolean comp, int row) {
 
-    public static Mat blur_(Mat input, int numberOfTimes){
-        for(int i=0;i<numberOfTimes;i++){
-            blur(input, input, new Size(9.0, 9.0));
+      for(int i = 0 ; i < 3 ; i ++) {
+        Mat sub = mat.submat(row*100, row*100+100, i*100, i*100+100);
+        if(comp) {
+          if(i==0) sub.setTo(new Scalar(0, 0, 255));
+          if(i==1) sub.setTo(new Scalar(0, 255, 0));
+          if(i==2) sub.setTo(new Scalar(255, 0, 0));
+        } else {
+          if(i==0) sub.setTo(new Scalar(255, 255, 0));
+          if(i==1) sub.setTo(new Scalar(255, 0, 255));
+          if(i==2) sub.setTo(new Scalar(0, 255, 255));
         }
-        return input;
-    }
+      }
+  }
+
+	public static void main(String[] args) {
+        Mat mat = new Mat(200,300,CV_8UC3);
+        setColor(mat, true, 0);
+        setColor(mat, false, 1);
+        Imgcodecs.imwrite("output/mat2.jpg", mat);
+	}
 }
