@@ -19,3 +19,6 @@ pdf
 target
 .nrepl-history
 output
+.classpath
+.project
+.settings
