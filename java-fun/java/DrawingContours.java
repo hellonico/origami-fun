@@ -11,7 +11,7 @@ public class DrawingContours {
     }
 
     public static void main(String[] args) {
-        Mat image = Imgcodecs.imread("images/lena.png");
+        Mat image = Imgcodecs.imread("images/cat.jpg");
         Mat contours = findAndDrawContours(image);
         Imgcodecs.imwrite("output/contours.png", contours);
     }

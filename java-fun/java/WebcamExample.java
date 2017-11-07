@@ -1,6 +1,7 @@
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.videoio.VideoCapture;
 
 import javax.swing.*;
@@ -8,10 +9,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
+import java.util.Date;
 
 import static java.lang.System.loadLibrary;
-import static org.opencv.videoio.Videoio.CV_CAP_PROP_FRAME_HEIGHT;
-import static org.opencv.videoio.Videoio.CV_CAP_PROP_FRAME_WIDTH;
+import org.opencv.videoio.Videoio;
 
 class MatPanel extends JPanel {
     public Mat mat;
@@ -28,28 +29,55 @@ public class WebcamExample {
     }
 
     public static void main(String[] args) {
-        VideoCapture camera = new VideoCapture(0);
-        camera.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-        camera.set(CV_CAP_PROP_FRAME_HEIGHT, 180);
+      // sample01();
+      sample02();
+    }
 
-        MatPanel t = new MatPanel();
+    static void sample01() {
+      do_still_captures(10,1,0);
+    }
 
-        JFrame frame0 = new JFrame();
-        frame0.getContentPane().add(t);
-        frame0.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame0.setSize(400, 400);
-        frame0.setVisible(true);
-        frame0.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    static void do_still_captures(int frames, int lapse, int camera_id) {
+      VideoCapture camera = new VideoCapture(camera_id);
+      camera.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
+      camera.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
 
-        Mat frame = new Mat();
-        while(true){
-            if (camera.read(frame)){
-                Imgproc.cvtColor(frame,frame, Imgproc.COLOR_RGB2GRAY);
-                t.mat=frame;
-                t.repaint();
-            }
-        }
+      Mat frame = new Mat();
+      for(int i = 0 ; i <frames;i++) {
+          if (camera.read(frame)){
+            String filename = "video/"+new Date()+".jpg";
+            Imgcodecs.imwrite(filename, frame);
+            try {Thread.sleep(lapse*1000);} catch (Exception e) {e.printStackTrace();}
+          }
+      }
+      camera.release();
+    }
 
+
+    static void sample02() {
+
+
+      MatPanel t = new MatPanel();
+      JFrame frame0 = new JFrame();
+      frame0.getContentPane().add(t);
+      frame0.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      frame0.setSize(320, 240);
+      frame0.setVisible(true);
+      frame0.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+      VideoCapture camera = new VideoCapture(0);
+      camera.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
+      camera.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
+      Mat frame = new Mat();
+      while(true){
+          if (camera.read(frame)){
+              Imgproc.cvtColor(frame,frame, Imgproc.COLOR_RGB2GRAY);
+              Mat target = new Mat();
+              Imgproc.Canny(frame,target,100.0,150.0,3,true);
+              t.mat=target;
+              t.repaint();
+          }
+      }
     }
 
     public static BufferedImage MatToBufferedImage(Mat frame) {

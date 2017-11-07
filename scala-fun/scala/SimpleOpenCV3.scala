@@ -11,18 +11,18 @@ object SimpleOpenCV3 {
  	  loadLibrary(Core.NATIVE_LIBRARY_NAME)
 
     def main(args: Array[String]) {
-      val cat = imread("images/cat.jpg")
+      val cat = imread("images/cat3.jpg")
 
       cvtColor(cat,cat,COLOR_RGB2GRAY)
-      Canny(cat,cat,150.0,100.0,3,true)
+      Canny(cat,cat, 220.0,230.0,5,true)
 
       val cat2 = cat.clone()
       bitwise_not(cat2,cat2)
 
       val target = new Mat
-      hconcat(Arrays.asList(cat,cat2), target)
+      vconcat(Arrays.asList(cat,cat2), target)
 
       imwrite("output/canny-cat.png", target)
     }
-    
+
 }

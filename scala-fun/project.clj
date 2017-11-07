@@ -10,8 +10,6 @@
   :dependencies [
    [org.clojure/clojure "1.8.0"]
    [org.scala-lang/scala-library "2.12.4"]
-   [opencv/opencv "3.3.0-rc"]
-   [opencv/opencv-native "3.3.0-rc" :classifier "osx"]
-   ; [opencv/opencv-native "3.3.0-rc" :classifier "linux"]
-   ; [opencv/opencv-native "3.3.0-rc" :classifier "win"]
+   [opencv/opencv "3.3.1"]
+   [opencv/opencv-native "3.3.1"]
 ])

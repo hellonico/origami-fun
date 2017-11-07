@@ -1,17 +1,12 @@
 import org.opencv.core.*
 import org.opencv.imgproc.Imgproc.*
 import org.opencv.imgcodecs.Imgcodecs.*
-import clojure.lang.RT
 
 object ColorMapping {
-    init {
-        RT.loadLibrary(Core.NATIVE_LIBRARY_NAME)
-    }
-
     @JvmStatic fun main(args: Array<String>) {
-        println("changing color")
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME)
 
-        val mat = imread("images/kepler.jpg")
+        val mat = imread("resources/kitten.jpg")
 
         applyColorMap(mat,mat,COLORMAP_WINTER)
         imwrite("output/winter.png", mat)
@@ -21,9 +16,10 @@ object ColorMapping {
 
         applyColorMap(mat,mat,COLORMAP_HOT)
         val mat2 = mat.clone()
-        resize(mat2,mat2,Size(300.0,200.0))
-        imwrite("output/hot.png", mat2)
+        val newSize = Size((mat.width()/2).toDouble(),(mat.height()/2).toDouble())
+        resize(mat2,mat2,newSize)
 
+        imwrite("output/hot.png", mat2)
     }
 
 }

@@ -1,7 +1,0 @@
-(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
-(def a (org.opencv.core.Mat.))
-a
-(System/getProperties)
-(clojure.pprint/pprint (System/getProperties))
-val a = 1;
-val a : 1;

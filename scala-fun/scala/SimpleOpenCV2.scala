@@ -8,14 +8,14 @@ object SimpleOpenCV2 {
   loadLibrary(Core.NATIVE_LIBRARY_NAME)
 
   def main(args: Array[String]) {
-    val lena = imread("images/lena.png")
-    imwrite("output/blurred100.png", blur_(lena,10))
+    val neko = imread("images/bored-cat.jpg")
+    imwrite("output/blurred_cat.png", blur_(neko, 20))
   }
 
   def blur_(input: Mat, numberOfTimes:Integer) : Mat = {
-    for(_ <- 1 to numberOfTimes ) {
-      blur(input, input, new Size(9.0, 9.0))
-    }
+    for(_ <- 1 to numberOfTimes ) //{
+      blur(input, input, new Size(11.0, 11.0))
+    // }
     input
   }
 
