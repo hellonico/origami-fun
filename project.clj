@@ -1,12 +1,14 @@
-(defproject egami "0.1.0-SNAPSHOT"
+(defproject origami "0.1.0-SNAPSHOT"
   :injections [
   (clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
   ]
   :plugins [
   [lein-gorilla "0.4.0"]]
   :test-paths ["test" "samples"]
+  :resource-paths ["rsc"]
   :repositories [["vendredi" "http://hellonico.info:8081/repository/hellonico/"]]
   :profiles {:dev {
+    :resource-paths ["resources"]
     ; :repl-options {:init-ns opencv3.affine}
     :dependencies [
     ; used for proto repl
@@ -19,15 +21,10 @@
     [gorilla-repl "0.4.0"]
     [seesaw "1.4.5"]
 
-    [com.javarepl/javarepl "428"]
      ]}}
   :dependencies [
    [org.clojure/clojure "1.8.0"]
    [org.clojure/tools.cli "0.3.5"]
+   [origami "0.1.1"]
 
-   [opencv/opencv "3.3.0-rc"]
-   [opencv/opencv-native "3.3.0-rc" :classifier "osx"]
-   [opencv/opencv-native "3.3.0-rc" :classifier "linux"]
-   [opencv/opencv-native "3.3.0-rc" :classifier "win"]
-
-  ])
+])
