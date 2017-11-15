@@ -11,3 +11,10 @@ mvn install:install-file \
 -Dversion=3.3.1 \
 -Dpackaging=jar \
 -Dfile=opencv-native.jar
+
+
+mvn install:install-file  -DgroupId=opencv \
+-DartifactId=opencv-native-osx-noffmpeg \
+-Dversion=3.3.1 \
+-Dpackaging=jar \
+-Dfile=opencv-native-osx-noffmpeg.jar \
