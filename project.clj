@@ -22,6 +22,6 @@
   :dependencies [
    [org.clojure/clojure "1.8.0"]
    [org.clojure/tools.cli "0.3.5"]
-   [origami "0.1.1"]
+   [origami "0.1.2"]
 
 ])
