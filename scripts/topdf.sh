@@ -16,7 +16,7 @@ function convertone() {
 }
 
 function convertall() {
-  for i in `ls gorillas` ; do
+  for i in `find gorillas` ; do
     convertone $i
   done
 }

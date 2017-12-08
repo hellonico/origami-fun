@@ -5,6 +5,7 @@
   :plugins [[lein-gorilla "0.4.0"]]
   :test-paths ["test" "samples"]
   :resource-paths ["rsc"]
+  :gorilla-options {:load-scan-exclude #{".git" ".svn" "src" "test" "project.clj"}}
   :repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
   :aliases {"notebook" ["gorilla" ":ip" "0.0.0.0" ":port" "10000"]}
   :profiles {:dev {
@@ -22,6 +23,6 @@
   :dependencies [
    [org.clojure/clojure "1.8.0"]
    [org.clojure/tools.cli "0.3.5"]
-   [origami "0.1.2"]
+   [origami "0.1.11-SNAPSHOT"]
 
 ])
