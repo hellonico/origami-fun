@@ -21,6 +21,16 @@
 ;; **
 
 ;; @@
+(defn my-fn[mat]
+  (-> mat 
+    (put-text! (str (java.util.Date.)) (new-point 100 50) FONT_HERSHEY_PLAIN 1 rgb/white 1) 
+    (apply-color-map! COLORMAP_AUTUMN)))
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/my-fn</span>","value":"#'talented-silence/my-fn"}
+;; <=
+
+;; @@
 (def mt   
   (atom nil))
 ;; @@
@@ -36,9 +46,9 @@
    [389 390]])
 
 (def points2
-  [[70 0] 
+  [[70 10] 
    [200 140] 
-   [28 400] 
+   [20 200] 
    [389 390]])
 
 (reset! mt 
@@ -49,9 +59,9 @@
 (dump @mt)
 ;; @@
 ;; ->
-;;; [2.886257017081082 0.5416654100983967 -170.5772506586461]
-;;; [1.468397820944848 1.95276337269669 -166.3674158214515]
-;;; [0.007917085869390437 -0.002792137050410389 1]
+;;; [1.789337561985906 0.3234215275201738 -94.5799621372129]
+;;; [0.7803091692375479 1.293303360247406 -78.45137776386103]
+;;; [0.002543030309135725 -3.045754676722361E-4 1]
 ;;; 
 ;; <-
 ;; =>
@@ -62,19 +72,37 @@
 (defn warp! [ buffer ]
   (-> buffer
     (warp-perspective! @mt (size buffer ))))
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/warp!</span>","value":"#'talented-silence/warp!"}
+;; <=
 
-(defn to-gray! [ buffer ]
-  (-> buffer (cvt-color! COLOR_RGB2GRAY) ))
-
-(u/simple-cam-window
-  {:video {:device 0} 
-   :frame {:width 650  :height 400 :title "Warped"}}
-  (comp to-gray! warp!))
+;; @@
+(-> "resources/chapter03/ai5.jpg"
+ 	imread
+    (u/resize-by 0.7)
+    warp!
+    u/imshow)
 ;; @@
 ;; ->
-;;; {:frame {:color 00, :title Gray Cello, :width 650, :height 400}, :video {:device 0, :width 200, :height 220}}
+;;; {:frame {:color 00, :title image, :width 400, :height 400}}
+;;; 
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-unkown'>#object[javax.swing.JPanel 0x77260939 &quot;javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777225,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]&quot;]</span>","value":"#object[javax.swing.JPanel 0x77260939 \"javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777227,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]\"]"}
+;; <=
+
+;; @@
+(u/simple-cam-window warp!)
+;; @@
+;; ->
+;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
 ;;; 
 ;; <-
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
 ;; <=
+
+;; @@
+
+;; @@

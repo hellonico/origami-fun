@@ -23,7 +23,7 @@
 ;; @@
 (def detector
   (new-cascadeclassifier
-    "resources/lbpcascade_frontalface.xml"))
+      (.getPath (clojure.java.io/resource "lbpcascade_frontalface.xml"))))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/detector</span>","value":"#'talented-silence/detector"}
@@ -45,15 +45,20 @@
   
    buffer)
 
-
-(u/simple-cam-window
-  (fn [buffer]
-   (let [rects (new-matofrect)]
+(defn find-faces![buffer]
+  (let [rects (new-matofrect)]
     (.detectMultiScale detector buffer rects)
     (-> buffer
         (draw-rects! rects)
-        (u/resize-by 0.7))
-     )))
+        (u/resize-by 0.7))))
+
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/find-faces!</span>","value":"#'talented-silence/find-faces!"}
+;; <=
+
+;; @@
+(u/simple-cam-window find-faces!)
 ;; @@
 ;; ->
 ;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
@@ -83,7 +88,7 @@
     (.detectMultiScale detector buffer rects)
     (-> buffer
         (draw-rects! rects)
-        (u/resize-by 0.5)))))
+        (u/resize-by 0.7)))))
 ;; @@
 ;; ->
 ;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
@@ -92,3 +97,32 @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
 ;; <=
+
+;; @@
+(defn draw-rects! [buffer rects]
+  (if (> (count (.toArray rects)) 0)
+    (let [r (first (.toArray rects)) 
+          s (-> buffer clone (submat r) (resize! (.size buffer)))]
+     (hconcat! [buffer s]))
+    	buffer
+    ))
+
+(u/simple-cam-window
+  (fn [buffer]
+   (let [rects (new-matofrect)]
+    (.detectMultiScale detector buffer rects)
+    (-> buffer
+        (draw-rects! rects)
+        (u/resize-by 0.7)))))
+;; @@
+;; ->
+;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
+;;; 
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
+;; <=
+
+;; @@
+
+;; @@

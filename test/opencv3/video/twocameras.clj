@@ -6,14 +6,13 @@
     (:gen-class))
 
 (defn render-two [ left right ]
-  (let [ output (new-mat (rows left) (* 2 (cols left))  CV_8UC3)
-  ol (.submat output (new-rect 0 0 (cols left) (rows left)))
-  or (.submat output (new-rect (cols left) 0 (cols left) (rows left)))
+  (let [ output (new-mat (rows left) (* 2 (cols left))  CV_8UC3 (new-scalar 255 255 255))
+  ol_ (submat output (new-rect 0 0 (cols left) (rows left)))
+  or_ (submat output (new-rect (cols left) 0 (cols left) (rows left)))
   ]
-  (set-to output (new-scalar 255 255 255))
-  (copy-to left ol)
-  (resize! right (size or))
-  (copy-to right or)
+  (copy-to left ol_)
+  (resize! right (size or_))
+  (copy-to right or_)
   (u/resize-by output 0.3)
   output))
 
