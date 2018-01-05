@@ -158,7 +158,7 @@
 
 ;; @@
 (u/simple-cam-window 
-  (fn[buffer] (reset! base-image buffer) ))
+  (fn[buffer] (swap! base-image (fn[_] buffer) ) ))
 ;; @@
 ;; ->
 ;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
@@ -176,14 +176,44 @@
 ;;; 
 ;; <-
 ;; =>
-;;; {"type":"html","content":"<span class='clj-unkown'>#object[javax.swing.JPanel 0x1e6d9746 &quot;javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777227,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]&quot;]</span>","value":"#object[javax.swing.JPanel 0x1e6d9746 \"javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777227,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]\"]"}
+;;; {"type":"html","content":"<span class='clj-unkown'>#object[javax.swing.JPanel 0x6f72226e &quot;javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777225,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]&quot;]</span>","value":"#object[javax.swing.JPanel 0x6f72226e \"javax.swing.JPanel[null.contentPane,0,0,400x378,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777227,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=400,height=400]]\"]"}
 ;; <=
 
 ;; @@
-(u/simple-cam-window (fn[buffer] 
-                       (let[ output (new-mat)]
-                         (absdiff buffer @base-image output)
-                         output)))
+(defn diff-with-bg [buffer] 
+   (let[ output (new-mat)]
+     (absdiff buffer @base-image output)
+     output))
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/diff-with-bg</span>","value":"#'talented-silence/diff-with-bg"}
+;; <=
+
+;; @@
+(u/simple-cam-window diff-with-bg)
+;; @@
+;; ->
+;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}
+;;; 
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
+;; <=
+
+;; @@
+(defn diff-in-gray [buffer]
+ (-> buffer
+  clone 
+  (cvt-color! COLOR_RGB2GRAY)
+  (median-blur! 7)
+  (threshold! 10 255 1)))
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;talented-silence/diff-in-gray</span>","value":"#'talented-silence/diff-in-gray"}
+;; <=
+
+;; @@
+(u/simple-cam-window (comp diff-in-gray diff-with-bg ))
 ;; @@
 ;; ->
 ;;; {:frame {:color 00, :title video, :width 400, :height 400}, :video {:device 0, :width 200, :height 220}}

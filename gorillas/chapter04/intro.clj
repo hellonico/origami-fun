@@ -270,6 +270,30 @@
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
 ;; <=
 
+;; **
+;;; ### recording
+;; **
+
+;; @@
+ (let[ outputVideo (v/new-videowriter)]
+  (.open
+    outputVideo
+    (first args)
+    ;(VideoWriter/fourcc \M \J \P \G)
+    1196444237
+    30
+    (new-size 240 320) ;
+    )
+
+  (u/simple-cam-window
+    (fn [buffer]
+     (let [ r (u/resize-by buffer 0.5) o (clone r)]
+     (.write outputVideo (rotate! r ROTATE_90_CLOCKWISE))
+     o)))
+  ;(.release outputVideo)
+)
+;; @@
+
 ;; @@
 
 ;; @@
