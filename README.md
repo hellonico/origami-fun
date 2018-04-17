@@ -1,4 +1,4 @@
-This is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way.
+This is the playground for [origami](https://github.com/hellonico/origami), an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way.
 
 ```
 (require

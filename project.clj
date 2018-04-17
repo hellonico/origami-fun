@@ -1,4 +1,4 @@
-(defproject origami "0.1.0-SNAPSHOT"
+(defproject origami-fun "0.1.0-SNAPSHOT"
   :injections [
    (clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)
   ]
