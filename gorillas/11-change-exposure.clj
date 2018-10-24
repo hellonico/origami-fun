@@ -9,8 +9,8 @@
 ;; @@
 (ns inquisitive-pond
    (:require
-     [opencv3.utils :as u]
-     [opencv3.core :refer :all]))
+     [opencv4.utils :as u]
+     [opencv4.core :refer :all]))
 
 (def org 
   (-> "resources/images/cat.jpg" imread (u/resize-by 0.2)))

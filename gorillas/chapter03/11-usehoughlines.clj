@@ -7,11 +7,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.hough
+(ns opencv4.hough
   (:require
-    [opencv3.utils :as u]
-    [opencv3.colors.rgb :as color]
-    [opencv3.core :refer :all]))
+    [opencv4.utils :as u]
+    [opencv4.colors.rgb :as color]
+    [opencv4.core :refer :all]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}

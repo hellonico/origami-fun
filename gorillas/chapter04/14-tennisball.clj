@@ -13,9 +13,9 @@
 ;; @@
 (ns divine-briars
   (:require
-    [opencv3.utils :as u]
-    [opencv3.colors.rgb :as color]
-    [opencv3.core :refer :all]))
+    [opencv4.utils :as u]
+    [opencv4.colors.rgb :as color]
+    [opencv4.core :refer :all]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -81,7 +81,7 @@
 (def output (clone img))
 (dotimes [i (.cols circles)]
   (let [ circle (.get circles 0 i) x (nth circle 0) y (nth circle 1) r (nth circle 2)  p (new-point x y)]
-  (opencv3.core/circle output p (int r) color/magenta- 3)))
+  (opencv4.core/circle output p (int r) color/magenta- 3)))
 
 (u/mat-view output)
 ;; @@
@@ -107,7 +107,7 @@
 
 (dotimes [i (.cols circles)]
   (let [ circle (.get circles 0 0) x (nth circle 0) y (nth circle 1) r (nth circle 2)  p (new-point x y)]
-  (opencv3.core/circle output p (int r) color/magenta- 3))
+  (opencv4.core/circle output p (int r) color/magenta- 3))
     )
 output))
 ;; @@

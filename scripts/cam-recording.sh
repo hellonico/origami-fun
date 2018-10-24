@@ -1,1 +1,1 @@
-lein run -m opencv3.video.twocameras four
+lein run -m opencv4.video.twocameras four

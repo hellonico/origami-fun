@@ -5,11 +5,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.boundingboxes
+(ns opencv4.boundingboxes
 (:require
-  [opencv3.core :refer :all]
-  [opencv3.colors.rgb :as rgb]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.colors.rgb :as rgb]
+  [opencv4.utils :as u]))
 
 ; http://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/bounding_rects_circles/bounding_rects_circles.html
 ;; @@
@@ -52,7 +52,7 @@
 (def work (-> mask bitwise-not!))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.boundingboxes/work</span>","value":"#'opencv3.boundingboxes/work"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.boundingboxes/work</span>","value":"#'opencv4.boundingboxes/work"}
 ;; <=
 
 ;; @@

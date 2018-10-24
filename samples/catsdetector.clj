@@ -1,7 +1,7 @@
 (ns catsdetector
   (:require
-    [opencv3.colors.rgb :as rgb]
-    [opencv3.core :refer :all]))
+    [opencv4.colors.rgb :as rgb]
+    [opencv4.core :refer :all]))
 
 (def detector
   (->

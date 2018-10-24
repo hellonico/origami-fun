@@ -2,8 +2,8 @@ This is the playground for [origami](https://github.com/hellonico/origami), an o
 
 ```
 (require
-  '[opencv3.utils :as u]
-  '[opencv3.core :refer :all])
+  '[opencv4.utils :as u]
+  '[opencv4.core :refer :all])
 
 (->
  (imread "resources/images/cat.jpg")

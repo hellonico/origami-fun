@@ -5,11 +5,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.trees
+(ns opencv4.trees
 (:require
-  [opencv3.core :refer :all]
-  [opencv3.colors.rgb :as rgb]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.colors.rgb :as rgb]
+  [opencv4.utils :as u]))
 
 ; https://stackoverflow.com/questions/31310307/best-way-to-segment-a-tree-in-plantation-aerial-image-using-opencv?rq=1
 ;; @@

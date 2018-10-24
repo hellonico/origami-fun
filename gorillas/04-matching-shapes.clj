@@ -9,8 +9,8 @@
 ;; @@
 (ns stark-spring
  (:require
-   [opencv3.utils :as u]
-   [opencv3.core :refer :all]))
+   [opencv4.utils :as u]
+   [opencv4.core :refer :all]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}

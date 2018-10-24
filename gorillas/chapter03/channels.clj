@@ -5,11 +5,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.channels
+(ns opencv4.channels
 (:require
-  [opencv3.core :refer :all]
-  [opencv3.colors.rgb :as rgb]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.colors.rgb :as rgb]
+  [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -223,7 +223,7 @@
      mat)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.channels/update-channel!</span>","value":"#'opencv3.channels/update-channel!"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.channels/update-channel!</span>","value":"#'opencv4.channels/update-channel!"}
 ;; <=
 
 ;; @@
@@ -231,7 +231,7 @@
   (-> "resources/chapter03/emilie1.jpg" (imread IMREAD_REDUCED_COLOR_8)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.channels/my-sister-cat</span>","value":"#'opencv3.channels/my-sister-cat"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.channels/my-sister-cat</span>","value":"#'opencv4.channels/my-sister-cat"}
 ;; <=
 
 ;; @@

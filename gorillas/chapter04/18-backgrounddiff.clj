@@ -5,11 +5,11 @@
 ;;; 
 ;;; Here we have a background picture and we would like to discover new objects on top of this background.
 ;;; 
-;;; We will use the simple opencv3.core function **absdiff** and then apply a simple and large **threshold** to pick up all the new objects.
+;;; We will use the simple opencv4.core function **absdiff** and then apply a simple and large **threshold** to pick up all the new objects.
 ;; **
 
 ;; **
-;;; The reference clojure code file can be found here: [bgdiff.clj](https://github.com/hellonico/opencv-fun/blob/master/test/opencv3/bgdiff.clj)
+;;; The reference clojure code file can be found here: [bgdiff.clj](https://github.com/hellonico/opencv-fun/blob/master/test/opencv4/bgdiff.clj)
 ;;; 
 ;;; Let's see first what our background looks like. 
 ;; **
@@ -17,8 +17,8 @@
 ;; @@
 (ns scenic-iceberg
   (:require
-    [opencv3.core :refer :all]
-    [opencv3.utils :as u]))
+    [opencv4.core :refer :all]
+    [opencv4.utils :as u]))
 
 (def bg (-> "resources/images/bgdiff/header.png" imread (u/resize-by 0.5)))
 (u/mat-view bg)

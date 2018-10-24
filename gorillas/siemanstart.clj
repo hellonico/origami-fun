@@ -5,11 +5,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.siemensstar
+(ns opencv4.siemensstar
 (:require
-  [opencv3.core :refer :all]
-  [opencv3.colors.rgb :as color]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.colors.rgb :as color]
+  [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -32,7 +32,7 @@
     star)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.siemensstar/siemens-star</span>","value":"#'opencv3.siemensstar/siemens-star"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.siemensstar/siemens-star</span>","value":"#'opencv4.siemensstar/siemens-star"}
 ;; <=
 
 ;; @@

@@ -12,16 +12,16 @@
 ; first we import the usual namespaces.
 (ns affectionate-thorns
   (:require
-    [opencv3.utils :as u]
-    [opencv3.colors.rgb :as color]
-    [opencv3.core :refer :all]))
+    [opencv4.utils :as u]
+    [opencv4.colors.rgb :as color]
+    [opencv4.core :refer :all]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
 ;; <=
 
 ;; **
-;;; Changing color space for a default color space is done through the function **apply-color-map!** from opencv3.core 
+;;; Changing color space for a default color space is done through the function **apply-color-map!** from opencv4.core 
 ;;; 
 ;;; The mat as well as the colormap id is passed as parameter.
 ;;; 
@@ -73,7 +73,7 @@
   (->
   source
   clone
-  (apply-color-map! (eval (read-string (str "opencv3.core/" color-map-string))))
+  (apply-color-map! (eval (read-string (str "opencv4.core/" color-map-string))))
   (watermark color-map-string)))
 
 (defn apply-all-colormaps [ source ] 

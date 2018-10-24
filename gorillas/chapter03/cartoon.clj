@@ -5,11 +5,11 @@
 ;; **
 
 ;; @@
-(ns opencv3.cartoon
+(ns opencv4.cartoon
 (:require
-  [opencv3.core :refer :all]
-  [opencv3.colors.rgb :as rgb]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.colors.rgb :as rgb]
+  [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -26,7 +26,7 @@
 ;(-> source u/mat-view)
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon/source</span>","value":"#'opencv3.cartoon/source"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon/source</span>","value":"#'opencv4.cartoon/source"}
 ;; <=
 
 ;; @@
@@ -112,7 +112,7 @@ clone
    (cvt-color! COLOR_GRAY2BGR)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon/cartoon!</span>","value":"#'opencv3.cartoon/cartoon!"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon/cartoon!</span>","value":"#'opencv4.cartoon/cartoon!"}
 ;; <=
 
 ;; @@
@@ -196,7 +196,7 @@ clone
  (bitwise-not!)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon/cartoon0</span>","value":"#'opencv3.cartoon/cartoon0"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon/cartoon0</span>","value":"#'opencv4.cartoon/cartoon0"}
 ;; <=
 
 ;; @@
@@ -221,7 +221,7 @@ u/mat-view)
     (cvt-color! COLOR_GRAY2BGR)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon/cartoon-0!</span>","value":"#'opencv3.cartoon/cartoon-0!"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon/cartoon-0!</span>","value":"#'opencv4.cartoon/cartoon-0!"}
 ;; <=
 
 ;; @@
@@ -245,7 +245,7 @@ u/mat-view)
     (cvt-color! COLOR_GRAY2BGR)))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon/cartoon-1!</span>","value":"#'opencv3.cartoon/cartoon-1!"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon/cartoon-1!</span>","value":"#'opencv4.cartoon/cartoon-1!"}
 ;; <=
 
 ;; @@

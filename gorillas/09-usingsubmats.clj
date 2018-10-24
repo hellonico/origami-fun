@@ -13,9 +13,9 @@
 ;; @@
 (ns homeless-crater
   (:require
-    [opencv3.core :refer :all]
-    [opencv3.colors.rgb :as rgb]
-    [opencv3.utils :as u]))
+    [opencv4.core :refer :all]
+    [opencv4.colors.rgb :as rgb]
+    [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}

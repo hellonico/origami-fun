@@ -7,8 +7,8 @@
 ;; @@
 (ns whispering-willow
     (:require
-    [opencv3.core :refer :all]
-    [opencv3.utils :as u]))
+    [opencv4.core :refer :all]
+    [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}

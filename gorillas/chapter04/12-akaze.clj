@@ -9,9 +9,9 @@
 ;; @@
 (ns wandering-moss
   (:require
-    [opencv3.core :refer :all]
-    [opencv3.utils :as u]
-    [opencv3.colors.rgb :as rgb]
+    [opencv4.core :refer :all]
+    [opencv4.utils :as u]
+    [opencv4.colors.rgb :as rgb]
     )
   (:import
     [org.opencv.features2d Features2d DescriptorExtractor DescriptorMatcher FeatureDetector]))

@@ -7,10 +7,10 @@
 ;; **
 
 ;; @@
-(ns opencv3.threshold
+(ns opencv4.threshold
   (:require
-    [opencv3.core :refer :all]
-    [opencv3.utils :as u]))
+    [opencv4.core :refer :all]
+    [opencv4.utils :as u]))
 
 (def neko
   (->

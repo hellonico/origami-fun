@@ -7,7 +7,7 @@
 
 ;; @@
 (ns divine-dawn
-  (:require [opencv3.core :refer :all] [opencv3.utils :as u]))
+  (:require [opencv4.core :refer :all] [opencv4.utils :as u]))
 
 ; http://rondelion.blogspot.jp/2014/04/opencv-java-api-gabor-filter.html
 

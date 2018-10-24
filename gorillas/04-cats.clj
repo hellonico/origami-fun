@@ -7,10 +7,10 @@
 ;; **
 
 ;; @@
-(ns opencv3.cartoon2
+(ns opencv4.cartoon2
  (:require
-  [opencv3.core :refer :all]
-  [opencv3.utils :as u]))
+  [opencv4.core :refer :all]
+  [opencv4.utils :as u]))
 
 ;; @@
 ;; =>
@@ -38,7 +38,7 @@
   u/mat-view))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv3.cartoon2/cartoon-me</span>","value":"#'opencv3.cartoon2/cartoon-me"}
+;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon2/cartoon-me</span>","value":"#'opencv4.cartoon2/cartoon-me"}
 ;; <=
 
 ;; @@
