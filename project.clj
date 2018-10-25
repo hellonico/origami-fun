@@ -7,7 +7,10 @@
   :resource-paths ["rsc"]
   :gorilla-options {:load-scan-exclude #{".git" ".svn" "src" "test" "project.clj"}}
   :repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
-  :aliases {"notebook" ["gorilla" ":ip" "0.0.0.0" ":port" "10000"]}
+  :aliases {
+            "notebook" ["gorilla" ":ip" "0.0.0.0" ":port" "10000"]
+            "cv_ok" ["run" "-m" "opencv4.ok"]
+            }
   :profiles {:dev {
     :resource-paths ["resources"]
     :dependencies [
@@ -23,6 +26,6 @@
   :dependencies [
    [org.clojure/clojure "1.8.0"]
    [org.clojure/tools.cli "0.3.5"]
-   [origami "4.0.0-beta"]
+   [origami "4.0.0-beta1"]
 
 ])
