@@ -1,6 +1,6 @@
 (ns opencv4.seesaw2
 (:require
-  [opencv4.core :refer :all]
+  [opencv4.core :refer :all :exclude [add!]]
   [opencv4.utils :as u])
 (:use seesaw.core))
 

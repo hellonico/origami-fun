@@ -1,7 +1,4 @@
 (ns opencv4.morph
-  (:import
-    [org.opencv.core CvType Core Mat]
-    [org.opencv.imgproc Imgproc])
   (:require [opencv4.core :refer :all]))
 ; http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html
 
