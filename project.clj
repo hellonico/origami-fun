@@ -17,5 +17,5 @@
   :dependencies [
    [org.clojure/clojure "1.9.0"]
    [org.clojure/tools.cli "0.3.5"]
-   [origami "4.0.0-beta4-SNAPSHOT"]
+   [origami "4.0.0-beta6"]
 ])

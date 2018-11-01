@@ -3,7 +3,7 @@
 ;; **
 ;;; # Working with simple mats 
 ;;; 
-;;; This is where it starts, we start creating matrix of values that are turned into colors. 
+;;; This is where it starts, we start opencv pure mat object with matrix of pixel values.
 ;; **
 
 ;; @@
@@ -27,7 +27,7 @@
 (u/mat-view a)
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RQREAAAjDsPkXMLtgg+PyqIEmbUd3iglABASIgAARECACAsQIIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIEBMACIgQAQEiIB8bwFV8plWIGmmowAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x477a03be \"BufferedImage@477a03be: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA/0lEQVR4Xu3RoQEAIAzAsP1/wN4FzwNURMTUdnb30DFv4C9DYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJuVXymVbWw7nMAAAAAElFTkSuQmCC\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x78b97ae6 \"BufferedImage@78b97ae6: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -36,7 +36,7 @@
 	(u/mat-view))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAp0lEQVR42u3RMQ0AAAgEMfwLeLEsYIOQDmfgWkmP7lQmABEQIAICRECACAgQI4AICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAICBABASIgQAQEiIAAMQGIgAARECAC8r0FdxHcdxBOmt4AAAAASUVORK5CYII=\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x55c9027e \"BufferedImage@55c9027e: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIBDAQPoH+LAY8BRg4sSZ2a2ZfehYb+AvQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMibl3Edx3ev5b3QAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x13fecbe4 \"BufferedImage@13fecbe4: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -45,7 +45,7 @@
   (u/mat-view))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RQREAAAQAQWHpqhU1jNnHFbiN7BrdKUwAIiBABASIgAARECBGABEQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAQFiAhABASIgQATkewsmth7dSAHdAAAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x4f6353c3 \"BufferedImage@4f6353c3: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIADAMMJCV1qBpwAXEzO3H3OvQ8d4A38ZEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIzAUmth7d+uIN1AAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x34bc06b3 \"BufferedImage@34bc06b3: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -55,7 +55,7 @@
   (u/mat-view))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RQREAAAQAQa10JSw1jNnHFbiNzhrdKUwAIiBABASIgAARECBGABEQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAREQIAICRECACAgQAQFiAhABASIgQATkewtkOHkz6ejY2wAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x1aaf3dc9 \"BufferedImage@1aaf3dc9: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIADAMFrRFcKCpwAXEzO3H3uuQ8d4A38ZEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIzAVkOHkzK7YFZgAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x62a46487 \"BufferedImage@62a46487: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -63,7 +63,7 @@
   (new-mat 100 100 CV_8UC3 rgb/red-2))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RMQ0AMAzAsPAHWworjWryEQJxU093ygQgAgJEQIAICBABAWIEEAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAAREAEBIiBABASIgAARECAmABEQIAICREB+bwHo0T42gquDjQAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x7ab58f0e \"BufferedImage@7ab58f0e: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQHAMADEwPcvdhZaPgMNOHAkNPu2Q8f+gbcMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEk5gLo0T42j4gnawAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x4b397270 \"BufferedImage@4b397270: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -71,7 +71,7 @@
   (new-mat 100 100 CV_8UC3 rgb/yellow-2))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RQREAAAjDsPkXOwtgg+PyqIEmbUZ3iglABASIgAARECACAsQIIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIEBMACIgQAQEiIB8bwHr8pEybjjxngAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x15651dc5 \"BufferedImage@15651dc5: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA/0lEQVR4Xu3RoQEAIAzAsP1/7F4AzwNURMTUdnbn0DFv4C9DYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJuevykTL7ADSgAAAAAElFTkSuQmCC\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x3d1fc866 \"BufferedImage@3d1fc866: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -79,7 +79,7 @@
 (.dump (new-mat 3 3 CV_8UC3 rgb/yellow-2))
 ;; @@
 ;; ->
-;;; #object[org.opencv.core.Scalar 0x539be07 [0.0, 238.0, 238.0, 0.0]]
+;;; #object[org.opencv.core.Scalar 0x323ac256 [0.0, 238.0, 238.0, 0.0]]
 ;;; 
 ;; <-
 ;; =>
@@ -102,7 +102,7 @@
 (u/mat-view a)
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAALElEQVR42mOQ5mT4/+Fe0v93Hxn+M7y7k/D/za24/2/egzhAkfefgPiN8H8Az4kZArvGQ+kAAAAASUVORK5CYII=\" width=\"3\" height=\"3\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x47669caf \"BufferedImage@47669caf: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 3 height = 3 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAALklEQVR4XmOY3M/w/90r8f8f3vH/Z3j9XATMefWC8z/D549C/1+/5Pr/8QPHfwDk9hljgLAL5QAAAABJRU5ErkJggg==\" width=\"3\" height=\"3\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x69f17360 \"BufferedImage@69f17360: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 3 height = 3 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -120,7 +120,7 @@
 (u/mat-view a)
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAApklEQVR42u3RQREAAAjDsPkXOwtgg+PyqIEmbUZ3iglABASIgAARECACAsQIIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIAICRECACAgQAQEiIEBMACIgQAQEiIB8bwHr8pEybjjxngAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x9baed50 \"BufferedImage@9baed50: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA/0lEQVR4Xu3RoQEAIAzAsP1/7F4AzwNURMTUdnbn0DFv4C9DYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJuevykTL7ADSgAAAAAElFTkSuQmCC\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x2cf88ad3 \"BufferedImage@2cf88ad3: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -129,7 +129,7 @@
 (defn scalar->bytes [s]
   (byte-array (take 3 (.val s ))))
 
-(def yellow (scalar->bytes (new-scalar 250 150 150)))
+(def yellow (scalar->bytes (new-scalar 210 250 250)))
 
 (def a (new-mat row col CV_8UC3))
 
@@ -140,7 +140,7 @@
 (u/mat-view a)
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABkCAYAAABkW8nwAAAAzUlEQVR42u3SMREAAAjEMPwLeLEsYIKBIUMM9FpJD1wrETAWxsJYQmAsjIWxwFgYC2OBsTAWxgJjYSyMBcbCWBgLjIWxMBYYC2NhLDAWxsJYYCyMhbHAWBgLY4GxMBbGAmNhLIwFxsJYGAuMhbEwFhgLY2EsMBbGwlhgLIyFscBYGAtjgbEwFsYCY2EsjAXGwlgYC4yFsTAWGAtjYSwwFsbCWGAsjIWxwFgYC2OBsTAWxgJjYSyMhbFEwFgYC2OBsTAWxgJjYSyMBcbitwXJh0rBxAuFLgAAAABJRU5ErkJggg==\" width=\"150\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x3c9afc82 \"BufferedImage@3c9afc82: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 150 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABkCAYAAABkW8nwAAABGUlEQVR4Xu3SoQEAIACAMP8/z2+0aDdLW1ghM9aeB34bb4AfjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCQuIwSxRUxgzSIAAAAASUVORK5CYII=\" width=\"150\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x5624bc8b \"BufferedImage@5624bc8b: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 150 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -164,7 +164,7 @@
    [rgb/red-2 rgb/red-2 rgb/blue rgb/blue] ]))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAFklEQVR42mN4zsj9H4Q5GD6DMQNBAQBLHxeJcOYlAAAAAABJRU5ErkJggg==\" width=\"4\" height=\"3\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x30a60c \"BufferedImage@30a60c: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 4 height = 3 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAFUlEQVR4XmN4z8DwH4QZGP9BMEEBAEpfF4mqjyfaAAAAAElFTkSuQmCC\" width=\"4\" height=\"3\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x1c102b6b \"BufferedImage@1c102b6b: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 4 height = 3 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
@@ -175,9 +175,5 @@
 		(clojure.core/take 70 (repeatedly #(rand-nth [rgb/blue-3- rgb/beige])))))))
 ;; @@
 ;; =>
-;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAYAAADhna1TAAABQElEQVR42u3QsUrDUBjF8aQxvcmgaR9Ld3H2UZxEBJ2kIlIQNx9AHAQH0Ul0cVBULJQatE1Skybr8Wvewe0/fITc5J5z788ry7mKX6nXX9fPVJrmUtLf0CSVut1Tdbx7ed6j/OBKgRtqPJGc21cnuFEYnmlm/zfNu+r6SVWVKreMON6R79/avpf2GUUHKjKpWnypqkeaFZbtjmwG7XpuGaE7luffye9cW+65JtYTR7uW8WDzav2XCqNB258kWyrmUml59eLTMj9UVmNltha5PZtDZctc61ld21Zqd+klmyqsZ3nGpnm2877Z3pG9f7dZiX1fZofuRMHKhTxggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGD+F+YPzES9WimKxEAAAAAASUVORK5CYII=\" width=\"70\" height=\"50\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x169c23e9 \"BufferedImage@169c23e9: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@576ad4d9 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 70 height = 50 #numDataElements 3 dataOff[0] = 2\"]"}
+;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAYAAADhna1TAAABIUlEQVR4Xu3QTU7DMBCGYbf5KQlJezCOAQhxCBCcoqi3qOAUqHQPFTtQC0UJTdKw/PAYqTdg9y5Gjp0Ze+ZxxfhUn1/SrunV7l+199E2P5pMTrTZSOsPqRifh9hupWbX+5xViLZ/DmtVS0kylXMLucFCw3iuPLvR+5sURff+fBnOLQbu0e8tlkpGs1Bbf/v60Z3idKra77vuRX23Ul1JaTrzuU8hf+jvsjuzoytF8UOoqaq/3m2G3PdoPWf5tX93fujHcrPsNvyzOWwm+y6LS63trLw4zGnrcXkmBwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADzP/C/ALs+RMfKFwjMAAAAABJRU5ErkJggg==\" width=\"70\" height=\"50\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x6f7d15ea \"BufferedImage@6f7d15ea: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 70 height = 50 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
-
-;; @@
-
-;; @@
