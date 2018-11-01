@@ -8,14 +8,16 @@
 ; mean function
 ;
 
-(defn show-average[img]
-  (let[
-  target (new-mat)
-  source
-    (-> img imread (u/resize-by 0.25))
-  avg-mat
-    (new-mat (.rows source)  (.cols source)  CV_8UC3 (mean source))]
-  (vconcat [source avg-mat] target)
-  (u/show target {:frame {:title "cat" :width 500 :height 700}})  ))
+(defn average-color[input]
+  (let [src    (-> input (imread) (u/resize-by 0.25))
+        mean_  (-> src u/mat-from (set-to! (mean src))) ]
+    (-> src
+        (u/mat-from)
+        (set-to! (mean src))
+        (cons [src])
+        (vconcat!)  )))
 
-(show-average "resources/images/cat.jpg")
+(-> 
+ "resources/images/cat.jpg" 
+ average-color 
+ (imwrite "hello2.jpg"))
