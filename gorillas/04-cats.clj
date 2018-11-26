@@ -35,7 +35,7 @@
   u/mat-from-url
   (u/resize-by 0.5)
   cartoon
-  u/mat-view))
+  u/show))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;opencv4.cartoon2/cartoon-me</span>","value":"#'opencv4.cartoon2/cartoon-me"}
