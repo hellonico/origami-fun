@@ -9,9 +9,12 @@
     :resource-paths ["resources"]
     :dependencies [
     [seesaw "1.4.5"]
+    ; to be release, it contains a better first page
+    ; [hellonico/gorilla-repl "0.4.2-SNAPSHOT"]
     [hellonico/gorilla-repl "0.4.1"]
   ]}}
   :dependencies [
-   [org.clojure/clojure "1.9.0"]
-   [org.clojure/tools.cli "0.3.5"]
-   [origami "4.0.0-beta8"]])
+                 [org.clojure/clojure "1.9.0"]
+                 [org.clojure/tools.cli "0.3.5"]
+                 [origami "4.0.0-0"]
+                 ])
