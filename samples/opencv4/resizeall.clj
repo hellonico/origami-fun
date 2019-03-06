@@ -32,7 +32,7 @@
     (doall
       (map #(resize-one % factor output-folder) images) )))
 
-(defn -main[& args]
+(defn -main[args]
   (resize-all 
     (first args) 
     (Float/parseFloat (second args))
