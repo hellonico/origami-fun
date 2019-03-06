@@ -11,7 +11,8 @@
   (:require
     [opencv4.core :refer :all]
     [opencv4.colors.rgb :as rgb]
-    [opencv4.utils :as u]))
+    [opencv4.utils :as u]
+[opencv4.gorilla :as g]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -24,7 +25,7 @@
 
 ;; @@
 (def a (new-mat 100 100 CV_8UC3 (new-scalar 150 150 150)))
-(u/mat-view a)
+(g/>> a)
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA/0lEQVR4Xu3RoQEAIAzAsP1/wN4FzwNURMTUdnb30DFv4C9DYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJuVXymVbWw7nMAAAAAElFTkSuQmCC\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x78b97ae6 \"BufferedImage@78b97ae6: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -33,7 +34,7 @@
 ;; @@
 (-> (new-mat 100 100 CV_8UC3)
     (set-to (new-scalar 250 150 150))
-	(u/mat-view))
+	(g/>>))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIBDAQPoH+LAY8BRg4sSZ2a2ZfehYb+AvQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMiTEkxpAYQ2IMibl3Edx3ev5b3QAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x13fecbe4 \"BufferedImage@13fecbe4: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -42,7 +43,7 @@
 ;; @@
 (-> 
   (new-mat 100 100 CV_8UC3 (new-scalar 100 200 100))
-  (u/mat-view))
+  (g/>>))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIADAMMJCV1qBpwAXEzO3H3OvQ8d4A38ZEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIzAUmth7d+uIN1AAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x34bc06b3 \"BufferedImage@34bc06b3: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -52,14 +53,14 @@
 (-> 
   (new-mat 100 100 CV_8UC3 (new-scalar 100 200 100))
   (bitwise-not!)
-  (u/mat-view))
+  (g/>>))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABAElEQVR4Xu3RIQEAIADAMFrRFcKCpwAXEzO3H3uuQ8d4A38ZEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIjCExhsQYEmNIzAVkOHkzK7YFZgAAAABJRU5ErkJggg==\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x62a46487 \"BufferedImage@62a46487: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
 ;; <=
 
 ;; @@
-(u/mat-view
+(g/>>
   (new-mat 100 100 CV_8UC3 rgb/red-2))
 ;; @@
 ;; =>
@@ -67,7 +68,7 @@
 ;; <=
 
 ;; @@
-(u/mat-view
+(g/>>
   (new-mat 100 100 CV_8UC3 rgb/yellow-2))
 ;; @@
 ;; =>
@@ -99,7 +100,7 @@
 (.put a 2 0 (byte-array [0 238 238]))
 (.put a 2 1 (byte-array [0 238 238]))
 (.put a 2 2 (byte-array [0 238 238]))
-(u/mat-view a)
+(g/>> a)
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAALklEQVR4XmOY3M/w/90r8f8f3vH/Z3j9XATMefWC8z/D549C/1+/5Pr/8QPHfwDk9hljgLAL5QAAAABJRU5ErkJggg==\" width=\"3\" height=\"3\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x69f17360 \"BufferedImage@69f17360: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 3 height = 3 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -117,7 +118,7 @@
   (dotimes [j col]
 	 (.put a i j yellow)))
 
-(u/mat-view a)
+(g/>> a)
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA/0lEQVR4Xu3RoQEAIAzAsP1/7F4AzwNURMTUdnbn0DFv4C9DYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJMSTGkBhDYgyJuevykTL7ADSgAAAAAElFTkSuQmCC\" width=\"100\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x2cf88ad3 \"BufferedImage@2cf88ad3: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 100 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -137,7 +138,7 @@
   (dotimes [j col]
 	 (.put a i j yellow)))
 
-(u/mat-view a)
+(g/>> a)
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABkCAYAAABkW8nwAAABGUlEQVR4Xu3SoQEAIACAMP8/z2+0aDdLW1ghM9aeB34bb4AfjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCQuIwSxRUxgzSIAAAAASUVORK5CYII=\" width=\"150\" height=\"100\" alt=\"\" />","value":"#object[java.awt.image.BufferedImage 0x5624bc8b \"BufferedImage@5624bc8b: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@4e1cbc92 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 150 height = 100 #numDataElements 3 dataOff[0] = 2\"]"}
@@ -157,7 +158,7 @@
 ;; <=
 
 ;; @@
-(u/mat-view
+(g/>>
   (matrix-to-mat [ 
    [rgb/red-2 rgb/red-2 rgb/blue rgb/blue] 
    [rgb/red-2 rgb/red-2 rgb/blue rgb/blue]  
@@ -168,7 +169,7 @@
 ;; <=
 
 ;; @@
-(u/mat-view
+(g/>>
   (matrix-to-mat 
     (into [] 
       (clojure.core/repeat 50 

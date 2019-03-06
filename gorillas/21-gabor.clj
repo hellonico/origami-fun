@@ -7,7 +7,8 @@
 
 ;; @@
 (ns divine-dawn
-  (:require [opencv4.core :refer :all] [opencv4.utils :as u]))
+  (:require [opencv4.core :refer :all] [opencv4.utils :as u]
+[opencv4.gorilla :as g]))
 
 ; http://rondelion.blogspot.jp/2014/04/opencv-java-api-gabor-filter.html
 
@@ -35,7 +36,7 @@
     clone
     (filter-2-d! (.type img)  (kernel-by-theta angle))))
 
-(u/mat-view 
+(g/>> 
   (hconcat! (into [] (map #(apply-gabor img %) [0 45 90 135])  )))
 ;; @@
 ;; =>
@@ -49,7 +50,7 @@
     (apply-gabor angle)
     bitwise-not!))
 
-(u/mat-view 
+(g/>> 
   (hconcat! (into [] (map #(apply-gabor-inv img %) [0 45 90 135]))))
 ;; @@
 ;; =>

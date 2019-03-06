@@ -12,6 +12,7 @@
 (ns composed-pine
    (:require
     [opencv4.utils :as u]
+[opencv4.gorilla :as g]
     [opencv4.core :refer :all]))
 ;; @@
 ;; =>
@@ -25,7 +26,7 @@
    (u/mat-from-url)
    (cvt-color! color)
    (resize! (new-size width height))
-   (u/mat-view)))
+   (g/>>)))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;composed-pine/load-cvt-resize-show</span>","value":"#'composed-pine/load-cvt-resize-show"}

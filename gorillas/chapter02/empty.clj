@@ -9,6 +9,7 @@
 (ns happy-tomato
   (:require
     [opencv4.utils :as u]
+[opencv4.gorilla :as g]
     [opencv4.core :refer :all]))
 ;; @@
 ;; =>

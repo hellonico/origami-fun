@@ -10,7 +10,8 @@
 (ns opencv4.cartoon2
  (:require
   [opencv4.core :refer :all]
-  [opencv4.utils :as u]))
+  [opencv4.utils :as u]
+[opencv4.gorilla :as g]))
 
 ;; @@
 ;; =>

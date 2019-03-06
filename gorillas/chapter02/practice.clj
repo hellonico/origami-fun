@@ -9,6 +9,7 @@
 (ns dry-sunrise
   (:require
     [opencv4.utils :as u]
+[opencv4.gorilla :as g]
     [opencv4.core :refer :all]))
 ;; @@
 ;; =>
@@ -22,7 +23,7 @@
    (imread)
    (cvt-color! COLOR_RGB2GRAY)
    (u/resize-by 0.3)
-   (u/mat-view)))
+   (g/>>)))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;tasteless-lagoon/load-me</span>","value":"#'tasteless-lagoon/load-me"}

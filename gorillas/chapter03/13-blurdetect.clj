@@ -11,7 +11,8 @@
  (:require
      [opencv4.core :refer :all]
      [opencv4.colors.rgb :as color]
-     [opencv4.utils :as u]))
+     [opencv4.utils :as u]
+[opencv4.gorilla :as g]))
 ;; @@
 
 ;; @@
@@ -72,7 +73,7 @@
 ;; @@
 
 ;; @@
-(map #(-> % imread (u/resize-by 0.5) mark-blurred! u/mat-view)
+(map #(-> % imread (u/resize-by 0.5) mark-blurred! g/>>)
     ["resources/images/tiger-blur.gif" 
      "resources/blurred/blurred_cat.jpg"
      "resources/nico.jpg"])

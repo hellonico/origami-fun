@@ -22,3 +22,5 @@ output
 .classpath
 .project
 .settings
+.cpcache/
+.ipynb_checkpoints/

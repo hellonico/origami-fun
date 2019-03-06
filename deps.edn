@@ -1,0 +1,17 @@
+{:mvn/repos
+ {
+ 	"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}
+ }
+ :paths ["src" "samples"]
+ :deps { 
+ 	origami {:mvn/version "4.0.0-6"}
+
+ 	; using master 
+ 	; origami {:git/url "https://github.com/hellonico/origami" :deps/manifest :mvn :sha "816ad908efac02050581f46a1763e1f98ce0695e"}
+ 	
+ 	; origami {:mvn/version "4.0.0-6" :exclusions [opencv/opencv-native]}
+ 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "osx_64"}
+ 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "limux_64"}
+ 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "windows_64"}
+ }
+}

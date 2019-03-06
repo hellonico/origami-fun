@@ -2,8 +2,7 @@
   (:require
     [opencv4.core :refer :all]
     [opencv4.utils :as u])
-  (:gen-class)
-    )
+  (:gen-class))
 
 (defn annotate![image text color]
   (let[ cl (clone image)]

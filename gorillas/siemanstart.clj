@@ -9,7 +9,8 @@
 (:require
   [opencv4.core :refer :all]
   [opencv4.colors.rgb :as color]
-  [opencv4.utils :as u]))
+  [opencv4.utils :as u]
+[opencv4.gorilla :as g]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -36,7 +37,7 @@
 ;; <=
 
 ;; @@
-(u/mat-view
+(g/>>
   (siemens-star 120 20 [color/blueviolet color/greenyellow color/magenta-3]))
 ;; @@
 ;; =>
