@@ -9,10 +9,8 @@
 (ns talented-silence
   (:require
     [opencv4.core :refer :all]
-    [opencv4.video :as v]
     [opencv4.colors.rgb :as rgb]
-    [opencv4.utils :as u]
-[opencv4.gorilla :as g]))
+    [opencv4.utils :as u]))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
@@ -42,17 +40,18 @@
     mat))
 
 (u/cams-window
- {:devices [
-   {:device 0 :width 200 :height 150 :fn my-fn}
-  ]
+ {:devices [{:device 0 :width 200 :height 150 :fn my-fn}]
   :video { :fn identity }
-  :frame
-  {:width 350 :height 300 :title "OneOfTheSame"}})
+  :frame {:width 500 :height 500 :title "OneOfTheSame"}})
 ;; @@
 ;; ->
-;;; {:frame {:color 00, :title OneOfTheSame, :width 350, :height 300}, :devices [{:device 0, :width 200, :height 150, :fn #function[talented-silence/my-fn]}], :video {:fn #function[clojure.core/identity]}}
+;;; {:frame {:color 00, :title OneOfTheSame, :width 500, :height 500}, :devices [{:device 0, :width 200, :height 150, :fn #function[talented-silence/my-fn]}], :video {:fn #function[clojure.core/identity]}}
 ;;; 
 ;; <-
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
 ;; <=
+
+;; @@
+
+;; @@
