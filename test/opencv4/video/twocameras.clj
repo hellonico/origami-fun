@@ -1,7 +1,7 @@
 (ns opencv4.video.twocameras
   (:require
     [opencv4.core :refer :all]
-    [opencv4.video :refer :all]
+;    [opencv4.video :refer :all]
     [opencv4.utils :as u])
     (:gen-class))
 
