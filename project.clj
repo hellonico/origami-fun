@@ -12,5 +12,5 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/tools.cli "0.3.5"]
                  [seesaw "1.4.5"]
-                 [origami "4.2.0-0"]
-                 [origami/filters "1.0"]])
+                 [origami "4.3.0-1"]
+                 [origami/filters "1.4"]])
