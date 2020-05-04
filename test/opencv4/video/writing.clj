@@ -14,7 +14,7 @@
 
 (.open
   outputVideo
-  "hello.avi"
+  "hello.mp4"
   (VideoWriter/fourcc \M \J \P \G)
   30
   (new-size 400 300))

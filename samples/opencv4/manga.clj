@@ -12,7 +12,4 @@
   	 (cvt-color! COLOR_RGB2GRAY)
   	 (gaussian-blur! (new-size 7 7) 1.5 1.5)
   	 (threshold! 100 255 THRESH_BINARY)
-		 (imwrite out)
-		;  (bitwise-not!)
-		;  (imwrite out2)
-		 )))
+	 (imwrite out))))
