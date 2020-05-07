@@ -3,14 +3,17 @@
   :gorilla-options {:load-scan-exclude #{".git" "project.clj" ".svn" "samples" "src" "test"}}
   :repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
   :aliases {
-    "jnotebook" ["with-profile" "jupyter" "jupyter" "notebook"]
-    "notebook" ["with-profile" "gorilla" "gorilla" ":ip" "0.0.0.0" ":port" "10000"]
+    "jnotebook" ["jupyter" "notebook"]
+    "notebook" ["with-profile" "-dev" "gorilla" "gorilla" ":ip" "0.0.0.0" ":port" "10000"]
             "cv_ok" ["run" "-m" "opencv4.ok"]}
   :profiles {:dev {
-    :dependencies []}
-  :jupyter {
     :dependencies [ [clojupyter "0.3.1"]]
-    :plugins [[hellonico/lein-jupyter "0.1.17"]]}
+    :plugins [[hellonico/lein-jupyter "0.1.17"]]
+    }
+  ;:jupyter {
+  
+  ;  :dependencies [ [clojupyter "0.3.1"]]
+  ;  :plugins [[hellonico/lein-jupyter "0.1.17"]]}
   :gorilla {
     :dependencies [[hellonico/gorilla-repl "0.4.1"]]
     :plugins [[hellonico/lein-gorilla "0.4.2"]]
