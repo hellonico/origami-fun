@@ -4,7 +4,7 @@
  }
  :paths ["src" "samples"]
  :deps { 
- 	origami {:mvn/version "4.0.0-6"}
+ 	origami {:mvn/version "4.5.1-6"}
 
  	; using master 
  	; origami {:git/url "https://github.com/hellonico/origami" :deps/manifest :mvn :sha "816ad908efac02050581f46a1763e1f98ce0695e"}

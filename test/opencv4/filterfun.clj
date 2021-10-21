@@ -1,4 +1,4 @@
-(ns opencv4.filter
+(ns opencv4.filterfun
   (:require
     [opencv4.utils :as u]
     [opencv4.core :refer :all]))
